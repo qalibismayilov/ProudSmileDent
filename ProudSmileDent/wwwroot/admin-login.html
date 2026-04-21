@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Giriş | ProudSmileDent</title>
+    <meta name="description" content="ProudSmileDent admin giriş səhifəsi." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+                <a href="contact.html">Əlaqə</a>
+                <a href="admin-login.html" class="active">Admin giriş</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="reveal show">
+                    <span class="section-chip">Admin panel</span>
+                    <h1>Admin giriş</h1>
+                    <p>
+                        Bu səhifə yalnız idarəetmə panelinə giriş üçün nəzərdə tutulub.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container contact-grid">
+                <div class="contact-info reveal show">
+                    <span class="section-chip">İdarəetmə girişi</span>
+                    <h2>Admin hesabı ilə daxil olun</h2>
+                    <p>
+                        Admin girişindən sonra istifadəçiləri, rezervasiyaları və statusları idarə etmək mümkün olacaq.
+                    </p>
+
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <h4>İstifadəçilər</h4>
+                            <p>Bütün qeydiyyatdan keçmiş istifadəçiləri görmək və silmək.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>Rezervasiyalar</h4>
+                            <p>Bütün rezervasiyaları görmək, status dəyişmək və silmək.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>Təhlükəsiz giriş</h4>
+                            <p>Bu səhifə yalnız admin rolu olan hesab üçün işləyir.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card reveal show">
+                    <h2>Admin daxil ol</h2>
+                    <p class="form-subtext">
+                        Admin istifadəçi adı və ya e-poçt ilə daxil olun.
+                    </p>
+
+                    <form id="adminLoginForm">
+                        <input type="text"
+                               id="usernameOrEmail"
+                               placeholder="İstifadəçi adı və ya e-poçt"
+                               required />
+
+                        <input type="password"
+                               id="password"
+                               placeholder="Şifrə"
+                               required />
+
+                        <button type="submit" class="btn btn-primary">Admin daxil ol</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <div id="toastBox" class="toast-box"></div>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+                mobileOverlay.classList.toggle("active");
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                mobileOverlay.classList.remove("active");
+            });
+        }
+
+        function showToast(message, type = "error") {
+            const toastBox = document.getElementById("toastBox");
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+
+        const adminLoginForm = document.getElementById("adminLoginForm");
+
+        if (adminLoginForm) {
+            adminLoginForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const usernameOrEmail = document.getElementById("usernameOrEmail").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                if (!usernameOrEmail || !password) {
+                    showToast("İstifadəçi adı və şifrəni daxil edin.", "error");
+                    return;
+                }
+
+                const submitButton = adminLoginForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+
+                try {
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Göndərilir...";
+
+                    const response = await fetch("/api/auth/admin-login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            usernameOrEmail,
+                            password
+                        })
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        if (data.user) {
+                            localStorage.setItem("user", JSON.stringify(data.user));
+                        }
+
+                        showToast(data.message || "Admin giriş uğurludur.", "success");
+
+                        setTimeout(() => {
+                            window.location.href = "admin.html";
+                        }, 700);
+                    } else {
+                        showToast(data.message || "Admin giriş zamanı xəta baş verdi.", "error");
+                    }
+                } catch (error) {
+                    console.error("Admin login error:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

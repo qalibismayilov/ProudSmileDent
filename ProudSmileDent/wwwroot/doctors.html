@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Həkimlərimiz | ProudSmileDent</title>
+    <meta name="description" content="ProudSmileDent klinikasının peşəkar həkim heyəti. Təcrübəli stomatoloqlar, ortodont, implantoloq və digər mütəxəssislər." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html" class="active">Həkimlərimiz</a>
+                <a href="contact.html">Əlaqə</a>
+
+                <a href="login.html" id="navLogin">Daxil ol</a>
+                <a href="register.html" class="nav-register" id="navRegister">Qeydiyyat</a>
+
+                <a href="my-reservations.html" id="navMyReservations" style="display:none;">Rezervasiyalarım</a>
+                <a href="#" id="navLogout" style="display:none;">Çıxış</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-chip">Həkimlərimiz</span>
+                    <h1>Təcrübəli və peşəkar mütəxəssis heyətimiz</h1>
+                    <p>
+                        ProudSmileDent klinikasında çalışan həkimlər hər bir pasiyentə diqqətli yanaşma,
+                        müasir müalicə üsulları və yüksək xidmət keyfiyyəti təqdim edir.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="page-grid-3">
+                    <article class="doctor-detail-card reveal">
+                        <div class="doctor-avatar">İ</div>
+                        <h3>Dr. İftixar Məmmədov</h3>
+                        <span class="section-chip">Baş stomatoloq</span>
+                        <p>
+                            Terapevtik və estetik stomatologiya sahəsində ixtisaslaşmış, pasiyentlərlə
+                            diqqətli və peşəkar yanaşması ilə seçilən mütəxəssisdir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Terapevtik müalicə planlaması</li>
+                            <li>Estetik bərpa yanaşması</li>
+                            <li>Pasiyentlə fərdi konsultasiya</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-1">
+                        <div class="doctor-avatar">A</div>
+                        <h3>Dr. Aqil Həsənov</h3>
+                        <span class="section-chip">Ortodont</span>
+                        <p>
+                            Diş sırasının düzləndirilməsi və ortodontik müalicə sahəsində müasir yanaşmalar
+                            tətbiq edən peşəkar həkimdir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Breket müalicəsi</li>
+                            <li>Diş sırasının korreksiyası</li>
+                            <li>Estetik gülüş xəttinin yaxşılaşdırılması</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-2">
+                        <div class="doctor-avatar">N</div>
+                        <h3>Dr. Nərgiz Əliyeva</h3>
+                        <span class="section-chip">Uşaq stomatoloqu</span>
+                        <p>
+                            Kiçik yaşlı pasiyentlərlə rahat ünsiyyət quran, təhlükəsiz və səliqəli
+                            müalicə prinsipi ilə çalışan mütəxəssisdir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Uşaq diş müayinəsi</li>
+                            <li>Profilaktik qulluq</li>
+                            <li>Rahat və stresssiz yanaşma</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal">
+                        <div class="doctor-avatar">K</div>
+                        <h3>Dr. Kamil Rzayev</h3>
+                        <span class="section-chip">İmplantoloq</span>
+                        <p>
+                            İmplant və cərrahi stomatologiya sahəsində dəqiq planlama və peşəkar icrası ilə seçilir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>İmplant planlaması</li>
+                            <li>Cərrahi prosedurlar</li>
+                            <li>Müalicədən sonrakı nəzarət</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-1">
+                        <div class="doctor-avatar">Z</div>
+                        <h3>Dr. Zaur Quliyev</h3>
+                        <span class="section-chip">Ortopedik stomatoloq</span>
+                        <p>
+                            Keramika, zirkon və protez həllərində funksional və estetik nəticəyə yönəlmiş
+                            peşəkar yanaşma təqdim edir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Keramika və zirkon bərpalar</li>
+                            <li>Protez həlləri</li>
+                            <li>İmplantüstü ortopedik işlər</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-2">
+                        <div class="doctor-avatar">E</div>
+                        <h3>Dr. Elnarə Məmmədova</h3>
+                        <span class="section-chip">Estetik stomatoloq</span>
+                        <p>
+                            Gülüş dizaynı, diş ağartma və vinir sahəsində müasir estetik yanaşmalar tətbiq edir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Gülüş dizaynı</li>
+                            <li>Diş ağartma prosedurları</li>
+                            <li>Vinir və estetik bərpa</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal">
+                        <div class="doctor-avatar">G</div>
+                        <h3>Dr. Gülxar Səfərova</h3>
+                        <span class="section-chip">Parodontoloq</span>
+                        <p>
+                            Diş əti problemlərinin diaqnostikası və müalicəsində diqqətli və peşəkar yanaşması ilə seçilir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Diş əti müalicəsi</li>
+                            <li>Parodontal nəzarət</li>
+                            <li>Gigiyena tövsiyələri</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-1">
+                        <div class="doctor-avatar">Y</div>
+                        <h3>Dr. Yelena İsmayılova</h3>
+                        <span class="section-chip">Stomatoloq</span>
+                        <p>
+                            Gündəlik stomatoloji xidmətlər, profilaktika və bərpaedici prosedurlar üzrə kompleks xidmət göstərir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Ümumi stomatoloji baxış</li>
+                            <li>Bərpaedici müalicə</li>
+                            <li>Profilaktik qulluq</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-2">
+                        <div class="doctor-avatar">M</div>
+                        <h3>Dr. Mübariz Əliyev</h3>
+                        <span class="section-chip">Cərrah-stomatoloq</span>
+                        <p>
+                            Diş çəkimi və ağız boşluğu cərrahiyyəsi üzrə təhlükəsiz, rahat və peşəkar prosedurlar həyata keçirir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Diş çəkimi</li>
+                            <li>Cərrahi müdaxilə</li>
+                            <li>Pasiyent nəzarəti</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal">
+                        <div class="doctor-avatar">S</div>
+                        <h3>Dr. Sədaqət Həsənli</h3>
+                        <span class="section-chip">Terapevtik stomatoloq</span>
+                        <p>
+                            Kanal müalicəsi, plomb və diş bərpası sahəsində səliqəli və dəqiq müalicə planları təqdim edir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Kanal müalicəsi</li>
+                            <li>Plomb və bərpa</li>
+                            <li>Diş ağrılarının müalicəsi</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-1">
+                        <div class="doctor-avatar">A</div>
+                        <h3>Dr. Aytən Qasımova</h3>
+                        <span class="section-chip">Stomatoloq</span>
+                        <p>
+                            Pasiyent rahatlığını ön planda saxlayan, diqqətli və səliqəli yanaşmaya sahib mütəxəssisdir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>Ümumi stomatoloji xidmətlər</li>
+                            <li>Profilaktik nəzarət</li>
+                            <li>Pasiyent yönümlü yanaşma</li>
+                        </ul>
+                    </article>
+
+                    <article class="doctor-detail-card reveal delay-2">
+                        <div class="doctor-avatar">E</div>
+                        <h3>Dr. Elçin Məmmədli</h3>
+                        <span class="section-chip">Oral diaqnostika üzrə mütəxəssis</span>
+                        <p>
+                            Müalicədən əvvəl düzgün analiz, vəziyyətin dəyərləndirilməsi və effektiv istiqamətləndirmə ilə seçilir.
+                        </p>
+                        <ul class="doctor-list">
+                            <li>İlkin diaqnostika</li>
+                            <li>Müalicə istiqamətləndirilməsi</li>
+                            <li>Detallı konsultasiya</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-preview">
+            <div class="container about-preview-grid">
+                <div class="about-preview-content reveal">
+                    <span class="section-chip">Peşəkar heyət</span>
+                    <h2>Hər biri öz sahəsində peşəkar yanaşma təqdim edir</h2>
+                    <p>
+                        Həkim heyətimiz pasiyentin ehtiyacını diqqətlə dinləyir, vəziyyəti peşəkar şəkildə
+                        qiymətləndirir və uyğun müalicə planını aydın formada izah edir.
+                    </p>
+                    <p>
+                        Məqsədimiz sadəcə müalicə deyil, pasiyentin rahatlığını və məmnuniyyətini də eyni dərəcədə təmin etməkdir.
+                    </p>
+                    <div class="about-preview-actions">
+                        <a href="reservation.html" class="btn btn-primary">Rezervasiya et</a>
+                        <a href="contact.html" class="btn btn-secondary">Əlaqə saxla</a>
+                    </div>
+                </div>
+
+                <div class="about-preview-boxes reveal delay-1">
+                    <div class="mini-info-box">
+                        <h3>Fərdi yanaşma</h3>
+                        <p>Hər pasiyent üçün vəziyyətə uyğun ən doğru müalicə planı hazırlanır.</p>
+                    </div>
+                    <div class="mini-info-box">
+                        <h3>Komanda işi</h3>
+                        <p>Müxtəlif sahə üzrə həkimlər kompleks və koordinasiyalı yanaşma təqdim edir.</p>
+                    </div>
+                    <div class="mini-info-box">
+                        <h3>Pasiyent rahatlığı</h3>
+                        <p>Həkim-pasiyent ünsiyyəti aydın, rahat və etibarlı mühitdə qurulur.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <span class="section-chip chip-light">Növbəti addım</span>
+                    <h2>Həkim heyətimizlə tanış oldunuzsa, indi müraciətinizi göndərin</h2>
+                    <p>
+                        Uyğun xidmət üçün qeydiyyatdan keçə, sistemə daxil ola və onlayn rezervasiya yaradaraq
+                        qəbul üçün rahat şəkildə müraciət edə bilərsiniz.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="#" class="btn btn-light" id="doctorsReserveBtn">Rezervasiya et</a>
+                        <a href="services.html" class="btn btn-outline-light">Xidmətlərə bax</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>
+                    Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər, təcrübəli həkim heyəti və müasir yanaşma.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Səhifələr</h4>
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Əlaqə</h4>
+                <p>+994 50 000 00 00</p>
+                <p>info@proudsmiledent.com</p>
+                <p>Bakı, Azərbaycan</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+        const pageLoader = document.getElementById("pageLoader");
+
+        const navLogin = document.getElementById("navLogin");
+        const navRegister = document.getElementById("navRegister");
+        const navMyReservations = document.getElementById("navMyReservations");
+        const navLogout = document.getElementById("navLogout");
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+                mobileOverlay.classList.toggle("active");
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                mobileOverlay.classList.remove("active");
+            });
+        }
+
+        window.addEventListener("load", () => {
+            if (pageLoader) {
+                pageLoader.classList.add("hide");
+            }
+        });
+        function showToast(message, type = "info") {
+            const toastBox = document.getElementById("toastBox");
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+        const revealElements = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+            const triggerBottom = window.innerHeight * 0.88;
+
+            revealElements.forEach((el) => {
+                const rectTop = el.getBoundingClientRect().top;
+                if (rectTop < triggerBottom) {
+                    el.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+
+        const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (currentUser) {
+            navLogin.style.display = "none";
+            navRegister.style.display = "none";
+            navMyReservations.style.display = "inline-flex";
+            navLogout.style.display = "inline-flex";
+        } else {
+            navLogin.style.display = "inline-flex";
+            navRegister.style.display = "inline-flex";
+            navMyReservations.style.display = "none";
+            navLogout.style.display = "none";
+        }
+
+        navLogout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        });
+        const doctorsReserveBtn = document.getElementById("doctorsReserveBtn");
+
+        if (doctorsReserveBtn) {
+            doctorsReserveBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+
+                if (currentUser) {
+                    window.location.href = "reservation.html";
+                } else {
+                    showToast("Rezervasiya üçün əvvəlcə daxil olun.", "info");
+
+                    setTimeout(() => {
+                        window.location.href = "login.html";
+                    }, 900);
+                }
+            });
+        }
+    </script>
+    <div id="toastBox" class="toast-box"></div>
+</body>
+</html>

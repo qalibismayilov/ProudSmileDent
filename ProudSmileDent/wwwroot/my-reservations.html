@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mənim rezervasiyalarım | ProudSmileDent</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+                <a href="contact.html">Əlaqə</a>
+
+                <a href="login.html" id="navLogin">Daxil ol</a>
+                <a href="register.html" class="nav-register" id="navRegister">Qeydiyyat</a>
+
+                <a href="my-reservations.html" class="active" id="navMyReservations" style="display:none;">Rezervasiyalarım</a>
+                <a href="#" id="navLogout" style="display:none;">Çıxış</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="reveal show">
+                    <span class="section-chip">Şəxsi kabinet</span>
+                    <h1>Mənim rezervasiyalarım</h1>
+                    <p>Yaratdığınız bütün rezervasiyaları burada görə bilərsiniz.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div id="authRequiredBox" class="form-card" style="display:none;">
+                    <h2>Əvvəlcə daxil olun</h2>
+                    <p class="form-subtext">Rezervasiyalarınızı görmək üçün hesabınıza daxil olmalısınız.</p>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                        <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                        <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                    </div>
+                </div>
+
+                <div id="emptyState" class="form-card" style="display:none;">
+                    <h2>Hələ rezervasiya yoxdur</h2>
+                    <p class="form-subtext">
+                        Siz hələ heç bir rezervasiya yaratmamısınız. Xidmət seçib rahat şəkildə yeni rezervasiya yarada bilərsiniz.
+                    </p>
+
+                    <div class="contact-list" style="margin-top:18px;">
+                        <div class="contact-item">
+                            <h4>Onlayn müraciət</h4>
+                            <p>Xidmət, tarix və əlavə qeydi daxil edərək yeni rezervasiya yarada bilərsiniz.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>Rahat idarəetmə</h4>
+                            <p>Yaratdığınız rezervasiyalar daha sonra bu bölmədə görünəcək və statuslarını izləyə biləcəksiniz.</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+                        <a href="reservation.html" class="btn btn-primary">Rezervasiya et</a>
+                        <a href="services.html" class="btn btn-secondary">Xidmətlərə bax</a>
+                    </div>
+                </div>
+
+                <div id="errorBox" class="form-card" style="display:none;">
+                    <h2>Xəta baş verdi</h2>
+                    <p class="form-subtext" id="errorText">Rezervasiyaları yükləmək mümkün olmadı.</p>
+                </div>
+
+                <div id="reservationsList" class="page-grid-2"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+
+        const navLogin = document.getElementById("navLogin");
+        const navRegister = document.getElementById("navRegister");
+        const navMyReservations = document.getElementById("navMyReservations");
+        const navLogout = document.getElementById("navLogout");
+
+        const authRequiredBox = document.getElementById("authRequiredBox");
+        const emptyState = document.getElementById("emptyState");
+        const errorBox = document.getElementById("errorBox");
+        const errorText = document.getElementById("errorText");
+        const reservationsList = document.getElementById("reservationsList");
+
+        function showToast(message, type = "error") {
+            const toastBox = document.getElementById("toastBox");
+
+            if (!toastBox) {
+                return;
+            }
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+            });
+        }
+
+        const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+        console.log("CURRENT USER:", currentUser);
+
+        if (currentUser && currentUser.username !== "admin") {
+            navLogin.style.display = "none";
+            navRegister.style.display = "none";
+            navMyReservations.style.display = "inline-flex";
+            navLogout.style.display = "inline-flex";
+        } else if (currentUser && currentUser.username === "admin") {
+            navLogin.style.display = "none";
+            navRegister.style.display = "none";
+            navMyReservations.style.display = "none";
+            navLogout.style.display = "inline-flex";
+        } else {
+            navLogin.style.display = "inline-flex";
+            navRegister.style.display = "inline-flex";
+            navMyReservations.style.display = "none";
+            navLogout.style.display = "none";
+            authRequiredBox.style.display = "block";
+        }
+
+        navLogout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        });
+
+        function getStatusColor(status) {
+            const s = (status || "").toLowerCase();
+
+            if (s === "approved") return "#16a34a";
+            if (s === "rejected") return "#dc2626";
+            if (s === "deactivated") return "#6b7280";
+
+            return "#f97316";
+        }
+
+        async function deleteReservation(id) {
+            const ok = confirm("Rezervasiyanı silmək istəyirsiniz?");
+            if (!ok) return;
+
+            try {
+                const response = await fetch("/api/appointments/" + id, {
+                    method: "DELETE"
+                });
+
+                const text = await response.text();
+
+                let data = {};
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    data = { message: text };
+                }
+
+                if (response.ok) {
+                    showToast(data.message || "Rezervasiya silindi.", "success");
+                    loadReservations();
+                } else {
+                    showToast(data.message || "Rezervasiyanı silmək mümkün olmadı.", "error");
+                }
+            } catch (error) {
+                console.error("DELETE RESERVATION ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            }
+        }
+
+        async function loadReservations() {
+            if (!currentUser || !currentUser.id || currentUser.username === "admin") {
+                return;
+            }
+
+            try {
+                console.log("FETCH URL:", "/api/appointments/user/" + currentUser.id);
+
+                const response = await fetch("/api/appointments/user/" + currentUser.id);
+                const text = await response.text();
+
+                console.log("RESERVATIONS RESPONSE:", response.status, text);
+
+                let data = [];
+                try {
+                    data = text ? JSON.parse(text) : [];
+                } catch {
+                    data = [];
+                }
+
+                reservationsList.innerHTML = "";
+                emptyState.style.display = "none";
+                errorBox.style.display = "none";
+
+                if (!response.ok) {
+                    errorBox.style.display = "block";
+                    errorText.textContent = (data && data.message) ? data.message : "Rezervasiyaları yükləmək mümkün olmadı.";
+                    return;
+                }
+
+                if (!Array.isArray(data)) {
+                    errorBox.style.display = "block";
+                    errorText.textContent = "Server düzgün cavab qaytarmadı.";
+                    return;
+                }
+
+                if (data.length === 0) {
+                    reservationsList.innerHTML = "";
+                    errorBox.style.display = "none";
+                    emptyState.style.display = "block";
+                    return;
+                }
+
+                data.forEach((item) => {
+                    const card = document.createElement("div");
+                    card.className = "form-card";
+
+                    const formattedDate = item.date
+                        ? new Date(item.date).toLocaleString()
+                        : "-";
+
+                    card.innerHTML = `
+                        <h2 style="margin-bottom:12px;">${item.service || "-"}</h2>
+                        <p class="form-subtext"><strong>Ad:</strong> ${item.fullName || "-"}</p>
+                        <p class="form-subtext"><strong>Telefon:</strong> ${item.phone || "-"}</p>
+                        <p class="form-subtext"><strong>E-poçt:</strong> ${item.email || "-"}</p>
+                        <p class="form-subtext"><strong>Tarix:</strong> ${formattedDate}</p>
+                       <p class="form-subtext">
+                         <strong>Status:</strong>
+                        <span style="color:${getStatusColor(item.status)}; font-weight:700;">
+                              ${item.status === "Approved" ? "Təsdiqlənib" :
+                             item.status === "Rejected" ? "Rədd edilib" :
+                             item.status === "Deactivated" ? "Deaktiv" :
+                            "Gözləmədə"
+                          }
+                        </span>
+                        </p>
+                        <p class="form-subtext"><strong>Qeyd:</strong> ${item.message || "-"}</p>
+                        <div style="margin-top:16px;">
+                            <button class="btn btn-primary" onclick="deleteReservation(${item.id})">Sil</button>
+                        </div>
+                    `;
+
+                    reservationsList.appendChild(card);
+                });
+            } catch (error) {
+                console.error("LOAD RESERVATIONS ERROR:", error);
+                errorBox.style.display = "block";
+                errorText.textContent = "Rezervasiyaları yükləmək mümkün olmadı.";
+                showToast("Rezervasiyaları yükləmək mümkün olmadı.", "error");
+            }
+        }
+
+        window.deleteReservation = deleteReservation;
+        loadReservations();
+    </script>
+    <div id="toastBox" class="toast-box"></div>
+
+    <div id="confirmModal" class="confirm-modal">
+        <div class="confirm-modal-content">
+            <h3>Rezervasiyanı sil</h3>
+            <p>Bu rezervasiyanı silmək istədiyinizə əminsiniz?</p>
+
+            <div class="confirm-modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Ləğv et</button>
+                <button type="button" class="btn btn-primary" id="confirmDeleteBtn">Sil</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rezervasiya | ProudSmileDent</title>
+    <meta name="description" content="ProudSmileDent onlayn rezervasiya səhifəsi." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+                <a href="contact.html">Əlaqə</a>
+
+                <a href="login.html" id="navLogin">Daxil ol</a>
+                <a href="register.html" class="nav-register" id="navRegister">Qeydiyyat</a>
+
+                <a href="my-reservations.html" id="navMyReservations" style="display:none;">Rezervasiyalarım</a>
+                <a href="#" id="navLogout" style="display:none;">Çıxış</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-chip">Onlayn rezervasiya</span>
+                    <h1>Rezervasiya yaradın</h1>
+                    <p>
+                        Uyğun xidməti seçin, məlumatlarınızı daxil edin və sizə uyğun tarix üçün
+                        müraciətinizi rahat şəkildə göndərin.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container contact-grid">
+                <div class="contact-info reveal">
+                    <span class="section-chip">Müraciət prosesi</span>
+                    <h2>Rezervasiya addımları</h2>
+                    <p>
+                        Rezervasiya sistemi pasiyentin müraciətini daha səliqəli və rahat şəkildə toplamaq üçün hazırlanıb.
+                    </p>
+
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <h4>1. Xidmət seçin</h4>
+                            <p>Sizə uyğun stomatoloji xidməti siyahıdan seçin.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>2. Tarix təyin edin</h4>
+                            <p>Uyğun tarix və vaxt üçün müraciətinizi planlayın.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>3. Məlumatları göndərin</h4>
+                            <p>Əlaqə məlumatlarınızı və əlavə qeydinizi daxil edib formu tamamlayın.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card reveal delay-1">
+                    <h2>Rezervasiya forması</h2>
+                    <p class="form-subtext" id="reservationSubtext">
+                        Qeydiyyatdan keçmiş istifadəçi kimi müraciət yaradın.
+                    </p>
+
+                    <div id="authRequiredBox" style="display:none;">
+                        <div class="mini-info-box" style="margin-bottom:18px;">
+                            <h3>Rezervasiya üçün əvvəlcə daxil olun</h3>
+                            <p>
+                                Onlayn rezervasiya yaratmaq üçün hesabınıza daxil olmalısınız.
+                                Əgər hesabınız yoxdursa, əvvəlcə qeydiyyatdan keçin.
+                            </p>
+                        </div>
+
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                            <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                        </div>
+                    </div>
+
+                    <form id="reservationForm" style="display:none;">
+                        <input type="text" id="fullName" placeholder="Ad və soyad" readonly />
+                        <input type="email" id="email" placeholder="E-poçt" readonly />
+                        <input type="text" id="phone" placeholder="Telefon" required />
+
+                        <select id="service" required>
+                            <option value="">Xidmət seçin</option>
+                            <option>Diş çəkimi</option>
+                            <option>Kanal</option>
+                            <option>Ştif</option>
+                            <option>Plomb</option>
+                            <option>Güdül</option>
+                            <option>Diş ətinin müalicəsi</option>
+                            <option>Keramika</option>
+                            <option>Zirkon</option>
+                            <option>Protez</option>
+                            <option>Titan</option>
+                            <option>Qızıl</option>
+                            <option>Breket</option>
+                            <option>İmplant</option>
+                            <option>İmplantüstü</option>
+                            <option>Vinir</option>
+                            <option>Kimyəvi ağartma</option>
+                            <option>AIRFLOW</option>
+                            <option>Polirovka (pasta)</option>
+                            <option>Diş daşları</option>
+                            <option>Diş lakı</option>
+                            <option>Zoom-la ağartma</option>
+                        </select>
+
+                        <input type="datetime-local" id="date" required />
+                        <textarea id="message" rows="5" placeholder="Əlavə qeyd"></textarea>
+
+                        <button type="submit" class="btn btn-primary">Rezervasiya göndər</button>
+                    </form>
+
+                    <p class="form-footer-link" id="reservationFooterLink" style="display:none;">
+                        Hesabınız yoxdur?
+                        <a href="register.html">Qeydiyyatdan keçin</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+        const pageLoader = document.getElementById("pageLoader");
+
+        const navLogin = document.getElementById("navLogin");
+        const navRegister = document.getElementById("navRegister");
+        const navMyReservations = document.getElementById("navMyReservations");
+        const navLogout = document.getElementById("navLogout");
+
+        const reservationForm = document.getElementById("reservationForm");
+        const authRequiredBox = document.getElementById("authRequiredBox");
+        const reservationSubtext = document.getElementById("reservationSubtext");
+        const reservationFooterLink = document.getElementById("reservationFooterLink");
+        
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+                mobileOverlay.classList.toggle("active");
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                mobileOverlay.classList.remove("active");
+            });
+        }
+
+        window.addEventListener("load", () => {
+            if (pageLoader) {
+                pageLoader.classList.add("hide");
+            }
+        });
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+            const triggerBottom = window.innerHeight * 0.88;
+
+            revealElements.forEach((el) => {
+                const rectTop = el.getBoundingClientRect().top;
+                if (rectTop < triggerBottom) {
+                    el.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (user) {
+            navLogin.style.display = "none";
+            navRegister.style.display = "none";
+            navMyReservations.style.display = "inline-flex";
+            navLogout.style.display = "inline-flex";
+
+            reservationForm.style.display = "block";
+            reservationFooterLink.style.display = "none";
+            authRequiredBox.style.display = "none";
+            reservationSubtext.textContent = "Hesab məlumatlarınız avtomatik dolduruldu. Xidmət, tarix və əlavə qeydi daxil edin.";
+
+            const fullNameInput = document.getElementById("fullName");
+            const emailInput = document.getElementById("email");
+
+            fullNameInput.value = user.fullName || "";
+            emailInput.value = user.email || "";
+
+            fullNameInput.readOnly = true;
+            emailInput.readOnly = true;
+        } else {
+            navLogin.style.display = "inline-flex";
+            navRegister.style.display = "inline-flex";
+            navMyReservations.style.display = "none";
+            navLogout.style.display = "none";
+
+            reservationForm.style.display = "none";
+            reservationFooterLink.style.display = "none";
+            authRequiredBox.style.display = "block";
+            reservationSubtext.textContent = "Rezervasiya yaratmaq üçün əvvəlcə hesabınıza daxil olun.";
+        }
+
+        navLogout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        });
+        function showToast(message, type = "error") {
+            const toastBox = document.getElementById("toastBox");
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+        reservationForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (!user) return;
+
+            const submitButton = reservationForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            const fullName = user.fullName || document.getElementById("fullName").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const email = user.email || document.getElementById("email").value.trim();
+            const service = document.getElementById("service").value;
+            const date = document.getElementById("date").value;
+            const message = document.getElementById("message").value.trim();
+
+            try {
+                submitButton.disabled = true;
+                submitButton.textContent = "Göndərilir...";
+
+                const response = await fetch("/api/appointments", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        fullName,
+                        phone,
+                        email,
+                        service,
+                        date,
+                        message,
+                        userId: user.id
+                    })
+                });
+
+                const text = await response.text();
+
+                let data = {};
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    data = { message: text };
+                }
+
+                if (response.ok) {
+                    showToast(data.message || "Rezervasiya uğurla göndərildi.", "success");
+
+                    setTimeout(() => {
+                        window.location.href = "my-reservations.html";
+                    }, 900);
+                } else {
+                    showToast(data.message || "Rezervasiya zamanı xəta baş verdi.", "error");
+                }
+            } catch (error) {
+                console.error(error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+    </script>
+    <div id="toastBox" class="toast-box"></div>
+</body>
+</html>

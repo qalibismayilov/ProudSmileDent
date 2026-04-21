@@ -1,0 +1,488 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProudSmileDent | Peşəkar Stomatoloji Klinika</title>
+    <meta name="description" content="ProudSmileDent peşəkar stomatoloji klinikası. Həkimlərimiz, xidmətlərimiz, qiymətlər, rezervasiya və əlaqə." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="active">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+                <a href="contact.html">Əlaqə</a>
+
+                <a href="login.html" id="navLogin">Daxil ol</a>
+                <a href="register.html" class="nav-register" id="navRegister">Qeydiyyat</a>
+
+                <a href="my-reservations.html" id="navMyReservations" style="display:none;">Rezervasiyalarım</a>
+                <a href="#" id="navLogout" style="display:none;">Çıxış</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-gradient"></div>
+
+            <div class="container hero-content">
+                <div class="hero-left reveal">
+                    <span class="section-chip">Peşəkar stomatoloji xidmət</span>
+                    <h1>Sağlam, estetik və özgüvənli gülüş üçün müasir stomatoloji həllər</h1>
+                    <p>
+                        ProudSmileDent klinikası olaraq pasiyentlərimizə rahat mühit, təcrübəli həkim heyəti,
+                        müasir avadanlıq və peşəkar yanaşma ilə yüksək keyfiyyətli stomatoloji xidmət təqdim edirik.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-primary" id="reserveNowBtn">Rezervasiya et</a>
+                        <a href="services.html" class="btn btn-secondary">Xidmətlərə bax</a>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="hero-feature-card">
+                            <strong>12+</strong>
+                            <span>Peşəkar həkim</span>
+                        </div>
+                        <div class="hero-feature-card">
+                            <strong>1000+</strong>
+                            <span>Məmnun pasiyent</span>
+                        </div>
+                        <div class="hero-feature-card">
+                            <strong>09:00–19:00</strong>
+                            <span>Hər gün xidmət</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-right reveal delay-1">
+                    <div class="hero-info-card glass-card">
+                        <div class="hero-card-top">
+                            <span class="mini-badge">Premium Dental Care</span>
+                            <h3>Onlayn müraciət</h3>
+                            <p>
+                                Qısa vaxt ərzində rezervasiya yaradın və sizə uyğun tarixdə qəbul üçün müraciət edin.
+                            </p>
+                        </div>
+
+                        <div class="hero-card-list">
+                            <div class="hero-card-item">
+                                <span class="dot"></span>
+                                <p>Müasir stomatoloji xidmətlər</p>
+                            </div>
+                            <div class="hero-card-item">
+                                <span class="dot"></span>
+                                <p>Təcrübəli həkim heyəti</p>
+                            </div>
+                            <div class="hero-card-item">
+                                <span class="dot"></span>
+                                <p>Rahat və təhlükəsiz mühit</p>
+                            </div>
+                        </div>
+
+                        <a href="reservation.html" class="btn btn-primary full-btn">İndi müraciət et</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section info-section">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-chip">Üstünlüklərimiz</span>
+                    <h2>Niyə ProudSmileDent?</h2>
+                    <p>
+                        Hər bir pasiyent üçün fərdi yanaşma, müasir müalicə üsulları və peşəkar xidmət bizim əsas prioritetimizdir.
+                    </p>
+                </div>
+
+                <div class="info-grid">
+                    <article class="info-card reveal">
+                        <div class="info-icon">🦷</div>
+                        <h3>Peşəkar həkim heyəti</h3>
+                        <p>
+                            Təcrübəli mütəxəssislərimiz hər bir pasiyentin vəziyyətinə uyğun fərdi müalicə planı hazırlayır.
+                        </p>
+                    </article>
+
+                    <article class="info-card reveal delay-1">
+                        <div class="info-icon">✨</div>
+                        <h3>Estetik və funksional nəticə</h3>
+                        <p>
+                            Müalicə zamanı həm sağlamlıq, həm də estetik görünüş ön planda saxlanılır.
+                        </p>
+                    </article>
+
+                    <article class="info-card reveal delay-2">
+                        <div class="info-icon">🛡️</div>
+                        <h3>Təhlükəsiz və steril mühit</h3>
+                        <p>
+                            Bütün prosedurlar gigiyena qaydalarına tam uyğun və təhlükəsiz şəraitdə aparılır.
+                        </p>
+                    </article>
+
+                    <article class="info-card reveal delay-3">
+                        <div class="info-icon">📅</div>
+                        <h3>Rahat onlayn rezervasiya</h3>
+                        <p>
+                            Sayt üzərindən qeydiyyatdan keçin, xidmət seçin və uyğun tarix üçün rahat rezervasiya edin.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-preview">
+            <div class="container about-preview-grid">
+                <div class="about-preview-content reveal">
+                    <span class="section-chip">Haqqımızda</span>
+                    <h2>Biz kimik</h2>
+                    <p>
+                        ProudSmileDent müasir stomatoloji klinika olaraq pasiyentlərə yüksək səviyyəli terapevtik,
+                        estetik, ortopedik, ortodontik və cərrahi xidmətlər təqdim edir.
+                    </p>
+                    <p>
+                        Məqsədimiz hər bir pasiyentin sağlam, rahat və özgüvənli gülüşə sahib olmasına dəstək olmaqdır.
+                        Buna görə klinikamızda həm peşəkarlıq, həm rahatlıq, həm də pasiyent məmnuniyyəti əsas yer tutur.
+                    </p>
+
+                    <div class="about-preview-actions">
+                        <a href="services.html" class="btn btn-primary">Xidmətlərimiz</a>
+                        <a href="contact.html" class="btn btn-secondary">Əlaqə</a>
+                    </div>
+                </div>
+
+                <div class="about-preview-boxes reveal delay-1">
+                    <div class="mini-info-box">
+                        <h3>Fərdi yanaşma</h3>
+                        <p>Hər pasiyent üçün ehtiyaca uyğun müalicə planı hazırlanır.</p>
+                    </div>
+                    <div class="mini-info-box">
+                        <h3>Müasir avadanlıq</h3>
+                        <p>Dəqiq diaqnostika və rahat müalicə üçün yeni texnologiyalar istifadə olunur.</p>
+                    </div>
+                    <div class="mini-info-box">
+                        <h3>Pasiyent rahatlığı</h3>
+                        <p>Qəbul prosesindən müalicə sonuna qədər rahat və səliqəli xidmət təqdim edilir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section services-preview">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-chip">Xidmətlərimiz</span>
+                    <h2>Əsas stomatoloji xidmət sahələrimiz</h2>
+                    <p>
+                        Klinikamızda gündəlik stomatoloji ehtiyaclardan estetik və cərrahi prosedurlara qədər geniş xidmətlər göstərilir.
+                    </p>
+                </div>
+
+                <div class="services-preview-grid">
+                    <article class="service-preview-card reveal">
+                        <h3>Terapevtik stomatologiya</h3>
+                        <p>Diş çürümələri, plomb, kanal müalicəsi və diş bərpası prosedurları.</p>
+                    </article>
+
+                    <article class="service-preview-card reveal delay-1">
+                        <h3>Estetik stomatologiya</h3>
+                        <p>Vinir, ağartma və estetik görünüşü yaxşılaşdıran müasir həllər.</p>
+                    </article>
+
+                    <article class="service-preview-card reveal delay-2">
+                        <h3>Ortodontik müalicə</h3>
+                        <p>Breket və digər üsullarla dişlərin düzülüşünün korrektəsi.</p>
+                    </article>
+
+                    <article class="service-preview-card reveal delay-3">
+                        <h3>İmplant və cərrahiyyə</h3>
+                        <p>Diş çəkimi, implant və digər cərrahi prosedurlar təhlükəsiz şəkildə icra olunur.</p>
+                    </article>
+                </div>
+
+                <div class="center-button reveal">
+                    <a href="services.html" class="btn btn-primary">Bütün xidmətlərə bax</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section doctors-preview">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-chip">Həkimlərimiz</span>
+                    <h2>Təcrübəli və peşəkar mütəxəssislər</h2>
+                    <p>
+                        Klinikamızın həkim heyəti pasiyentlərlə diqqətli yanaşması və peşəkar xidməti ilə seçilir.
+                    </p>
+                </div>
+
+                <div class="doctors-preview-grid">
+                    <article class="doctor-preview-card reveal">
+                        <div class="doctor-avatar">İ</div>
+                        <h3>Dr. İftixar Məmmədov</h3>
+                        <span>Baş stomatoloq</span>
+                        <p>Terapevtik və estetik stomatologiya sahəsində ixtisaslaşmış peşəkar mütəxəssisdir.</p>
+                    </article>
+
+                    <article class="doctor-preview-card reveal delay-1">
+                        <div class="doctor-avatar">A</div>
+                        <h3>Dr. Aqil Həsənov</h3>
+                        <span>Ortodont</span>
+                        <p>Diş sırasının düzləndirilməsi və ortodontik müalicə sahəsində müasir yanaşma tətbiq edir.</p>
+                    </article>
+
+                    <article class="doctor-preview-card reveal delay-2">
+                        <div class="doctor-avatar">N</div>
+                        <h3>Dr. Nərgiz Əliyeva</h3>
+                        <span>Uşaq stomatoloqu</span>
+                        <p>Kiçik yaşlı pasiyentlərlə rahat ünsiyyət və təhlükəsiz müalicə prinsipi ilə çalışır.</p>
+                    </article>
+
+                    <article class="doctor-preview-card reveal delay-3">
+                        <div class="doctor-avatar">K</div>
+                        <h3>Dr. Kamil Rzayev</h3>
+                        <span>İmplantoloq</span>
+                        <p>İmplant və cərrahi stomatologiya sahəsində dəqiq və peşəkar yanaşması ilə seçilir.</p>
+                    </article>
+                </div>
+
+                <div class="center-button reveal">
+                    <a href="doctors.html" class="btn btn-secondary">Bütün həkimlərimiz</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section prices-preview">
+            <div class="container prices-preview-grid">
+                <div class="prices-preview-content reveal">
+                    <span class="section-chip">Qiymətlər</span>
+                    <h2>Stomatoloji qiymətlər səliqəli və aydın şəkildə</h2>
+                    <p>
+                        Xidmətlərimiz üzrə əsas qiymətlər ayrılıqda təqdim olunur. Dəqiq qiymət pasiyentin vəziyyətinə və seçilən müalicəyə görə müəyyən edilə bilər.
+                    </p>
+
+                    <ul class="price-highlights">
+                        <li>Diş çəkimi — 50–150 AZN</li>
+                        <li>Kanal müalicəsi — 10–20 AZN</li>
+                        <li>Plomb — 40–150 AZN</li>
+                        <li>İmplant — 450–2500 AZN</li>
+                        <li>Vinir — 450–600 AZN</li>
+                    </ul>
+
+                    <a href="prices.html" class="btn btn-primary">Bütün qiymətlər</a>
+                </div>
+
+                <div class="prices-preview-card reveal delay-1">
+                    <h3>Dişin ağardılması</h3>
+                    <div class="mini-price-list">
+                        <div class="mini-price-row">
+                            <span>Kimyəvi ağartma</span>
+                            <strong>450 AZN</strong>
+                        </div>
+                        <div class="mini-price-row">
+                            <span>AIRFLOW</span>
+                            <strong>50 AZN</strong>
+                        </div>
+                        <div class="mini-price-row">
+                            <span>Polirovka (pasta)</span>
+                            <strong>40 AZN</strong>
+                        </div>
+                        <div class="mini-price-row">
+                            <span>Zoom-la ağartma</span>
+                            <strong>1200 AZN</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <span class="section-chip chip-light">Rezervasiya</span>
+                    <h2>Sağlam gülüş üçün ilk addımı indi atın</h2>
+                    <p>
+                        Qeydiyyatdan keçin, sistemə daxil olun və uyğun xidmət üçün onlayn rezervasiya yaradın.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="register.html" class="btn btn-light">Qeydiyyatdan keç</a>
+                        <a href="reservation.html" class="btn btn-outline-light">Rezervasiya et</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>
+                    Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər, təcrübəli həkim heyəti və müasir yanaşma.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Səhifələr</h4>
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Əlaqə</h4>
+                <p>+994 50 000 00 00</p>
+                <p>info@proudsmiledent.com</p>
+                <p>Bakı, Azərbaycan</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+        const pageLoader = document.getElementById("pageLoader");
+
+        const navLogin = document.getElementById("navLogin");
+        const navRegister = document.getElementById("navRegister");
+        const navMyReservations = document.getElementById("navMyReservations");
+        const navLogout = document.getElementById("navLogout");
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+                mobileOverlay.classList.toggle("active");
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                mobileOverlay.classList.remove("active");
+            });
+        }
+
+        window.addEventListener("load", () => {
+            if (pageLoader) {
+                pageLoader.classList.add("hide");
+            }
+        });
+        function showToast(message, type = "info") {
+            const toastBox = document.getElementById("toastBox");
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+        const revealElements = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+            const triggerBottom = window.innerHeight * 0.88;
+
+            revealElements.forEach((el) => {
+                const rectTop = el.getBoundingClientRect().top;
+                if (rectTop < triggerBottom) {
+                    el.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+
+        const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (currentUser) {
+            navLogin.style.display = "none";
+            navRegister.style.display = "none";
+            navMyReservations.style.display = "inline-flex";
+            navLogout.style.display = "inline-flex";
+        } else {
+            navLogin.style.display = "inline-flex";
+            navRegister.style.display = "inline-flex";
+            navMyReservations.style.display = "none";
+            navLogout.style.display = "none";
+        }
+
+        navLogout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        });
+        const reserveNowBtn = document.getElementById("reserveNowBtn");
+
+        if (reserveNowBtn) {
+            reserveNowBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+
+                if (currentUser) {
+                    window.location.href = "reservation.html";
+                } else {
+                    showToast("Rezervasiya üçün əvvəlcə daxil olun.", "info");
+
+                    setTimeout(() => {
+                        window.location.href = "login.html";
+                    }, 900);
+                }
+            });
+        }
+    </script>
+    <div id="toastBox" class="toast-box"></div>
+</body>
+</html>

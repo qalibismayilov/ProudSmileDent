@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daxil ol | ProudSmileDent</title>
+    <meta name="description" content="ProudSmileDent hesabına daxil olun və rezervasiya sistemindən istifadə edin." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+                <a href="contact.html">Əlaqə</a>
+
+                <a href="login.html" class="active" id="navLogin">Daxil ol</a>
+                <a href="register.html" class="nav-register" id="navRegister">Qeydiyyat</a>
+
+                <a href="my-reservations.html" id="navMyReservations" style="display:none;">Rezervasiyalarım</a>
+                <a href="#" id="navLogout" style="display:none;">Çıxış</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="reveal">
+                    <span class="section-chip">Şəxsi kabinet</span>
+                    <h1>Hesabınıza daxil olun</h1>
+                    <p>
+                        Qeydiyyatdan keçdiyiniz hesabla daxil olun, rezervasiyalarınızı idarə edin
+                        və xidmətlərə daha rahat müraciət edin.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container contact-grid">
+                <div class="contact-info reveal">
+                    <span class="section-chip">Daxil ol</span>
+                    <h2>Şəxsi kabinetə giriş</h2>
+                    <p>
+                        Hesabınıza daxil olduqdan sonra uyğun xidmət seçə, onlayn rezervasiya yarada
+                        və şəxsi məlumatlarınızı daha rahat idarə edə bilərsiniz.
+                    </p>
+
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <h4>Rezervasiya idarəetməsi</h4>
+                            <p>Yeni müraciət yaratmaq və rezervasiya prosesini daha rahat izləmək mümkündür.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>Rahat giriş</h4>
+                            <p>İstifadəçi adı və ya e-poçt ilə sistemə daxil olmaq üçün sadə və rahat forma təqdim olunur.</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>Təhlükəsiz istifadə</h4>
+                            <p>Şəxsi kabinetə giriş yalnız qeydiyyatdan keçmiş istifadəçilər üçün nəzərdə tutulub.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card reveal delay-1">
+                    <h2>Daxil ol</h2>
+                    <p class="form-subtext">
+                        Hesabınıza giriş edərək onlayn rezervasiya sistemindən istifadə edin.
+                    </p>
+
+                    <form id="loginForm">
+                        <input type="text"
+                               id="usernameOrEmail"
+                               placeholder="İstifadəçi adı və ya e-poçt"
+                               required />
+
+                        <input type="password"
+                               id="password"
+                               placeholder="Şifrə"
+                               required />
+
+                        <button type="submit" class="btn btn-primary">Daxil ol</button>
+                    </form>
+
+                    <p class="form-footer-link">
+                        Hesabınız yoxdur?
+                        <a href="register.html">Qeydiyyatdan keçin</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-preview">
+            <div class="container about-preview-grid">
+                <div class="about-preview-content reveal">
+                    <span class="section-chip">Üstünlük</span>
+                    <h2>Hesabla giriş niyə vacibdir?</h2>
+                    <p>
+                        Şəxsi kabinet sistemi pasiyent üçün daha rahat və səliqəli istifadə təcrübəsi yaradır.
+                        Daxil olduqdan sonra müraciət və rezervasiya prosesi daha sürətli olur.
+                    </p>
+                    <p>
+                        Bu yanaşma həm pasiyent, həm də klinika üçün məlumatların daha düzgün idarə olunmasına kömək edir.
+                    </p>
+                    <div class="about-preview-actions">
+                        <a href="register.html" class="btn btn-primary">Qeydiyyatdan keç</a>
+                        <a href="services.html" class="btn btn-secondary">Xidmətlərə bax</a>
+                    </div>
+                </div>
+
+                <div class="about-preview-boxes reveal delay-1">
+                    <div class="mini-info-box">
+                        <h3>Sürətli müraciət</h3>
+                        <p>Daxil olduqdan sonra rezervasiya forması daha rahat və daha sürətli doldurulur.</p>
+                    </div>
+
+                    <div class="mini-info-box">
+                        <h3>Məlumatların rahat idarəsi</h3>
+                        <p>İstifadəçi öz hesabı ilə sistemə daxil olaraq şəxsi məlumatlardan istifadə edə bilir.</p>
+                    </div>
+
+                    <div class="mini-info-box">
+                        <h3>Daha professional sistem</h3>
+                        <p>Qeydiyyat və giriş prosesi saytı daha səliqəli və real layihə kimi göstərir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <span class="section-chip chip-light">Hazırsınız?</span>
+                    <h2>Hesabınıza daxil olun və rezervasiya yaradın</h2>
+                    <p>
+                        Əgər artıq qeydiyyatdan keçmisinizsə, indi daxil olun və sizə uyğun xidmət üçün
+                        onlayn müraciətinizi göndərin.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="reservation.html" class="btn btn-light">Rezervasiya et</a>
+                        <a href="register.html" class="btn btn-outline-light">Yeni hesab yarat</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>
+                    Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər, təcrübəli həkim heyəti və müasir yanaşma.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Səhifələr</h4>
+                <a href="index.html">Ana səhifə</a>
+                <a href="services.html">Xidmətlər</a>
+                <a href="prices.html">Qiymətlər</a>
+                <a href="doctors.html">Həkimlərimiz</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Əlaqə</h4>
+                <p>+994 50 000 00 00</p>
+                <p>info@proudsmiledent.com</p>
+                <p>Bakı, Azərbaycan</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+        const pageLoader = document.getElementById("pageLoader");
+
+        const navLogin = document.getElementById("navLogin");
+        const navRegister = document.getElementById("navRegister");
+        const navMyReservations = document.getElementById("navMyReservations");
+        const navLogout = document.getElementById("navLogout");
+
+        function showToast(message, type = "error") {
+            const toastBox = document.getElementById("toastBox");
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+                mobileOverlay.classList.toggle("active");
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                mobileOverlay.classList.remove("active");
+            });
+        }
+
+        window.addEventListener("load", () => {
+            if (pageLoader) {
+                pageLoader.classList.add("hide");
+            }
+        });
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+            const triggerBottom = window.innerHeight * 0.88;
+
+            revealElements.forEach((el) => {
+                const rectTop = el.getBoundingClientRect().top;
+                if (rectTop < triggerBottom) {
+                    el.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (user) {
+            navLogin.style.display = "none";
+            navRegister.style.display = "none";
+            navMyReservations.style.display = "inline-flex";
+            navLogout.style.display = "inline-flex";
+        } else {
+            navLogin.style.display = "inline-flex";
+            navRegister.style.display = "inline-flex";
+            navMyReservations.style.display = "none";
+            navLogout.style.display = "none";
+        }
+
+        navLogout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        });
+
+        const loginForm = document.getElementById("loginForm");
+
+        if (loginForm) {
+            loginForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const usernameOrEmail = document.getElementById("usernameOrEmail").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                if (!usernameOrEmail || !password) {
+                    showToast("İstifadəçi adı və şifrəni daxil edin.", "error");
+                    return;
+                }
+
+                const submitButton = loginForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+
+                try {
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Göndərilir...";
+
+                    const response = await fetch("/api/auth/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            usernameOrEmail,
+                            password
+                        })
+                    });
+
+                    const text = await response.text();
+                    console.log("LOGIN RESPONSE:", response.status, text);
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        if (data.user) {
+                            localStorage.setItem("user", JSON.stringify(data.user));
+                        }
+
+                        showToast(data.message || "Giriş uğurludur.", "success");
+
+                        setTimeout(() => {
+                            window.location.href = "reservation.html";
+                        }, 700);
+                    } else {
+                        showToast(data.message || "Daxil olma zamanı xəta baş verdi.", "error");
+                    }
+                } catch (error) {
+                    console.error("Login fetch error:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                }
+            });
+        }
+    </script>
+    <div id="toastBox" class="toast-box"></div>
+</body>
+</html>

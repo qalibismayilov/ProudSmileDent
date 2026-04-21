@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel | ProudSmileDent</title>
+    <meta name="description" content="ProudSmileDent admin paneli" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">P</div>
+                <div class="brand-text">
+                    <strong>ProudSmileDent</strong>
+                    <span>Dental Clinic</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="admin.html" class="active" id="navAdmin">Admin panel</a>
+                <a href="#usersSection">İstifadəçilər</a>
+                <a href="#appointmentsSection">Rezervasiyalar</a>
+                <a href="#" id="navLogout">Çıxış</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menyunu aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="reveal show">
+                    <span class="section-chip">İdarəetmə paneli</span>
+                    <h1>Admin panel</h1>
+                    <p>
+                        İstifadəçiləri, rezervasiyaları və sistem məlumatlarını bir yerdən rahat şəkildə idarə edin.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div id="adminDeniedBox" class="form-card" style="display:none;">
+                    <h2>Giriş məhduddur</h2>
+                    <p class="form-subtext">
+                        Bu səhifə yalnız admin istifadəçi üçün nəzərdə tutulub.
+                    </p>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                        <a href="index.html" class="btn btn-secondary">Ana səhifəyə qayıt</a>
+                        <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                    </div>
+                </div>
+
+                <div id="adminContent" style="display:none;">
+                    <div class="page-grid-2">
+                        <div class="form-card">
+                            <h2>Statistika</h2>
+                            <p class="form-subtext">Sistem üzrə ümumi göstəricilər.</p>
+
+                            <div class="contact-list">
+                                <div class="contact-item">
+                                    <h4>İstifadəçilər</h4>
+                                    <p id="usersCount">0</p>
+                                </div>
+
+                                <div class="contact-item">
+                                    <h4>Rezervasiyalar</h4>
+                                    <p id="appointmentsCount">0</p>
+                                </div>
+
+                                <div class="contact-item">
+                                    <h4>Gözləmədə</h4>
+                                    <p id="pendingCount">0</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-card">
+                            <h2>İdarəetmə imkanları</h2>
+                            <p class="form-subtext">Admin paneldə əsas əməliyyatlar.</p>
+
+                            <div class="contact-list">
+                                <div class="contact-item">
+                                    <h4>İstifadəçilərə baxış</h4>
+                                    <p>Qeydiyyatdan keçmiş bütün istifadəçiləri görüntüləmək və silmək mümkündür.</p>
+                                </div>
+
+                                <div class="contact-item">
+                                    <h4>Rezervasiyalara baxış</h4>
+                                    <p>Sistemə daxil olan bütün rezervasiyaları görmək, status dəyişmək və silmək mümkündür.</p>
+                                </div>
+
+                                <div class="contact-item">
+                                    <h4>Sadə idarəetmə</h4>
+                                    <p>Bu panel yalnız sistemə nəzarət və məlumatların idarə olunması üçün nəzərdə tutulub.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="usersSection" style="padding-top: 30px;">
+                        <div class="form-card">
+                            <h2>İstifadəçilər</h2>
+                            <p class="form-subtext">Qeydiyyatdan keçmiş istifadəçilərin siyahısı.</p>
+                            <div id="usersList" class="page-grid-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="appointmentsSection" style="padding-top: 10px;">
+                        <div class="form-card">
+                            <h2>Rezervasiyalar</h2>
+                            <p class="form-subtext">Sistemə daxil olan bütün rezervasiyalar.</p>
+                            <div id="appointmentsList" class="page-grid-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand footer-brand-box">
+                    <div class="brand-icon">P</div>
+                    <div class="brand-text">
+                        <strong>ProudSmileDent</strong>
+                        <span>Dental Clinic</span>
+                    </div>
+                </div>
+                <p>Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ProudSmileDent. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+        const navLogout = document.getElementById("navLogout");
+
+        const adminDeniedBox = document.getElementById("adminDeniedBox");
+        const adminContent = document.getElementById("adminContent");
+
+        const usersCount = document.getElementById("usersCount");
+        const appointmentsCount = document.getElementById("appointmentsCount");
+        const pendingCount = document.getElementById("pendingCount");
+
+        const usersList = document.getElementById("usersList");
+        const appointmentsList = document.getElementById("appointmentsList");
+
+        function showToast(message, type = "error") {
+            const toastBox = document.getElementById("toastBox");
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add("show");
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2500);
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+            });
+        }
+
+        const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+
+        if (!currentUser || currentUser.username !== "admin") {
+            adminDeniedBox.style.display = "block";
+            adminContent.style.display = "none";
+        } else {
+            adminDeniedBox.style.display = "none";
+            adminContent.style.display = "block";
+            loadAdminData();
+        }
+
+        navLogout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("user");
+            window.location.href = "admin-login.html";
+        });
+
+        async function loadAdminData() {
+            try {
+                const usersResponse = await fetch("/api/users");
+                const usersText = await usersResponse.text();
+
+                let users = [];
+                try {
+                    users = usersText ? JSON.parse(usersText) : [];
+                } catch {
+                    users = [];
+                }
+
+                const appointmentsResponse = await fetch("/api/appointments/admin/all");
+                const appointmentsText = await appointmentsResponse.text();
+
+                let appointments = [];
+                try {
+                    appointments = appointmentsText ? JSON.parse(appointmentsText) : [];
+                } catch {
+                    appointments = [];
+                }
+
+                renderStats(users, appointments);
+                renderUsers(users);
+                renderAppointments(appointments);
+            } catch (error) {
+                console.error("Admin data load error:", error);
+                showToast("Admin məlumatlarını yükləmək mümkün olmadı.", "error");
+            }
+        }
+
+        function renderStats(users, appointments) {
+            usersCount.textContent = Array.isArray(users) ? users.length : 0;
+            appointmentsCount.textContent = Array.isArray(appointments) ? appointments.length : 0;
+
+            const pending = Array.isArray(appointments)
+                ? appointments.filter(x => (x.status || "").toLowerCase() === "pending").length
+                : 0;
+
+            pendingCount.textContent = pending;
+        }
+
+        function renderUsers(users) {
+            usersList.innerHTML = "";
+
+            if (!Array.isArray(users) || users.length === 0) {
+                usersList.innerHTML = `
+                    <div class="contact-item">
+                        <h4>İstifadəçi yoxdur</h4>
+                        <p>Sistemdə hələ istifadəçi görünmür.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            users.forEach(user => {
+                const card = document.createElement("div");
+                card.className = "form-card";
+
+                card.innerHTML = `
+                    <h2 style="margin-bottom:12px;">${user.fullName || "-"}</h2>
+                    <p class="form-subtext"><strong>İstifadəçi adı:</strong> ${user.username || "-"}</p>
+                    <p class="form-subtext"><strong>E-poçt:</strong> ${user.email || "-"}</p>
+                    <p class="form-subtext"><strong>Rol:</strong> ${user.role || "User"}</p>
+                    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+                        <button class="btn btn-primary" style="background:#dc2626;" onclick="deleteUser(${user.id}, this)">Sil</button>
+                    </div>
+                `;
+
+                usersList.appendChild(card);
+            });
+        }
+
+        function renderAppointments(appointments) {
+            appointmentsList.innerHTML = "";
+
+            if (!Array.isArray(appointments) || appointments.length === 0) {
+                appointmentsList.innerHTML = `
+                    <div class="contact-item">
+                        <h4>Rezervasiya yoxdur</h4>
+                        <p>Sistemdə hələ rezervasiya görünmür.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            appointments.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "form-card";
+
+                const formattedDate = item.date
+                    ? new Date(item.date).toLocaleString()
+                    : "-";
+
+                card.innerHTML = `
+                    <h2 style="margin-bottom:12px;">${item.service || "-"}</h2>
+                    <p class="form-subtext"><strong>Ad:</strong> ${item.fullName || "-"}</p>
+                    <p class="form-subtext"><strong>Telefon:</strong> ${item.phone || "-"}</p>
+                    <p class="form-subtext"><strong>E-poçt:</strong> ${item.email || "-"}</p>
+                    <p class="form-subtext"><strong>Tarix:</strong> ${formattedDate}</p>
+                    <p class="form-subtext"><strong>Qeyd:</strong> ${item.message || "-"}</p>
+                    <p class="form-subtext">
+                      <strong>Status:</strong>
+                       <span id="status-${item.id}" style="color:${getStatusColor(item.status)}; font-weight:700;">
+                                        ${item.status === "Approved" ? "Təsdiqlənib" :
+                                        item.status === "Rejected" ? "Rədd edilib" :
+                                        item.status === "Deactivated" ? "Deaktiv" :
+                                        "Gözləmədə"
+                                         }
+                          </span>
+                         </p>
+
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+                        <button class="btn btn-secondary" onclick="updateStatus(${item.id}, 'Pending')">Pending</button>
+                        <button class="btn btn-primary" onclick="updateStatus(${item.id}, 'Approved')">Approved</button>
+                        <button class="btn btn-secondary" onclick="updateStatus(${item.id}, 'Rejected')">Rejected</button>
+                        <button class="btn btn-primary" style="background:#dc2626;" onclick="deleteAppointment(${item.id}, this)">Sil</button>
+                    </div>
+                `;
+
+                appointmentsList.appendChild(card);
+            });
+        }
+
+        async function updateStatus(id, status) {
+            try {
+                const response = await fetch(`/api/appointments/${id}/status`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ status })
+                });
+
+                const text = await response.text();
+
+                let data = {};
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    data = { message: text };
+                }
+
+                if (response.ok) {
+                    showToast(data.message || "Status yeniləndi.", "success");
+                    loadAdminData();
+                } else {
+                    showToast(data.message || "Status yenilənmədi.", "error");
+                }
+            } catch (error) {
+                console.error("Status update error:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            }
+        }
+
+        async function deleteAppointment(id, button) {
+            const ok = confirm("Bu rezervasiyanı silmək istəyirsiniz?");
+            if (!ok) return;
+
+            const originalText = button.textContent;
+
+            try {
+                button.disabled = true;
+                button.textContent = "Silinir...";
+
+                const response = await fetch(`/api/appointments/${id}`, {
+                    method: "DELETE"
+                });
+
+                const text = await response.text();
+
+                let data = {};
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    data = { message: text };
+                }
+
+                if (response.ok) {
+                    showToast(data.message || "Rezervasiya silindi.", "success");
+                    loadAdminData();
+                } else {
+                    showToast(data.message || "Silmək mümkün olmadı.", "error");
+                }
+            } catch (error) {
+                console.error("Delete appointment error:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        }
+
+        async function deleteUser(id, button) {
+            const ok = confirm("Bu istifadəçini silmək istəyirsiniz?");
+            if (!ok) return;
+
+            const originalText = button.textContent;
+
+            try {
+                button.disabled = true;
+                button.textContent = "Silinir...";
+
+                const response = await fetch(`/api/users/${id}`, {
+                    method: "DELETE"
+                });
+
+                const text = await response.text();
+
+                let data = {};
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    data = { message: text };
+                }
+
+                if (response.ok) {
+                    showToast(data.message || "İstifadəçi silindi.", "success");
+                    loadAdminData();
+                } else {
+                    showToast(data.message || "İstifadəçini silmək mümkün olmadı.", "error");
+                }
+            } catch (error) {
+                console.error("Delete user error:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        }
+        function getStatusColor(status) {
+            const s = (status || "").toLowerCase();
+
+            if (s === "approved") return "#16a34a";
+            if (s === "rejected") return "#dc2626";
+            if (s === "deactivated") return "#6b7280";
+
+            return "#f97316";
+        }
+
+        window.updateStatus = updateStatus;
+        window.deleteAppointment = deleteAppointment;
+        window.deleteUser = deleteUser;
+    </script>
+    <div id="toastBox" class="toast-box"></div>
+</body>
+</html>
