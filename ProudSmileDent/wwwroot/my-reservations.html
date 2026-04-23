@@ -64,7 +64,7 @@
                 <div id="emptyState" class="form-card" style="display:none;">
                     <h2>Hələ rezervasiya yoxdur</h2>
                     <p class="form-subtext">
-                        Siz hələ heç bir rezervasiya yaratmamısınız. Xidmət seçib rahat şəkildə yeni rezervasiya yarada bilərsiniz.
+                        Siz hələ heç bir rezervasiya yaratmamısınız. Xidmət seçib yeni rezervasiya yarada bilərsiniz.
                     </p>
 
                     <div class="contact-list" style="margin-top:18px;">
@@ -114,6 +114,72 @@
         </div>
     </footer>
 
+    <div id="toastBox" class="toast-box"></div>
+
+    <div id="editModal" class="confirm-modal">
+        <div class="confirm-modal-content" style="max-width:620px;">
+            <h3>Rezervasiyanı düzəlt</h3>
+            <p style="margin-bottom:16px; color:#6b7280;">
+                Xidməti, tarixi, telefonu və qeydi yeniləyə bilərsiniz.
+            </p>
+
+            <form id="editReservationForm" style="margin-top:16px;">
+                <input type="hidden" id="editAppointmentId" />
+
+                <div style="display:grid; gap:14px;">
+                    <input type="text" id="editPhone" placeholder="Telefon" required />
+
+                    <select id="editService" required>
+                        <option value="">Xidmət seçin</option>
+                        <option>Diş çəkimi</option>
+                        <option>Kanal</option>
+                        <option>Ştif</option>
+                        <option>Plomb</option>
+                        <option>Güdül</option>
+                        <option>Diş ətinin müalicəsi</option>
+                        <option>Keramika</option>
+                        <option>Zirkon</option>
+                        <option>Protez</option>
+                        <option>Titan</option>
+                        <option>Qızıl</option>
+                        <option>Breket</option>
+                        <option>İmplant</option>
+                        <option>İmplantüstü</option>
+                        <option>Vinir</option>
+                        <option>Kimyəvi ağartma</option>
+                        <option>AIRFLOW</option>
+                        <option>Polirovka (pasta)</option>
+                        <option>Diş daşları</option>
+                        <option>Diş lakı</option>
+                        <option>Zoom-la ağartma</option>
+                    </select>
+
+                    <input type="datetime-local" id="editDate" required />
+                    <textarea id="editMessage" rows="5" placeholder="Əlavə qeyd"></textarea>
+                </div>
+
+                <div class="confirm-modal-actions" style="margin-top:18px;">
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">Ləğv et</button>
+                    <button type="submit" class="btn btn-primary" id="saveEditBtn">Yadda saxla</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="confirm-modal">
+        <div class="confirm-modal-content" style="max-width:460px;">
+            <h3>Rezervasiyanı sil</h3>
+            <p style="margin-bottom:16px; color:#6b7280;">
+                Bu rezervasiyanı silmək istədiyinizə əminsiniz?
+            </p>
+
+            <div class="confirm-modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Ləğv et</button>
+                <button type="button" class="btn btn-primary" id="confirmDeleteBtn" style="background:#dc2626;">Sil</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const menuToggle = document.getElementById("menuToggle");
         const navMenu = document.getElementById("navMenu");
@@ -129,12 +195,28 @@
         const errorText = document.getElementById("errorText");
         const reservationsList = document.getElementById("reservationsList");
 
+        const editModal = document.getElementById("editModal");
+        const editReservationForm = document.getElementById("editReservationForm");
+        const editAppointmentId = document.getElementById("editAppointmentId");
+        const editPhone = document.getElementById("editPhone");
+        const editService = document.getElementById("editService");
+        const editDate = document.getElementById("editDate");
+        const editMessage = document.getElementById("editMessage");
+        const cancelEditBtn = document.getElementById("cancelEditBtn");
+        const saveEditBtn = document.getElementById("saveEditBtn");
+
+        const deleteModal = document.getElementById("deleteModal");
+        const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+        const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+
+        let currentUser = null;
+        let pendingDeleteId = null;
+
         function showToast(message, type = "error") {
             const toastBox = document.getElementById("toastBox");
+            if (!toastBox) return;
 
-            if (!toastBox) {
-                return;
-            }
+            toastBox.innerHTML = "";
 
             const toast = document.createElement("div");
             toast.className = `toast-message ${type}`;
@@ -142,15 +224,11 @@
 
             toastBox.appendChild(toast);
 
-            setTimeout(() => {
-                toast.classList.add("show");
-            }, 10);
+            setTimeout(() => toast.classList.add("show"), 10);
 
             setTimeout(() => {
                 toast.classList.remove("show");
-                setTimeout(() => {
-                    toast.remove();
-                }, 300);
+                setTimeout(() => toast.remove(), 300);
             }, 2500);
         }
 
@@ -161,85 +239,118 @@
             });
         }
 
-        const currentUser = JSON.parse(localStorage.getItem("user") || "null");
-        console.log("CURRENT USER:", currentUser);
-
-        if (currentUser && currentUser.username !== "admin") {
-            navLogin.style.display = "none";
-            navRegister.style.display = "none";
-            navMyReservations.style.display = "inline-flex";
-            navLogout.style.display = "inline-flex";
-        } else if (currentUser && currentUser.username === "admin") {
-            navLogin.style.display = "none";
-            navRegister.style.display = "none";
-            navMyReservations.style.display = "none";
-            navLogout.style.display = "inline-flex";
-        } else {
-            navLogin.style.display = "inline-flex";
-            navRegister.style.display = "inline-flex";
-            navMyReservations.style.display = "none";
-            navLogout.style.display = "none";
-            authRequiredBox.style.display = "block";
+        try {
+            const rawUser = localStorage.getItem("user");
+            currentUser = rawUser ? JSON.parse(rawUser) : null;
+        } catch (e) {
+            console.error("USER PARSE ERROR:", e);
+            currentUser = null;
         }
 
-        navLogout.addEventListener("click", function (e) {
-            e.preventDefault();
-            localStorage.removeItem("user");
-            window.location.href = "login.html";
-        });
-
-        function getStatusColor(status) {
-            const s = (status || "").toLowerCase();
-
-            if (s === "approved") return "#16a34a";
-            if (s === "rejected") return "#dc2626";
-            if (s === "deactivated") return "#6b7280";
-
-            return "#f97316";
-        }
-
-        async function deleteReservation(id) {
-            const ok = confirm("Rezervasiyanı silmək istəyirsiniz?");
-            if (!ok) return;
-
-            try {
-                const response = await fetch("/api/appointments/" + id, {
-                    method: "DELETE"
-                });
-
-                const text = await response.text();
-
-                let data = {};
-                try {
-                    data = text ? JSON.parse(text) : {};
-                } catch {
-                    data = { message: text };
-                }
-
-                if (response.ok) {
-                    showToast(data.message || "Rezervasiya silindi.", "success");
-                    loadReservations();
-                } else {
-                    showToast(data.message || "Rezervasiyanı silmək mümkün olmadı.", "error");
-                }
-            } catch (error) {
-                console.error("DELETE RESERVATION ERROR:", error);
-                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+        function setupNavbar() {
+            if (currentUser && currentUser.username !== "admin") {
+                navLogin.style.display = "none";
+                navRegister.style.display = "none";
+                navMyReservations.style.display = "inline-flex";
+                navLogout.style.display = "inline-flex";
+            } else if (currentUser && currentUser.username === "admin") {
+                navLogin.style.display = "none";
+                navRegister.style.display = "none";
+                navMyReservations.style.display = "none";
+                navLogout.style.display = "inline-flex";
+            } else {
+                navLogin.style.display = "inline-flex";
+                navRegister.style.display = "inline-flex";
+                navMyReservations.style.display = "none";
+                navLogout.style.display = "none";
             }
         }
 
+        function getStatusColor(status) {
+            const s = (status || "").toLowerCase();
+            if (s === "approved") return "#16a34a";
+            if (s === "rejected") return "#dc2626";
+            if (s === "deactivated") return "#6b7280";
+            return "#f97316";
+        }
+
+        function getStatusText(status) {
+            if (status === "Approved") return "Təsdiqlənib";
+            if (status === "Rejected") return "Rədd edilib";
+            if (status === "Deactivated") return "Deaktiv";
+            return "Gözləmədə";
+        }
+
+        function formatDateTime(dateValue) {
+            if (!dateValue) return "-";
+            return new Date(dateValue).toLocaleString("az-AZ");
+        }
+
+        function toDateTimeLocalString(dateValue) {
+            if (!dateValue) return "";
+
+            const date = new Date(dateValue);
+            const pad = (n) => String(n).padStart(2, "0");
+
+            const year = date.getFullYear();
+            const month = pad(date.getMonth() + 1);
+            const day = pad(date.getDate());
+            const hours = pad(date.getHours());
+            const minutes = pad(date.getMinutes());
+
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function openEditModalFromButton(button) {
+            editAppointmentId.value = button.getAttribute("data-id") || "";
+            editPhone.value = button.getAttribute("data-phone") || "";
+            editMessage.value = button.getAttribute("data-message") || "";
+
+            const service = button.getAttribute("data-service") || "";
+            const date = button.getAttribute("data-date") || "";
+
+            editService.value = "";
+            Array.from(editService.options).forEach(option => {
+                if (option.value.trim() === service.trim()) {
+                    editService.value = option.value;
+                }
+            });
+
+            editDate.value = toDateTimeLocalString(date);
+            editModal.classList.add("show");
+        }
+
+        function openDeleteModal(id) {
+            pendingDeleteId = id;
+            deleteModal.classList.add("show");
+        }
+
         async function loadReservations() {
-            if (!currentUser || !currentUser.id || currentUser.username === "admin") {
+            reservationsList.innerHTML = "";
+            authRequiredBox.style.display = "none";
+            emptyState.style.display = "none";
+            errorBox.style.display = "none";
+
+            if (!currentUser) {
+                authRequiredBox.style.display = "block";
+                return;
+            }
+
+            if (!currentUser.id) {
+                errorBox.style.display = "block";
+                errorText.textContent = "İstifadəçi məlumatı tapılmadı. Yenidən daxil olun.";
+                return;
+            }
+
+            if (currentUser.username === "admin") {
+                errorBox.style.display = "block";
+                errorText.textContent = "Admin hesabı üçün bu bölmə istifadə olunmur.";
                 return;
             }
 
             try {
-                console.log("FETCH URL:", "/api/appointments/user/" + currentUser.id);
-
                 const response = await fetch("/api/appointments/user/" + currentUser.id);
                 const text = await response.text();
-
-                console.log("RESERVATIONS RESPONSE:", response.status, text);
 
                 let data = [];
                 try {
@@ -247,10 +358,6 @@
                 } catch {
                     data = [];
                 }
-
-                reservationsList.innerHTML = "";
-                emptyState.style.display = "none";
-                errorBox.style.display = "none";
 
                 if (!response.ok) {
                     errorBox.style.display = "block";
@@ -265,8 +372,6 @@
                 }
 
                 if (data.length === 0) {
-                    reservationsList.innerHTML = "";
-                    errorBox.style.display = "none";
                     emptyState.style.display = "block";
                     return;
                 }
@@ -275,57 +380,220 @@
                     const card = document.createElement("div");
                     card.className = "form-card";
 
-                    const formattedDate = item.date
-                        ? new Date(item.date).toLocaleString()
+                    const reservationCreatedAt = item.createdAt
+                        ? formatDateTime(item.createdAt)
                         : "-";
 
+                    const now = new Date();
+                    const appointmentDate = new Date(item.date);
+
+                    const isExpired = appointmentDate <= now;
+                    const isApproved = item.status === "Approved";
+                    const isRejected = item.status === "Rejected";
+                    const isPending = item.status === "Pending";
+
+                    const canEdit = isPending && !isExpired;
+                    const canDelete = isPending || isRejected;
+
                     card.innerHTML = `
-                        <h2 style="margin-bottom:12px;">${item.service || "-"}</h2>
-                        <p class="form-subtext"><strong>Ad:</strong> ${item.fullName || "-"}</p>
-                        <p class="form-subtext"><strong>Telefon:</strong> ${item.phone || "-"}</p>
-                        <p class="form-subtext"><strong>E-poçt:</strong> ${item.email || "-"}</p>
-                        <p class="form-subtext"><strong>Tarix:</strong> ${formattedDate}</p>
-                       <p class="form-subtext">
-                         <strong>Status:</strong>
-                        <span style="color:${getStatusColor(item.status)}; font-weight:700;">
-                              ${item.status === "Approved" ? "Təsdiqlənib" :
-                             item.status === "Rejected" ? "Rədd edilib" :
-                             item.status === "Deactivated" ? "Deaktiv" :
-                            "Gözləmədə"
-                          }
-                        </span>
-                        </p>
-                        <p class="form-subtext"><strong>Qeyd:</strong> ${item.message || "-"}</p>
-                        <div style="margin-top:16px;">
-                            <button class="btn btn-primary" onclick="deleteReservation(${item.id})">Sil</button>
-                        </div>
-                    `;
+                            <h2 style="margin-bottom:12px;">${item.service || "-"}</h2>
+                            <p class="form-subtext"><strong>Ad:</strong> ${item.fullName || "-"}</p>
+                            <p class="form-subtext"><strong>Telefon:</strong> ${item.phone || "-"}</p>
+                            <p class="form-subtext"><strong>E-poçt:</strong> ${item.email || "-"}</p>
+                            <p class="form-subtext"><strong>Qəbul tarixi:</strong> ${formatDateTime(item.date)}</p>
+                            <p class="form-subtext"><strong>Rezervasiya olunma tarixi:</strong> ${reservationCreatedAt}</p>
+                            <p class="form-subtext">
+                                <strong>Status:</strong>
+                                <span style="color:${getStatusColor(item.status)}; font-weight:700;">
+                                    ${getStatusText(item.status)}
+                                </span>
+                            </p>
+                            <p class="form-subtext"><strong>Qeyd:</strong> ${item.message || "-"}</p>
+                            <p class="form-subtext"><strong>Admin qeydi:</strong> ${item.adminResponseMessage || "-"}</p>
+
+                            ${isExpired ? `<p style="color:#dc2626; font-weight:600; margin-top:10px;">Bu rezervasiyanın vaxtı bitib.</p>` : ""}
+                            ${isRejected ? `<p style="color:#dc2626; font-weight:600; margin-top:10px;">Bu rezervasiya rədd edilib.</p>` : ""}
+                            ${isApproved ? `<p style="color:#16a34a; font-weight:600; margin-top:10px;">Bu rezervasiya təsdiqlənib.</p>` : ""}
+
+                            <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+                                ${canEdit ? `
+                                    <button
+                                        class="btn btn-secondary"
+                                        onclick="openEditModalFromButton(this)"
+                                        data-id="${item.id}"
+                                        data-phone="${String(item.phone || "").replace(/"/g, '&quot;')}"
+                                        data-service="${String(item.service || "").replace(/"/g, '&quot;')}"
+                                        data-date="${String(item.date || "").replace(/"/g, '&quot;')}"
+                                        data-message="${String(item.message || "").replace(/"/g, '&quot;')}">
+                                        Düzəliş et
+                                    </button>
+                                ` : ""}
+
+                                ${canDelete ? `
+                                    <button class="btn btn-primary" onclick="openDeleteModal(${item.id})">Sil</button>
+                                ` : ""}
+                            </div>
+                        `;
 
                     reservationsList.appendChild(card);
                 });
             } catch (error) {
-                console.error("LOAD RESERVATIONS ERROR:", error);
+                console.error("LOAD ERROR:", error);
                 errorBox.style.display = "block";
                 errorText.textContent = "Rezervasiyaları yükləmək mümkün olmadı.";
-                showToast("Rezervasiyaları yükləmək mümkün olmadı.", "error");
             }
         }
 
-        window.deleteReservation = deleteReservation;
+        if (navLogout) {
+            navLogout.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem("user");
+                window.location.href = "register.html";
+            });
+        }
+
+        if (cancelEditBtn) {
+            cancelEditBtn.addEventListener("click", function () {
+                editModal.classList.remove("show");
+            });
+        }
+
+        if (editModal) {
+            editModal.addEventListener("click", function (e) {
+                if (e.target === editModal) {
+                    editModal.classList.remove("show");
+                }
+            });
+        }
+
+        if (editReservationForm) {
+            editReservationForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                if (!currentUser || !currentUser.id) {
+                    showToast("İstifadəçi tapılmadı.", "error");
+                    return;
+                }
+
+                const id = parseInt(editAppointmentId.value);
+                const phone = editPhone.value.trim();
+                const service = editService.value;
+                const date = editDate.value;
+                const message = editMessage.value.trim();
+
+                if (!phone || !service || !date) {
+                    showToast("Telefon, xidmət və tarix xanalarını doldurun.", "error");
+                    return;
+                }
+
+                const originalText = saveEditBtn.textContent;
+
+                try {
+                    saveEditBtn.disabled = true;
+                    saveEditBtn.textContent = "Yadda saxlanır...";
+
+                    const response = await fetch("/api/appointments/" + id, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            phone: phone,
+                            service: service,
+                            date: date,
+                            message: message,
+                            userId: currentUser.id
+                        })
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        showToast(data.message || "Rezervasiya yeniləndi.", "success");
+                        editModal.classList.remove("show");
+                        loadReservations();
+                    } else {
+                        showToast(data.message || "Rezervasiya yenilənmədi.", "error");
+                    }
+                } catch (error) {
+                    console.error("EDIT ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    saveEditBtn.disabled = false;
+                    saveEditBtn.textContent = originalText;
+                }
+            });
+        }
+
+        if (cancelDeleteBtn) {
+            cancelDeleteBtn.addEventListener("click", function () {
+                pendingDeleteId = null;
+                deleteModal.classList.remove("show");
+            });
+        }
+
+        if (deleteModal) {
+            deleteModal.addEventListener("click", function (e) {
+                if (e.target === deleteModal) {
+                    pendingDeleteId = null;
+                    deleteModal.classList.remove("show");
+                }
+            });
+        }
+
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener("click", async function () {
+                if (!pendingDeleteId) return;
+
+                const originalText = confirmDeleteBtn.textContent;
+
+                try {
+                    confirmDeleteBtn.disabled = true;
+                    confirmDeleteBtn.textContent = "Silinir...";
+
+                    const response = await fetch("/api/appointments/" + pendingDeleteId, {
+                        method: "DELETE"
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        showToast(data.message || "Rezervasiya silindi.", "success");
+                        deleteModal.classList.remove("show");
+                        pendingDeleteId = null;
+                        loadReservations();
+                    } else {
+                        showToast(data.message || "Rezervasiyanı silmək mümkün olmadı.", "error");
+                    }
+                } catch (error) {
+                    console.error("DELETE ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmDeleteBtn.disabled = false;
+                    confirmDeleteBtn.textContent = originalText;
+                }
+            });
+        }
+
+        window.openEditModalFromButton = openEditModalFromButton;
+        window.openDeleteModal = openDeleteModal;
+
+        setupNavbar();
         loadReservations();
     </script>
-    <div id="toastBox" class="toast-box"></div>
-
-    <div id="confirmModal" class="confirm-modal">
-        <div class="confirm-modal-content">
-            <h3>Rezervasiyanı sil</h3>
-            <p>Bu rezervasiyanı silmək istədiyinizə əminsiniz?</p>
-
-            <div class="confirm-modal-actions">
-                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Ləğv et</button>
-                <button type="button" class="btn btn-primary" id="confirmDeleteBtn">Sil</button>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

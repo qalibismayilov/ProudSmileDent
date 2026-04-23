@@ -4,16 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rezervasiya | ProudSmileDent</title>
-    <meta name="description" content="ProudSmileDent onlayn rezervasiya səhifəsi." />
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-ring"></div>
-    </div>
-
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-
     <header class="site-header">
         <div class="container navbar">
             <a href="index.html" class="brand">
@@ -49,12 +42,11 @@
     <main>
         <section class="page-hero">
             <div class="container">
-                <div class="reveal">
-                    <span class="section-chip">Onlayn rezervasiya</span>
-                    <h1>Rezervasiya yaradın</h1>
+                <div class="reveal show">
+                    <span class="section-chip">Onlayn müraciət</span>
+                    <h1>Rezervasiya et</h1>
                     <p>
-                        Uyğun xidməti seçin, məlumatlarınızı daxil edin və sizə uyğun tarix üçün
-                        müraciətinizi rahat şəkildə göndərin.
+                        Xidməti və uyğun vaxtı seçərək qəbul üçün müraciət göndərin.
                     </p>
                 </div>
             </div>
@@ -62,56 +54,41 @@
 
         <section class="section">
             <div class="container contact-grid">
-                <div class="contact-info reveal">
-                    <span class="section-chip">Müraciət prosesi</span>
-                    <h2>Rezervasiya addımları</h2>
+                <div class="contact-info reveal show">
+                    <span class="section-chip">Vacib məlumat</span>
+                    <h2>Qəbul qaydaları</h2>
                     <p>
-                        Rezervasiya sistemi pasiyentin müraciətini daha səliqəli və rahat şəkildə toplamaq üçün hazırlanıb.
+                        Rezervasiya yalnız qeydiyyatdan keçmiş istifadəçilər üçün mümkündür.
                     </p>
 
                     <div class="contact-list">
                         <div class="contact-item">
-                            <h4>1. Xidmət seçin</h4>
-                            <p>Sizə uyğun stomatoloji xidməti siyahıdan seçin.</p>
+                            <h4>İş saatları</h4>
+                            <p>Rezervasiya saatı yalnız 09:00 - 20:00 aralığında seçilə bilər.</p>
                         </div>
 
                         <div class="contact-item">
-                            <h4>2. Tarix təyin edin</h4>
-                            <p>Uyğun tarix və vaxt üçün müraciətinizi planlayın.</p>
+                            <h4>İstirahət günü</h4>
+                            <p>Bazar günü rezervasiya mümkün deyil.</p>
                         </div>
 
                         <div class="contact-item">
-                            <h4>3. Məlumatları göndərin</h4>
-                            <p>Əlaqə məlumatlarınızı və əlavə qeydinizi daxil edib formu tamamlayın.</p>
+                            <h4>Bir aktiv rezervasiya</h4>
+                            <p>Eyni anda yalnız bir aktiv rezervasiyanız ola bilər.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-card reveal delay-1">
-                    <h2>Rezervasiya forması</h2>
-                    <p class="form-subtext" id="reservationSubtext">
-                        Qeydiyyatdan keçmiş istifadəçi kimi müraciət yaradın.
+                <div class="form-card reveal show">
+                    <h2>Rezervasiya formu</h2>
+                    <p class="form-subtext">
+                        Tarix və saat seçərkən klinikanın iş qrafikini nəzərə alın.
                     </p>
 
-                    <div id="authRequiredBox" style="display:none;">
-                        <div class="mini-info-box" style="margin-bottom:18px;">
-                            <h3>Rezervasiya üçün əvvəlcə daxil olun</h3>
-                            <p>
-                                Onlayn rezervasiya yaratmaq üçün hesabınıza daxil olmalısınız.
-                                Əgər hesabınız yoxdursa, əvvəlcə qeydiyyatdan keçin.
-                            </p>
-                        </div>
-
-                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                            <a href="login.html" class="btn btn-primary">Daxil ol</a>
-                            <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
-                        </div>
-                    </div>
-
-                    <form id="reservationForm" style="display:none;">
+                    <form id="reservationForm">
                         <input type="text" id="fullName" placeholder="Ad və soyad" readonly />
+                        <input type="text" id="phone" placeholder="Telefon" readonly />
                         <input type="email" id="email" placeholder="E-poçt" readonly />
-                        <input type="text" id="phone" placeholder="Telefon" required />
 
                         <select id="service" required>
                             <option value="">Xidmət seçin</option>
@@ -139,15 +116,21 @@
                         </select>
 
                         <input type="datetime-local" id="date" required />
+
                         <textarea id="message" rows="5" placeholder="Əlavə qeyd"></textarea>
 
-                        <button type="submit" class="btn btn-primary">Rezervasiya göndər</button>
+                        <button type="submit" class="btn btn-primary" id="reservationSubmitBtn">
+                            Rezervasiya et
+                        </button>
                     </form>
 
-                    <p class="form-footer-link" id="reservationFooterLink" style="display:none;">
-                        Hesabınız yoxdur?
-                        <a href="register.html">Qeydiyyatdan keçin</a>
-                    </p>
+                    <div id="authMessageBox" style="display:none; margin-top:16px;">
+                        <p class="form-subtext">Rezervasiya üçün əvvəlcə hesabınıza daxil olun.</p>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                            <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -172,12 +155,11 @@
         </div>
     </footer>
 
-    <script>
+    <div id="toastBox" class="toast-box"></div>
 
+    <script>
         const menuToggle = document.getElementById("menuToggle");
         const navMenu = document.getElementById("navMenu");
-        const mobileOverlay = document.getElementById("mobileOverlay");
-        const pageLoader = document.getElementById("pageLoader");
 
         const navLogin = document.getElementById("navLogin");
         const navRegister = document.getElementById("navRegister");
@@ -185,88 +167,23 @@
         const navLogout = document.getElementById("navLogout");
 
         const reservationForm = document.getElementById("reservationForm");
-        const authRequiredBox = document.getElementById("authRequiredBox");
-        const reservationSubtext = document.getElementById("reservationSubtext");
-        const reservationFooterLink = document.getElementById("reservationFooterLink");
-        
-        if (menuToggle) {
-            menuToggle.addEventListener("click", () => {
-                navMenu.classList.toggle("active");
-                menuToggle.classList.toggle("active");
-                mobileOverlay.classList.toggle("active");
-            });
-        }
+        const reservationSubmitBtn = document.getElementById("reservationSubmitBtn");
+        const authMessageBox = document.getElementById("authMessageBox");
 
-        if (mobileOverlay) {
-            mobileOverlay.addEventListener("click", () => {
-                navMenu.classList.remove("active");
-                menuToggle.classList.remove("active");
-                mobileOverlay.classList.remove("active");
-            });
-        }
+        const fullNameInput = document.getElementById("fullName");
+        const phoneInput = document.getElementById("phone");
+        const emailInput = document.getElementById("email");
+        const serviceInput = document.getElementById("service");
+        const dateInput = document.getElementById("date");
+        const messageInput = document.getElementById("message");
 
-        window.addEventListener("load", () => {
-            if (pageLoader) {
-                pageLoader.classList.add("hide");
-            }
-        });
+        let currentUser = null;
 
-        const revealElements = document.querySelectorAll(".reveal");
-
-        function revealOnScroll() {
-            const triggerBottom = window.innerHeight * 0.88;
-
-            revealElements.forEach((el) => {
-                const rectTop = el.getBoundingClientRect().top;
-                if (rectTop < triggerBottom) {
-                    el.classList.add("show");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", revealOnScroll);
-        window.addEventListener("load", revealOnScroll);
-
-        const user = JSON.parse(localStorage.getItem("user") || "null");
-
-        if (user) {
-            navLogin.style.display = "none";
-            navRegister.style.display = "none";
-            navMyReservations.style.display = "inline-flex";
-            navLogout.style.display = "inline-flex";
-
-            reservationForm.style.display = "block";
-            reservationFooterLink.style.display = "none";
-            authRequiredBox.style.display = "none";
-            reservationSubtext.textContent = "Hesab məlumatlarınız avtomatik dolduruldu. Xidmət, tarix və əlavə qeydi daxil edin.";
-
-            const fullNameInput = document.getElementById("fullName");
-            const emailInput = document.getElementById("email");
-
-            fullNameInput.value = user.fullName || "";
-            emailInput.value = user.email || "";
-
-            fullNameInput.readOnly = true;
-            emailInput.readOnly = true;
-        } else {
-            navLogin.style.display = "inline-flex";
-            navRegister.style.display = "inline-flex";
-            navMyReservations.style.display = "none";
-            navLogout.style.display = "none";
-
-            reservationForm.style.display = "none";
-            reservationFooterLink.style.display = "none";
-            authRequiredBox.style.display = "block";
-            reservationSubtext.textContent = "Rezervasiya yaratmaq üçün əvvəlcə hesabınıza daxil olun.";
-        }
-
-        navLogout.addEventListener("click", function (e) {
-            e.preventDefault();
-            localStorage.removeItem("user");
-            window.location.href = "login.html";
-        });
         function showToast(message, type = "error") {
             const toastBox = document.getElementById("toastBox");
+            if (!toastBox) return;
+
+            toastBox.innerHTML = "";
 
             const toast = document.createElement("div");
             toast.className = `toast-message ${type}`;
@@ -274,35 +191,154 @@
 
             toastBox.appendChild(toast);
 
-            setTimeout(() => {
-                toast.classList.add("show");
-            }, 10);
+            setTimeout(() => toast.classList.add("show"), 10);
 
             setTimeout(() => {
                 toast.classList.remove("show");
-                setTimeout(() => {
-                    toast.remove();
-                }, 300);
+                setTimeout(() => toast.remove(), 300);
             }, 2500);
         }
+
+        if (menuToggle) {
+            menuToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+                menuToggle.classList.toggle("active");
+            });
+        }
+
+        try {
+            const rawUser = localStorage.getItem("user");
+            currentUser = rawUser ? JSON.parse(rawUser) : null;
+        } catch {
+            currentUser = null;
+        }
+
+        function setupNavbar() {
+            if (currentUser && currentUser.username !== "admin") {
+                navLogin.style.display = "none";
+                navRegister.style.display = "none";
+                navMyReservations.style.display = "inline-flex";
+                navLogout.style.display = "inline-flex";
+            } else if (currentUser && currentUser.username === "admin") {
+                navLogin.style.display = "none";
+                navRegister.style.display = "none";
+                navMyReservations.style.display = "none";
+                navLogout.style.display = "inline-flex";
+            } else {
+                navLogin.style.display = "inline-flex";
+                navRegister.style.display = "inline-flex";
+                navMyReservations.style.display = "none";
+                navLogout.style.display = "none";
+            }
+        }
+
+        function setReservationMinDate() {
+            const now = new Date();
+            const pad = (n) => String(n).padStart(2, "0");
+
+            const year = now.getFullYear();
+            const month = pad(now.getMonth() + 1);
+            const day = pad(now.getDate());
+            const hours = pad(now.getHours());
+            const minutes = pad(now.getMinutes());
+
+            dateInput.min = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function fillUserData() {
+            if (!currentUser || currentUser.username === "admin") {
+                reservationForm.style.display = "none";
+                authMessageBox.style.display = "block";
+                return;
+            }
+
+            reservationForm.style.display = "block";
+            authMessageBox.style.display = "none";
+
+            fullNameInput.value = currentUser.fullName || "";
+            emailInput.value = currentUser.email || "";
+
+      
+            const savedPhone = localStorage.getItem("userPhone");
+            phoneInput.value = savedPhone || "";
+        }
+
+        function validateReservationDate(dateValue) {
+            if (!dateValue) {
+                return "Tarix seçin.";
+            }
+
+            const selectedDate = new Date(dateValue);
+
+            if (isNaN(selectedDate.getTime())) {
+                return "Tarix düzgün deyil.";
+            }
+
+            if (selectedDate.getDay() === 0) {
+                return "Bazar günü rezervasiya mümkün deyil.";
+            }
+
+            const hours = selectedDate.getHours();
+            const minutes = selectedDate.getMinutes();
+
+            const totalMinutes = hours * 60 + minutes;
+            const minMinutes = 9 * 60;
+            const maxMinutes = 20 * 60;
+
+            if (totalMinutes < minMinutes || totalMinutes > maxMinutes) {
+                return "Rezervasiya saatı yalnız 09:00 - 20:00 aralığında ola bilər.";
+            }
+
+            return null;
+        }
+
+        dateInput.addEventListener("change", function () {
+            const error = validateReservationDate(dateInput.value);
+            if (error) {
+                showToast(error, "error");
+                dateInput.value = "";
+            }
+        });
+
+        if (navLogout) {
+            navLogout.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem("user");
+                window.location.href = "login.html";
+            });
+        }
+
         reservationForm.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            if (!user) return;
+            if (!currentUser || !currentUser.id || currentUser.username === "admin") {
+                showToast("Rezervasiya üçün əvvəlcə daxil olun.", "error");
+                return;
+            }
 
-            const submitButton = reservationForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
+            const fullName = fullNameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const email = emailInput.value.trim();
+            const service = serviceInput.value;
+            const date = dateInput.value;
+            const message = messageInput.value.trim();
 
-            const fullName = user.fullName || document.getElementById("fullName").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            const email = user.email || document.getElementById("email").value.trim();
-            const service = document.getElementById("service").value;
-            const date = document.getElementById("date").value;
-            const message = document.getElementById("message").value.trim();
+            if (!fullName || !phone || !email || !service || !date) {
+                showToast("Bütün vacib xanaları doldurun.", "error");
+                return;
+            }
+
+            const dateError = validateReservationDate(date);
+            if (dateError) {
+                showToast(dateError, "error");
+                return;
+            }
+
+            const originalText = reservationSubmitBtn.textContent;
 
             try {
-                submitButton.disabled = true;
-                submitButton.textContent = "Göndərilir...";
+                reservationSubmitBtn.disabled = true;
+                reservationSubmitBtn.textContent = "Göndərilir...";
 
                 const response = await fetch("/api/appointments", {
                     method: "POST",
@@ -310,13 +346,13 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        fullName,
-                        phone,
-                        email,
-                        service,
-                        date,
-                        message,
-                        userId: user.id
+                        fullName: fullName,
+                        phone: phone,
+                        email: email,
+                        service: service,
+                        date: date,
+                        message: message,
+                        userId: currentUser.id
                     })
                 });
 
@@ -330,23 +366,31 @@
                 }
 
                 if (response.ok) {
-                    showToast(data.message || "Rezervasiya uğurla göndərildi.", "success");
+                    localStorage.setItem("userPhone", phone);
+                    showToast(data.message || "Rezervasiya uğurla yaradıldı.", "success");
+
+                    reservationForm.reset();
+                    fillUserData();
+                    setReservationMinDate();
 
                     setTimeout(() => {
                         window.location.href = "my-reservations.html";
-                    }, 900);
+                    }, 1000);
                 } else {
-                    showToast(data.message || "Rezervasiya zamanı xəta baş verdi.", "error");
+                    showToast(data.message || "Rezervasiya yaratmaq mümkün olmadı.", "error");
                 }
             } catch (error) {
-                console.error(error);
+                console.error("RESERVATION ERROR:", error);
                 showToast("Serverə qoşulmaq mümkün olmadı.", "error");
             } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
+                reservationSubmitBtn.disabled = false;
+                reservationSubmitBtn.textContent = originalText;
             }
         });
+
+        setupNavbar();
+        fillUserData();
+        setReservationMinDate();
     </script>
-    <div id="toastBox" class="toast-box"></div>
 </body>
 </html>
