@@ -5,6 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mənim rezervasiyalarım | ProudSmileDent</title>
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .edit-modal-card {
+            max-width: 760px;
+            padding: 0 !important;
+            overflow: hidden;
+            border-radius: 28px;
+        }
+
+        .edit-modal-header {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            padding: 26px 28px;
+            color: #fff;
+        }
+
+            .edit-modal-header span {
+                display: inline-flex;
+                align-items: center;
+                padding: 7px 12px;
+                border-radius: 999px;
+                background: rgba(255,255,255,.18);
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 12px;
+            }
+
+            .edit-modal-header h3 {
+                margin: 0;
+                font-size: 27px;
+                line-height: 1.2;
+            }
+
+            .edit-modal-header p {
+                margin: 9px 0 0;
+                color: rgba(255,255,255,.92);
+                line-height: 1.6;
+            }
+
+        .edit-modal-body {
+            padding: 26px 28px 28px;
+            background: #fff;
+        }
+
+        .edit-info-box {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 18px;
+            padding: 15px 16px;
+            margin-bottom: 22px;
+        }
+
+        .edit-info-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            background: #f97316;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            font-weight: 900;
+        }
+
+        .edit-info-box strong {
+            display: block;
+            color: #9a3412;
+            margin-bottom: 4px;
+        }
+
+        .edit-info-box p {
+            margin: 0;
+            color: #9a3412;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .edit-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        .edit-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+            .edit-field.full {
+                grid-column: 1 / -1;
+            }
+
+            .edit-field label {
+                font-weight: 800;
+                color: #374151;
+                font-size: 14px;
+            }
+
+            .edit-field small {
+                color: #6b7280;
+                font-size: 12px;
+                margin-top: -2px;
+            }
+
+            .edit-field input,
+            .edit-field select,
+            .edit-field textarea {
+                width: 100%;
+                border: 1px solid #e5e7eb;
+                border-radius: 16px;
+                padding: 14px 15px;
+                outline: none;
+                font-size: 15px;
+                background: #fff;
+                transition: .25s ease;
+            }
+
+                .edit-field input:focus,
+                .edit-field select:focus,
+                .edit-field textarea:focus {
+                    border-color: #f97316;
+                    box-shadow: 0 0 0 4px rgba(249,115,22,.13);
+                }
+
+        .edit-date-card {
+            border: 1px solid #fed7aa;
+            background: linear-gradient(180deg, #fff7ed, #fff);
+            border-radius: 20px;
+            padding: 16px;
+        }
+
+            .edit-date-card input {
+                background: #fff;
+            }
+
+        .edit-modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        @media (max-width: 720px) {
+            .edit-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .edit-modal-header {
+                padding: 22px;
+            }
+
+            .edit-modal-body {
+                padding: 22px;
+            }
+
+            .edit-modal-actions {
+                flex-direction: column-reverse;
+            }
+
+                .edit-modal-actions .btn {
+                    width: 100%;
+                }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -117,6 +286,7 @@
     <div id="toastBox" class="toast-box"></div>
 
     <div id="editModal" class="confirm-modal">
+<<<<<<< HEAD
         <div class="confirm-modal-content" style="max-width:620px;">
             <h3>Rezervasiyanı düzəlt</h3>
             <p style="margin-bottom:16px; color:#6b7280;">
@@ -163,6 +333,86 @@
                     <button type="submit" class="btn btn-primary" id="saveEditBtn">Yadda saxla</button>
                 </div>
             </form>
+=======
+        <div class="confirm-modal-content edit-modal-card">
+            <div class="edit-modal-header">
+                <span>Rezervasiya düzəlişi</span>
+                <h3>Rezervasiyanı yenilə</h3>
+                <p>Xidməti, qəbul vaxtını, telefon nömrəsini və əlavə qeydi yalnız 1 dəfə dəyişə bilərsiniz.</p>
+            </div>
+
+            <div class="edit-modal-body">
+                <div class="edit-info-box">
+                    <div class="edit-info-icon">!</div>
+                    <div>
+                        <strong>Vacib qeyd</strong>
+                        <p>Düzəlişi təsdiqlədikdən sonra bu rezervasiyada ikinci dəfə dəyişiklik etmək mümkün olmayacaq.</p>
+                    </div>
+                </div>
+
+                <form id="editReservationForm">
+                    <input type="hidden" id="editAppointmentId" />
+
+                    <div class="edit-form-grid">
+                        <div class="edit-field">
+                            <label for="editPhone">Telefon nömrəsi</label>
+                            <input type="tel" id="editPhone" placeholder="+994 XX XXX XX XX" autocomplete="tel" inputmode="tel" required />
+                            <small>Əlaqə üçün aktiv nömrə daxil edin.</small>
+                        </div>
+
+                        <div class="edit-field">
+                            <label for="editService">Xidmət seçimi</label>
+                            <select id="editService" required>
+                                <option value="">Xidmət seçin</option>
+                                <option>Diş çəkimi</option>
+                                <option>Kanal</option>
+                                <option>Ştif</option>
+                                <option>Plomb</option>
+                                <option>Güdül</option>
+                                <option>Diş ətinin müalicəsi</option>
+                                <option>Keramika</option>
+                                <option>Zirkon</option>
+                                <option>Protez</option>
+                                <option>Titan</option>
+                                <option>Qızıl</option>
+                                <option>Breket</option>
+                                <option>İmplant</option>
+                                <option>İmplantüstü</option>
+                                <option>Vinir</option>
+                                <option>Kimyəvi ağartma</option>
+                                <option>AIRFLOW</option>
+                                <option>Polirovka (pasta)</option>
+                                <option>Diş daşları</option>
+                                <option>Diş lakı</option>
+                                <option>Zoom-la ağartma</option>
+                            </select>
+                            <small>Düzəliş etmək istədiyiniz xidməti seçin.</small>
+                        </div>
+
+                        <div class="edit-field full edit-date-card">
+                            <label for="editDate">Yeni qəbul tarixi və saatı</label>
+                            <input type="datetime-local" id="editDate" required />
+                            <small>Bazar günü, 09:00-dan əvvəl və 20:00-dan sonra rezervasiya mümkün deyil.</small>
+                        </div>
+
+                        <div class="edit-field full">
+                            <label for="editMessage">Əlavə qeyd</label>
+                            <textarea id="editMessage" rows="5" placeholder="Məsələn: ağrı var, təcili baxış lazımdır və s."></textarea>
+                            <small>İstəyə bağlıdır.</small>
+                        </div>
+                    </div>
+
+                    <div class="edit-modal-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelEditBtn">
+                            Ləğv et
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="saveEditBtn">
+                            Yadda saxla
+                        </button>
+                    </div>
+                </form>
+            </div>
+>>>>>>> 90e0734 (update)
         </div>
     </div>
 
@@ -301,6 +551,66 @@
             return `${year}-${month}-${day}T${hours}:${minutes}`;
         }
 
+<<<<<<< HEAD
+=======
+        function setEditMinDate() {
+            const minDate = new Date();
+            minDate.setHours(minDate.getHours() + 1);
+
+            const pad = (n) => String(n).padStart(2, "0");
+            const year = minDate.getFullYear();
+            const month = pad(minDate.getMonth() + 1);
+            const day = pad(minDate.getDate());
+            const hours = pad(minDate.getHours());
+            const minutes = pad(minDate.getMinutes());
+
+            editDate.min = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        function validateEditDate(dateValue) {
+            if (!dateValue) {
+                return "Tarix seçin.";
+            }
+
+            const selectedDate = new Date(dateValue);
+
+            if (isNaN(selectedDate.getTime())) {
+                return "Tarix düzgün deyil.";
+            }
+
+            const oneHourLater = new Date();
+            oneHourLater.setHours(oneHourLater.getHours() + 1);
+
+            if (selectedDate < oneHourLater) {
+                return "Rezervasiya ən azı 1 saat əvvəl yaradılmalıdır.";
+            }
+
+            if (selectedDate.getDay() === 0) {
+                return "Bazar günü rezervasiya mümkün deyil.";
+            }
+
+            const totalMinutes = selectedDate.getHours() * 60 + selectedDate.getMinutes();
+            const minMinutes = 9 * 60;
+            const maxMinutes = 20 * 60;
+
+            if (totalMinutes < minMinutes || totalMinutes > maxMinutes) {
+                return "Rezervasiya saatı yalnız 09:00 - 20:00 aralığında ola bilər.";
+            }
+
+            return null;
+        }
+
+        if (editDate) {
+            editDate.addEventListener("change", function () {
+                const error = validateEditDate(editDate.value);
+                if (error) {
+                    showToast(error, "error");
+                    editDate.value = "";
+                }
+            });
+        }
+
+>>>>>>> 90e0734 (update)
         function openEditModalFromButton(button) {
             editAppointmentId.value = button.getAttribute("data-id") || "";
             editPhone.value = button.getAttribute("data-phone") || "";
@@ -316,6 +626,10 @@
                 }
             });
 
+<<<<<<< HEAD
+=======
+            setEditMinDate();
+>>>>>>> 90e0734 (update)
             editDate.value = toDateTimeLocalString(date);
             editModal.classList.add("show");
         }
@@ -391,9 +705,16 @@
                     const isApproved = item.status === "Approved";
                     const isRejected = item.status === "Rejected";
                     const isPending = item.status === "Pending";
+<<<<<<< HEAD
 
                     const canEdit = isPending && !isExpired;
                     const canDelete = isPending || isRejected;
+=======
+                    const hasUserEdited = item.hasUserEdited === true;
+
+                    const canEdit = isPending && !isExpired && !hasUserEdited;
+                    const canDelete = (isPending || isRejected) && !isExpired;
+>>>>>>> 90e0734 (update)
 
                     card.innerHTML = `
                             <h2 style="margin-bottom:12px;">${item.service || "-"}</h2>
@@ -402,18 +723,30 @@
                             <p class="form-subtext"><strong>E-poçt:</strong> ${item.email || "-"}</p>
                             <p class="form-subtext"><strong>Qəbul tarixi:</strong> ${formatDateTime(item.date)}</p>
                             <p class="form-subtext"><strong>Rezervasiya olunma tarixi:</strong> ${reservationCreatedAt}</p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90e0734 (update)
                             <p class="form-subtext">
                                 <strong>Status:</strong>
                                 <span style="color:${getStatusColor(item.status)}; font-weight:700;">
                                     ${getStatusText(item.status)}
                                 </span>
                             </p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90e0734 (update)
                             <p class="form-subtext"><strong>Qeyd:</strong> ${item.message || "-"}</p>
                             <p class="form-subtext"><strong>Admin qeydi:</strong> ${item.adminResponseMessage || "-"}</p>
 
                             ${isExpired ? `<p style="color:#dc2626; font-weight:600; margin-top:10px;">Bu rezervasiyanın vaxtı bitib.</p>` : ""}
                             ${isRejected ? `<p style="color:#dc2626; font-weight:600; margin-top:10px;">Bu rezervasiya rədd edilib.</p>` : ""}
                             ${isApproved ? `<p style="color:#16a34a; font-weight:600; margin-top:10px;">Bu rezervasiya təsdiqlənib.</p>` : ""}
+<<<<<<< HEAD
+=======
+                            ${hasUserEdited && isPending && !isExpired ? `<p style="color:#f97316; font-weight:600; margin-top:10px;">Bu rezervasiyada artıq 1 dəfə düzəliş etmisiniz.</p>` : ""}
+>>>>>>> 90e0734 (update)
 
                             <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
                                 ${canEdit ? `
@@ -486,6 +819,15 @@
                     return;
                 }
 
+<<<<<<< HEAD
+=======
+                const dateError = validateEditDate(date);
+                if (dateError) {
+                    showToast(dateError, "error");
+                    return;
+                }
+
+>>>>>>> 90e0734 (update)
                 const originalText = saveEditBtn.textContent;
 
                 try {

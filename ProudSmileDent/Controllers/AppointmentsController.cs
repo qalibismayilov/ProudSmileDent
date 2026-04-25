@@ -22,6 +22,14 @@ namespace ProudSmileDent.Controllers
 
         private IActionResult? ValidateAppointmentDate(DateTime date)
         {
+<<<<<<< HEAD
+=======
+            if (date < DateTime.Now.AddHours(1))
+            {
+                return BadRequest(new { message = "Rezervasiya ən azı 1 saat əvvəl yaradılmalıdır." });
+            }
+
+>>>>>>> 90e0734 (update)
             if (date.DayOfWeek == DayOfWeek.Sunday)
             {
                 return BadRequest(new { message = "Bazar günü rezervasiya mümkün deyil." });
@@ -101,7 +109,12 @@ namespace ProudSmileDent.Controllers
                 ReminderSent = false,
                 IsActive = true,
                 CreatedAt = DateTime.Now,
+<<<<<<< HEAD
                 AdminResponseMessage = null
+=======
+                AdminResponseMessage = null,
+                HasUserEdited = false
+>>>>>>> 90e0734 (update)
             };
 
             _context.Appointments.Add(appointment);
@@ -138,7 +151,12 @@ namespace ProudSmileDent.Controllers
                     userId = appointment.UserId,
                     isActive = appointment.IsActive,
                     createdAt = appointment.CreatedAt,
+<<<<<<< HEAD
                     adminResponseMessage = appointment.AdminResponseMessage
+=======
+                    adminResponseMessage = appointment.AdminResponseMessage,
+                    hasUserEdited = appointment.HasUserEdited
+>>>>>>> 90e0734 (update)
                 }
             });
         }
@@ -162,7 +180,12 @@ namespace ProudSmileDent.Controllers
                     userId = x.UserId,
                     isActive = x.IsActive,
                     createdAt = x.CreatedAt,
+<<<<<<< HEAD
                     adminResponseMessage = x.AdminResponseMessage
+=======
+                    adminResponseMessage = x.AdminResponseMessage,
+                    hasUserEdited = x.HasUserEdited
+>>>>>>> 90e0734 (update)
                 })
                 .ToListAsync();
 
@@ -194,6 +217,14 @@ namespace ProudSmileDent.Controllers
                 return BadRequest(new { message = "Vaxtı bitmiş rezervasiya dəyişdirilə bilməz." });
             }
 
+<<<<<<< HEAD
+=======
+            if (appointment.HasUserEdited)
+            {
+                return BadRequest(new { message = "Bu rezervasiyada artıq bir dəfə düzəliş etmisiniz." });
+            }
+
+>>>>>>> 90e0734 (update)
             var dateValidation = ValidateAppointmentDate(dto.Date);
             if (dateValidation != null)
             {
@@ -224,12 +255,37 @@ namespace ProudSmileDent.Controllers
             appointment.ReminderSent = false;
             appointment.IsActive = true;
             appointment.AdminResponseMessage = null;
+<<<<<<< HEAD
 
             await _context.SaveChangesAsync();
 
             return Ok(new
             {
                 message = "Rezervasiya yeniləndi.",
+=======
+            appointment.HasUserEdited = true;
+
+            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _emailService.SendReservationUpdatedEmail(
+                    appointment.FullName,
+                    appointment.Phone,
+                    appointment.Email,
+                    appointment.Service,
+                    appointment.Date,
+                    appointment.Message
+                );
+            }
+            catch
+            {
+            }
+
+            return Ok(new
+            {
+                message = "Rezervasiya yeniləndi. Artıq ikinci dəfə düzəliş etmək mümkün deyil.",
+>>>>>>> 90e0734 (update)
                 appointment = new
                 {
                     id = appointment.Id,
@@ -243,7 +299,12 @@ namespace ProudSmileDent.Controllers
                     userId = appointment.UserId,
                     isActive = appointment.IsActive,
                     createdAt = appointment.CreatedAt,
+<<<<<<< HEAD
                     adminResponseMessage = appointment.AdminResponseMessage
+=======
+                    adminResponseMessage = appointment.AdminResponseMessage,
+                    hasUserEdited = appointment.HasUserEdited
+>>>>>>> 90e0734 (update)
                 }
             });
         }
@@ -258,12 +319,18 @@ namespace ProudSmileDent.Controllers
                 return NotFound(new { message = "Rezervasiya tapılmadı." });
             }
 
+<<<<<<< HEAD
             var isExpired = appointment.Date <= DateTime.Now;
             var isRejected = appointment.Status == "Rejected";
 
             if (!isRejected && !isExpired && appointment.Status != "Pending")
             {
                 return BadRequest(new { message = "Bu rezervasiyanı silmək mümkün deyil." });
+=======
+            if (appointment.Date <= DateTime.Now)
+            {
+                return BadRequest(new { message = "Vaxtı bitmiş rezervasiyaya müdaxilə etmək olmaz." });
+>>>>>>> 90e0734 (update)
             }
 
             if (appointment.Status == "Approved")
@@ -271,9 +338,15 @@ namespace ProudSmileDent.Controllers
                 return BadRequest(new { message = "Təsdiqlənmiş rezervasiya silinə bilməz." });
             }
 
+<<<<<<< HEAD
             if (isExpired)
             {
                 return BadRequest(new { message = "Vaxtı bitmiş rezervasiyaya müdaxilə etmək olmaz." });
+=======
+            if (appointment.Status != "Pending" && appointment.Status != "Rejected")
+            {
+                return BadRequest(new { message = "Bu rezervasiyanı silmək mümkün deyil." });
+>>>>>>> 90e0734 (update)
             }
 
             _context.Appointments.Remove(appointment);
@@ -300,7 +373,12 @@ namespace ProudSmileDent.Controllers
                     userId = x.UserId,
                     isActive = x.IsActive,
                     createdAt = x.CreatedAt,
+<<<<<<< HEAD
                     adminResponseMessage = x.AdminResponseMessage
+=======
+                    adminResponseMessage = x.AdminResponseMessage,
+                    hasUserEdited = x.HasUserEdited
+>>>>>>> 90e0734 (update)
                 })
                 .ToListAsync();
 
@@ -332,6 +410,14 @@ namespace ProudSmileDent.Controllers
             if (appointment.Status != "Pending")
             {
                 return BadRequest(new { message = "Bu rezervasiyaya artıq admin tərəfindən baxılıb." });
+<<<<<<< HEAD
+=======
+            }
+
+            if (appointment.Date <= DateTime.Now)
+            {
+                return BadRequest(new { message = "Vaxtı bitmiş rezervasiyaya status vermək mümkün deyil." });
+>>>>>>> 90e0734 (update)
             }
 
             appointment.Status = dto.Status;
@@ -396,7 +482,12 @@ namespace ProudSmileDent.Controllers
                     userId = x.UserId,
                     isActive = x.IsActive,
                     createdAt = x.CreatedAt,
+<<<<<<< HEAD
                     adminResponseMessage = x.AdminResponseMessage
+=======
+                    adminResponseMessage = x.AdminResponseMessage,
+                    hasUserEdited = x.HasUserEdited
+>>>>>>> 90e0734 (update)
                 })
                 .ToListAsync();
 

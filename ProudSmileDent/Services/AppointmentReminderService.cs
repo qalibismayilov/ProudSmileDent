@@ -24,7 +24,7 @@ namespace ProudSmileDent.Services
                 var now = DateTime.Now;
                 var oneHourLater = now.AddHours(1);
 
-                // 1 saat qalmış approved rezervasiyalara xatırlatma maili
+                
                 var reminderAppointments = await context.Appointments
                     .Where(x =>
                         x.Date >= now &&
@@ -51,7 +51,7 @@ namespace ProudSmileDent.Services
                     }
                 }
 
-                // Vaxtı keçən rezervasiyalar deaktiv olsun
+              
                 var expiredAppointments = await context.Appointments
                     .Where(x => x.Date < now && x.IsActive)
                     .ToListAsync(stoppingToken);

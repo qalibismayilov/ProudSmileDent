@@ -44,6 +44,41 @@ Mesaj: {message}"
             await SendAsync(mail);
         }
 
+<<<<<<< HEAD
+=======
+        public async Task SendReservationUpdatedEmail(string fullName, string phone, string email, string service, DateTime date, string? message)
+        {
+            var mail = new MimeMessage();
+
+            mail.From.Add(new MailboxAddress("ProudSmileDent", _settings.From));
+            mail.To.Add(new MailboxAddress("Clinic", _settings.To));
+
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                mail.ReplyTo.Add(new MailboxAddress(fullName ?? "Müştəri", email));
+            }
+
+            mail.Subject = $"Rezervasiya düzəliş edildi – {fullName}";
+
+            mail.Body = new TextPart("plain")
+            {
+                Text =
+$@"İstifadəçi rezervasiyasında düzəliş etdi:
+
+Ad: {fullName}
+Telefon: {phone}
+Email: {email}
+Xidmət: {service}
+Yeni tarix: {date}
+Mesaj: {message}
+
+"
+            };
+
+            await SendAsync(mail);
+        }
+
+>>>>>>> 90e0734 (update)
         public async Task SendReminderEmail(string fullName, string email, string service, DateTime date)
         {
             if (string.IsNullOrWhiteSpace(email))
