@@ -7,70 +7,73 @@
     <link rel="stylesheet" href="style.css" />
 
     <style>
-        .reservation-premium-card {
-            position: relative;
+        .reservation-form-pro {
+            border-radius: 30px;
             overflow: hidden;
-            border-radius: 28px;
+            padding: 0 !important;
         }
 
-        .reservation-top-box {
-            background: linear-gradient(135deg, #f97316, #ea580c);
+        .reservation-form-top {
+            background: linear-gradient(135deg, #ff7a1a, #f97316, #ea580c);
             color: #fff;
-            padding: 24px;
-            border-radius: 24px;
-            margin-bottom: 22px;
+            padding: 28px;
         }
 
-            .reservation-top-box span {
-                display: inline-flex;
-                padding: 7px 12px;
-                border-radius: 999px;
-                background: rgba(255,255,255,.18);
-                font-size: 13px;
-                font-weight: 800;
-                margin-bottom: 12px;
-            }
+        .reservation-form-chip {
+            display: inline-flex;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.18);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
 
-            .reservation-top-box h2 {
-                color: #fff;
-                margin: 0;
-                font-size: 28px;
-                line-height: 1.2;
-            }
+        .reservation-form-top h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 29px;
+            line-height: 1.2;
+        }
 
-            .reservation-top-box p {
-                margin: 10px 0 0;
-                color: rgba(255,255,255,.92);
-                line-height: 1.6;
-            }
+        .reservation-form-top p {
+            margin: 10px 0 0;
+            color: rgba(255,255,255,.92);
+            line-height: 1.6;
+        }
 
-        .reservation-rule-row {
+        .reservation-top-rules {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 12px;
+            gap: 10px;
             margin-top: 18px;
         }
 
-        .reservation-rule-mini {
+        .reservation-mini-rule {
             background: rgba(255,255,255,.15);
             border: 1px solid rgba(255,255,255,.22);
             border-radius: 16px;
-            padding: 12px;
+            padding: 11px;
         }
 
-            .reservation-rule-mini strong {
+            .reservation-mini-rule strong {
                 display: block;
                 color: #fff;
                 font-size: 13px;
                 margin-bottom: 4px;
             }
 
-            .reservation-rule-mini small {
+            .reservation-mini-rule small {
                 color: rgba(255,255,255,.9);
-                line-height: 1.4;
+                font-size: 12px;
             }
 
-        .reservation-form-grid {
+        .reservation-form-body {
+            padding: 26px 28px 28px;
+            background: #fff;
+        }
+
+        .reservation-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 16px;
@@ -87,15 +90,14 @@
             }
 
             .reservation-field label {
-                font-size: 14px;
                 font-weight: 800;
-                color: #374151;
+                color: #111827;
+                font-size: 14px;
             }
 
             .reservation-field small {
                 color: #6b7280;
                 font-size: 12px;
-                margin-top: -2px;
                 line-height: 1.4;
             }
 
@@ -116,7 +118,7 @@
                 .reservation-field select:focus,
                 .reservation-field textarea:focus {
                     border-color: #f97316;
-                    box-shadow: 0 0 0 4px rgba(249,115,22,.13);
+                    box-shadow: 0 0 0 4px rgba(249,115,22,.14);
                 }
 
                 .reservation-field input[readonly] {
@@ -125,58 +127,65 @@
                     cursor: not-allowed;
                 }
 
-        .date-time-card {
-            border: 1px solid #fed7aa;
+        .date-select-box {
+            grid-column: 1 / -1;
             background: linear-gradient(180deg, #fff7ed, #fff);
+            border: 1px solid #fed7aa;
             border-radius: 22px;
             padding: 17px;
         }
 
-            .date-time-card input {
-                background: #fff;
-            }
+        .date-select-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 14px;
+            margin-top: 8px;
+        }
 
-        .date-helper-list {
+        .date-help-row {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 10px;
-            margin-top: 12px;
+            margin-top: 13px;
         }
 
-        .date-helper-item {
+        .date-help {
             background: #fff;
             border: 1px solid #ffedd5;
+            color: #9a3412;
             border-radius: 14px;
             padding: 10px;
-            color: #9a3412;
-            font-size: 12px;
-            font-weight: 700;
             text-align: center;
+            font-size: 12px;
+            font-weight: 800;
         }
 
-        .reservation-submit-row {
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid #f3f4f6;
+        .reservation-submit-area {
             display: flex;
             justify-content: flex-end;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #f3f4f6;
         }
 
-            .reservation-submit-row .btn {
+            .reservation-submit-area .btn {
                 min-width: 190px;
             }
 
         @media (max-width: 850px) {
-            .reservation-rule-row,
-            .date-helper-list {
+            .reservation-top-rules,
+            .reservation-grid,
+            .date-select-grid,
+            .date-help-row {
                 grid-template-columns: 1fr;
             }
 
-            .reservation-form-grid {
-                grid-template-columns: 1fr;
+            .reservation-form-top,
+            .reservation-form-body {
+                padding: 22px;
             }
 
-            .reservation-submit-row .btn {
+            .reservation-submit-area .btn {
                 width: 100%;
             }
         }
@@ -221,13 +230,7 @@
                 <div class="reveal show">
                     <span class="section-chip">Onlayn müraciət</span>
                     <h1>Rezervasiya et</h1>
-<<<<<<< HEAD
-                    <p>
-                        Xidməti və uyğun vaxtı seçərək qəbul üçün müraciət göndərin.
-                    </p>
-=======
                     <p>Xidməti və uyğun vaxtı seçərək qəbul üçün müraciət göndərin.</p>
->>>>>>> 90e0734 (update)
                 </div>
             </div>
         </section>
@@ -238,29 +241,12 @@
                     <span class="section-chip">Vacib məlumat</span>
                     <h2>Qəbul qaydaları</h2>
                     <p>
-                        Rezervasiya yalnız qeydiyyatdan keçmiş istifadəçilər üçün mümkündür.
-<<<<<<< HEAD
-=======
+                        Rezervasiya yalnız qeydiyyatdan keçmiş istifadəçilər üçündür.
                         Qəbul vaxtını seçərkən klinikanın iş qrafikinə diqqət edin.
->>>>>>> 90e0734 (update)
                     </p>
 
                     <div class="contact-list">
                         <div class="contact-item">
-<<<<<<< HEAD
-                            <h4>İş saatları</h4>
-                            <p>Rezervasiya saatı yalnız 09:00 - 20:00 aralığında seçilə bilər.</p>
-                        </div>
-
-                        <div class="contact-item">
-                            <h4>İstirahət günü</h4>
-                            <p>Bazar günü rezervasiya mümkün deyil.</p>
-                        </div>
-
-                        <div class="contact-item">
-                            <h4>Bir aktiv rezervasiya</h4>
-                            <p>Eyni anda yalnız bir aktiv rezervasiyanız ola bilər.</p>
-=======
                             <h4>Ən azı 1 saat əvvəl</h4>
                             <p>Rezervasiya indiki vaxtdan minimum 1 saat sonrakı vaxta yaradılmalıdır.</p>
                         </div>
@@ -277,167 +263,130 @@
 
                         <div class="contact-item">
                             <h4>Bir aktiv rezervasiya</h4>
-                            <p>Eyni anda yalnız bir aktiv və gözləmədə olan rezervasiyanız ola bilər.</p>
->>>>>>> 90e0734 (update)
+                            <p>Eyni anda yalnız bir aktiv və ya gözləmədə olan rezervasiyanız ola bilər.</p>
                         </div>
                     </div>
                 </div>
 
-<<<<<<< HEAD
-                <div class="form-card reveal show">
-                    <h2>Rezervasiya formu</h2>
-                    <p class="form-subtext">
-                        Tarix və saat seçərkən klinikanın iş qrafikini nəzərə alın.
-                    </p>
-
-                    <form id="reservationForm">
-                        <input type="text" id="fullName" placeholder="Ad və soyad" readonly />
-                        <input type="text" id="phone" placeholder="Telefon" readonly />
-                        <input type="email" id="email" placeholder="E-poçt" readonly />
-
-                        <select id="service" required>
-                            <option value="">Xidmət seçin</option>
-                            <option>Diş çəkimi</option>
-                            <option>Kanal</option>
-                            <option>Ştif</option>
-                            <option>Plomb</option>
-                            <option>Güdül</option>
-                            <option>Diş ətinin müalicəsi</option>
-                            <option>Keramika</option>
-                            <option>Zirkon</option>
-                            <option>Protez</option>
-                            <option>Titan</option>
-                            <option>Qızıl</option>
-                            <option>Breket</option>
-                            <option>İmplant</option>
-                            <option>İmplantüstü</option>
-                            <option>Vinir</option>
-                            <option>Kimyəvi ağartma</option>
-                            <option>AIRFLOW</option>
-                            <option>Polirovka (pasta)</option>
-                            <option>Diş daşları</option>
-                            <option>Diş lakı</option>
-                            <option>Zoom-la ağartma</option>
-                        </select>
-
-                        <input type="datetime-local" id="date" required />
-
-                        <textarea id="message" rows="5" placeholder="Əlavə qeyd"></textarea>
-
-                        <button type="submit" class="btn btn-primary" id="reservationSubmitBtn">
-                            Rezervasiya et
-                        </button>
-=======
-                <div class="form-card reveal show reservation-premium-card">
-                    <div class="reservation-top-box">
-                        <span>Rezervasiya formu</span>
+                <div class="form-card reveal show reservation-form-pro">
+                    <div class="reservation-form-top">
+                        <div class="reservation-form-chip">Rezervasiya formu</div>
                         <h2>Qəbul üçün müraciət</h2>
                         <p>
-                            Məlumatları yoxlayın, xidməti seçin və sizə uyğun tarixi qeyd edin.
-                            Rezervasiya admin tərəfindən təsdiqləndikdən sonra email bildirişi alacaqsınız.
+                            Məlumatları yoxlayın, xidməti seçin və sizə uyğun qəbul tarixini qeyd edin.
+                            Təsdiq və ya rədd cavabı email vasitəsilə göndəriləcək.
                         </p>
 
-                        <div class="reservation-rule-row">
-                            <div class="reservation-rule-mini">
-                                <strong>09:00 - 20:00</strong>
-                                <small>İş saatları aralığı</small>
+                        <div class="reservation-top-rules">
+                            <div class="reservation-mini-rule">
+                                <strong>24 saat formatı</strong>
+                                <small>Saatlar 09:00 formasındadır</small>
                             </div>
-                            <div class="reservation-rule-mini">
+                            <div class="reservation-mini-rule">
+                                <strong>09:00 - 20:00</strong>
+                                <small>Klinikanın iş saatları</small>
+                            </div>
+                            <div class="reservation-mini-rule">
                                 <strong>Bazar günü yox</strong>
                                 <small>İstirahət günü bloklanır</small>
-                            </div>
-                            <div class="reservation-rule-mini">
-                                <strong>Minimum 1 saat</strong>
-                                <small>Əvvəlcədən rezervasiya</small>
                             </div>
                         </div>
                     </div>
 
-                    <form id="reservationForm">
-                        <div class="reservation-form-grid">
-                            <div class="reservation-field">
-                                <label for="fullName">Ad və soyad</label>
-                                <input type="text" id="fullName" placeholder="Ad və soyad" readonly />
-                                <small>Bu məlumat hesabınızdan avtomatik götürülür.</small>
-                            </div>
+                    <div class="reservation-form-body">
+                        <form id="reservationForm">
+                            <div class="reservation-grid">
+                                <div class="reservation-field">
+                                    <label for="fullName">Ad və soyad</label>
+                                    <input type="text" id="fullName" placeholder="Ad və soyad" readonly />
+                                    <small>Bu məlumat hesabınızdan avtomatik götürülür.</small>
+                                </div>
 
-                            <div class="reservation-field">
-                                <label for="phone">Telefon nömrəsi</label>
-                                <input type="tel"
-                                       id="phone"
-                                       placeholder="+994 XX XXX XX XX"
-                                       autocomplete="tel"
-                                       inputmode="tel"
-                                       required />
-                                <small>Klinika sizinlə bu nömrə ilə əlaqə saxlaya bilər.</small>
-                            </div>
+                                <div class="reservation-field">
+                                    <label for="phone">Telefon nömrəsi</label>
+                                    <input type="tel" id="phone" placeholder="+994 XX XXX XX XX" autocomplete="tel" inputmode="tel" required />
+                                    <small>Klinika sizinlə bu nömrə ilə əlaqə saxlaya bilər.</small>
+                                </div>
 
-                            <div class="reservation-field">
-                                <label for="email">E-poçt</label>
-                                <input type="email" id="email" placeholder="E-poçt" readonly />
-                                <small>Bildirişlər bu email ünvanına göndəriləcək.</small>
-                            </div>
+                                <div class="reservation-field">
+                                    <label for="email">E-poçt</label>
+                                    <input type="email" id="email" placeholder="E-poçt" readonly />
+                                    <small>Bildirişlər bu email ünvanına göndəriləcək.</small>
+                                </div>
 
-                            <div class="reservation-field">
-                                <label for="service">Xidmət seçimi</label>
-                                <select id="service" required>
-                                    <option value="">Xidmət seçin</option>
-                                    <option>Diş çəkimi</option>
-                                    <option>Kanal</option>
-                                    <option>Ştif</option>
-                                    <option>Plomb</option>
-                                    <option>Güdül</option>
-                                    <option>Diş ətinin müalicəsi</option>
-                                    <option>Keramika</option>
-                                    <option>Zirkon</option>
-                                    <option>Protez</option>
-                                    <option>Titan</option>
-                                    <option>Qızıl</option>
-                                    <option>Breket</option>
-                                    <option>İmplant</option>
-                                    <option>İmplantüstü</option>
-                                    <option>Vinir</option>
-                                    <option>Kimyəvi ağartma</option>
-                                    <option>AIRFLOW</option>
-                                    <option>Polirovka (pasta)</option>
-                                    <option>Diş daşları</option>
-                                    <option>Diş lakı</option>
-                                    <option>Zoom-la ağartma</option>
-                                </select>
-                                <small>Rezervasiya etmək istədiyiniz xidməti seçin.</small>
-                            </div>
+                                <div class="reservation-field">
+                                    <label for="service">Xidmət seçimi</label>
+                                    <select id="service" required>
+                                        <option value="">Xidmət seçin</option>
+                                        <option>Diş çəkimi</option>
+                                        <option>Kanal</option>
+                                        <option>Ştif</option>
+                                        <option>Plomb</option>
+                                        <option>Güdül</option>
+                                        <option>Diş ətinin müalicəsi</option>
+                                        <option>Keramika</option>
+                                        <option>Zirkon</option>
+                                        <option>Protez</option>
+                                        <option>Titan</option>
+                                        <option>Qızıl</option>
+                                        <option>Breket</option>
+                                        <option>İmplant</option>
+                                        <option>İmplantüstü</option>
+                                        <option>Vinir</option>
+                                        <option>Kimyəvi ağartma</option>
+                                        <option>AIRFLOW</option>
+                                        <option>Polirovka (pasta)</option>
+                                        <option>Diş daşları</option>
+                                        <option>Diş lakı</option>
+                                        <option>Zoom-la ağartma</option>
+                                    </select>
+                                    <small>Rezervasiya etmək istədiyiniz xidməti seçin.</small>
+                                </div>
 
-                            <div class="reservation-field full date-time-card">
-                                <label for="date">Qəbul tarixi və saatı</label>
-                                <input type="datetime-local" id="date" required />
+                                <div class="date-select-box">
+                                    <div class="reservation-field full">
+                                        <label>Qəbul tarixi və saatı</label>
 
-                                <div class="date-helper-list">
-                                    <div class="date-helper-item">Ən azı 1 saat sonra</div>
-                                    <div class="date-helper-item">09:00 - 20:00</div>
-                                    <div class="date-helper-item">Bazar günü olmaz</div>
+                                        <div class="date-select-grid">
+                                            <div>
+                                                <input type="date" id="dateOnly" required />
+                                            </div>
+
+                                            <div>
+                                                <select id="timeOnly" required>
+                                                    <option value="">Saat seçin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="date-help-row">
+                                            <div class="date-help">Ən azı 1 saat sonra</div>
+                                            <div class="date-help">09:00 - 20:00</div>
+                                            <div class="date-help">Bazar günü olmaz</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="reservation-field full">
+                                    <label for="message">Əlavə qeyd</label>
+                                    <textarea id="message" rows="5" placeholder="Məsələn: ağrı var, təcili baxış lazımdır və s."></textarea>
+                                    <small>Bu xana istəyə bağlıdır.</small>
                                 </div>
                             </div>
 
-                            <div class="reservation-field full">
-                                <label for="message">Əlavə qeyd</label>
-                                <textarea id="message" rows="5" placeholder="Məsələn: ağrı var, təcili baxış lazımdır və s."></textarea>
-                                <small>Bu xana istəyə bağlıdır.</small>
+                            <div class="reservation-submit-area">
+                                <button type="submit" class="btn btn-primary" id="reservationSubmitBtn">
+                                    Rezervasiya et
+                                </button>
                             </div>
-                        </div>
+                        </form>
 
-                        <div class="reservation-submit-row">
-                            <button type="submit" class="btn btn-primary" id="reservationSubmitBtn">
-                                Rezervasiya et
-                            </button>
-                        </div>
->>>>>>> 90e0734 (update)
-                    </form>
-
-                    <div id="authMessageBox" style="display:none; margin-top:16px;">
-                        <p class="form-subtext">Rezervasiya üçün əvvəlcə hesabınıza daxil olun.</p>
-                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                            <a href="login.html" class="btn btn-primary">Daxil ol</a>
-                            <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                        <div id="authMessageBox" style="display:none; margin-top:16px;">
+                            <p class="form-subtext">Rezervasiya üçün əvvəlcə hesabınıza daxil olun.</p>
+                            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                                <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                                <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -483,7 +432,8 @@
         const phoneInput = document.getElementById("phone");
         const emailInput = document.getElementById("email");
         const serviceInput = document.getElementById("service");
-        const dateInput = document.getElementById("date");
+        const dateOnlyInput = document.getElementById("dateOnly");
+        const timeOnlyInput = document.getElementById("timeOnly");
         const messageInput = document.getElementById("message");
 
         let currentUser = null;
@@ -507,6 +457,91 @@
                 setTimeout(() => toast.remove(), 300);
             }, 2500);
         }
+
+        function buildTimeOptions() {
+            timeOnlyInput.innerHTML = `<option value="">Saat seçin</option>`;
+
+            for (let hour = 9; hour <= 20; hour++) {
+                for (let minute of [0, 30]) {
+                    if (hour === 20 && minute > 0) continue;
+
+                    const h = String(hour).padStart(2, "0");
+                    const m = String(minute).padStart(2, "0");
+                    const value = `${h}:${m}`;
+
+                    const option = document.createElement("option");
+                    option.value = value;
+                    option.textContent = value;
+
+                    timeOnlyInput.appendChild(option);
+                }
+            }
+        }
+
+        function getCombinedDateTime() {
+            if (!dateOnlyInput.value || !timeOnlyInput.value) return "";
+            return `${dateOnlyInput.value}T${timeOnlyInput.value}`;
+        }
+
+        function setReservationMinDate() {
+            const minDate = new Date();
+            minDate.setHours(minDate.getHours() + 1);
+
+            const pad = (n) => String(n).padStart(2, "0");
+            const year = minDate.getFullYear();
+            const month = pad(minDate.getMonth() + 1);
+            const day = pad(minDate.getDate());
+
+            dateOnlyInput.min = `${year}-${month}-${day}`;
+        }
+
+        function validateReservationDate(dateValue) {
+            if (!dateValue) {
+                return "Tarix və saat seçin.";
+            }
+
+            const selectedDate = new Date(dateValue);
+
+            if (isNaN(selectedDate.getTime())) {
+                return "Tarix düzgün deyil.";
+            }
+
+            const oneHourLater = new Date();
+            oneHourLater.setHours(oneHourLater.getHours() + 1);
+
+            if (selectedDate < oneHourLater) {
+                return "Rezervasiya ən azı 1 saat əvvəl yaradılmalıdır.";
+            }
+
+            if (selectedDate.getDay() === 0) {
+                return "Bazar günü rezervasiya mümkün deyil.";
+            }
+
+            const totalMinutes = selectedDate.getHours() * 60 + selectedDate.getMinutes();
+            const minMinutes = 9 * 60;
+            const maxMinutes = 20 * 60;
+
+            if (totalMinutes < minMinutes || totalMinutes > maxMinutes) {
+                return "Rezervasiya saatı yalnız 09:00 - 20:00 aralığında ola bilər.";
+            }
+
+            return null;
+        }
+
+        function validateDateInputs() {
+            const combined = getCombinedDateTime();
+            if (!combined) return;
+
+            const error = validateReservationDate(combined);
+            if (error) {
+                showToast(error, "error");
+                dateOnlyInput.value = "";
+                timeOnlyInput.value = "";
+            }
+        }
+
+        dateOnlyInput.addEventListener("change", validateDateInputs);
+        timeOnlyInput.addEventListener("change", validateDateInputs);
 
         if (menuToggle) {
             menuToggle.addEventListener("click", () => {
@@ -541,32 +576,6 @@
             }
         }
 
-        function setReservationMinDate() {
-<<<<<<< HEAD
-            const now = new Date();
-            const pad = (n) => String(n).padStart(2, "0");
-
-            const year = now.getFullYear();
-            const month = pad(now.getMonth() + 1);
-            const day = pad(now.getDate());
-            const hours = pad(now.getHours());
-            const minutes = pad(now.getMinutes());
-=======
-            const minDate = new Date();
-            minDate.setHours(minDate.getHours() + 1);
-
-            const pad = (n) => String(n).padStart(2, "0");
-
-            const year = minDate.getFullYear();
-            const month = pad(minDate.getMonth() + 1);
-            const day = pad(minDate.getDate());
-            const hours = pad(minDate.getHours());
-            const minutes = pad(minDate.getMinutes());
->>>>>>> 90e0734 (update)
-
-            dateInput.min = `${year}-${month}-${day}T${hours}:${minutes}`;
-        }
-
         function fillUserData() {
             if (!currentUser || currentUser.username === "admin") {
                 reservationForm.style.display = "none";
@@ -580,65 +589,14 @@
             fullNameInput.value = currentUser.fullName || "";
             emailInput.value = currentUser.email || "";
 
-<<<<<<< HEAD
-      
-=======
             phoneInput.readOnly = false;
             phoneInput.disabled = false;
             phoneInput.removeAttribute("readonly");
             phoneInput.removeAttribute("disabled");
 
->>>>>>> 90e0734 (update)
             const savedPhone = localStorage.getItem("userPhone");
             phoneInput.value = savedPhone || "";
         }
-
-        function validateReservationDate(dateValue) {
-            if (!dateValue) {
-                return "Tarix seçin.";
-            }
-
-            const selectedDate = new Date(dateValue);
-
-            if (isNaN(selectedDate.getTime())) {
-                return "Tarix düzgün deyil.";
-            }
-
-<<<<<<< HEAD
-=======
-            const oneHourLater = new Date();
-            oneHourLater.setHours(oneHourLater.getHours() + 1);
-
-            if (selectedDate < oneHourLater) {
-                return "Rezervasiya ən azı 1 saat əvvəl yaradılmalıdır.";
-            }
-
->>>>>>> 90e0734 (update)
-            if (selectedDate.getDay() === 0) {
-                return "Bazar günü rezervasiya mümkün deyil.";
-            }
-
-            const hours = selectedDate.getHours();
-            const minutes = selectedDate.getMinutes();
-
-            const totalMinutes = hours * 60 + minutes;
-            const minMinutes = 9 * 60;
-            const maxMinutes = 20 * 60;
-
-            if (totalMinutes < minMinutes || totalMinutes > maxMinutes) {
-                return "Rezervasiya saatı yalnız 09:00 - 20:00 aralığında ola bilər.";
-            }
-
-            return null;
-        }
-
-        dateInput.addEventListener("change", function () {
-            const error = validateReservationDate(dateInput.value);
-            if (error) {
-                showToast(error, "error");
-                dateInput.value = "";
-            }
-        });
 
         if (navLogout) {
             navLogout.addEventListener("click", function (e) {
@@ -660,7 +618,7 @@
             const phone = phoneInput.value.trim();
             const email = emailInput.value.trim();
             const service = serviceInput.value;
-            const date = dateInput.value;
+            const date = getCombinedDateTime();
             const message = messageInput.value.trim();
 
             if (!fullName || !phone || !email || !service || !date) {
@@ -686,21 +644,12 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-<<<<<<< HEAD
                         fullName: fullName,
                         phone: phone,
                         email: email,
                         service: service,
                         date: date,
                         message: message,
-=======
-                        fullName,
-                        phone,
-                        email,
-                        service,
-                        date,
-                        message,
->>>>>>> 90e0734 (update)
                         userId: currentUser.id
                     })
                 });
@@ -737,6 +686,7 @@
             }
         });
 
+        buildTimeOptions();
         setupNavbar();
         fillUserData();
         setReservationMinDate();

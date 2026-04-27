@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Əlaqə | ProudSmileDent</title>
-    <meta name="description" content="ProudSmileDent ilə əlaqə saxlayın. Telefon, e-poçt, iş saatları və onlayn müraciət forması." />
+    <meta name="description" content="ProudSmileDent ilə əlaqə saxlayın." />
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <div class="page-loader" id="pageLoader">
         <div class="loader-ring"></div>
@@ -53,7 +54,7 @@
                     <span class="section-chip">Əlaqə</span>
                     <h1>Bizimlə rahat şəkildə əlaqə saxlayın</h1>
                     <p>
-                        Telefon, e-poçt və onlayn müraciət forması vasitəsilə bizimlə əlaqə saxlaya,
+                        Telefon, e-poçt və onlayn chat vasitəsilə bizimlə əlaqə saxlaya,
                         suallarınızı göndərə və qəbul barədə məlumat ala bilərsiniz.
                     </p>
                 </div>
@@ -61,37 +62,109 @@
         </section>
 
         <section class="section">
-            <div class="form-card reveal delay-1">
-                <h2>Qəbul və əlaqə məlumatları</h2>
-                <p class="form-subtext">
-                    Onlayn müraciət üçün rezervasiya bölməsindən istifadə edin. Əlavə suallar üçün aşağıdakı əlaqə vasitələri ilə bizimlə rahat şəkildə əlaqə saxlaya bilərsiniz.
-                </p>
+            <div class="container contact-grid">
+                <div class="form-card reveal delay-1">
+                    <h2>Qəbul və əlaqə məlumatları</h2>
+                    <p class="form-subtext">
+                        Onlayn müraciət üçün rezervasiya bölməsindən istifadə edin.
+                        Əlavə suallar üçün aşağıdakı əlaqə vasitələri ilə bizimlə rahat şəkildə əlaqə saxlaya bilərsiniz.
+                    </p>
 
-                <div class="contact-list">
-                    <div class="contact-item">
-                        <h4>Telefon</h4>
-                        <p>+994 50 000 00 00</p>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <h4>Telefon</h4>
+                            <p>+994 50 586 66 91</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>E-poçt</h4>
+                            <p>info@proudsmiledent.com</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>İş saatları</h4>
+                            <p>Hər gün 09:00 - 20:00</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h4>Ünvan</h4>
+                            <p>Bakı, Azərbaycan</p>
+                        </div>
                     </div>
 
-                    <div class="contact-item">
-                        <h4>E-poçt</h4>
-                        <p>info@proudsmiledent.com</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h4>İş saatları</h4>
-                        <p>Hər gün 09:00 - 19:00</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h4>Ünvan</h4>
-                        <p>Bakı, Azərbaycan</p>
+                    <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+                        <a href="reservation.html" class="btn btn-primary">Rezervasiya et</a>
+                        <a href="prices.html" class="btn btn-secondary">Qiymətlərə bax</a>
                     </div>
                 </div>
 
-                <div style="margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap;">
-                    <a href="reservation.html" class="btn btn-primary">Rezervasiya et</a>
-                    <a href="prices.html" class="btn btn-secondary">Qiymətlərə bax</a>
+                <div class="form-card reveal delay-2 online-chat-card" id="chatCard">
+                    <div class="chat-header">
+                        <span>Onlayn müraciət</span>
+                        <h2>Adminə mesaj yazın</h2>
+                        <p>Sualınızı yazın və ya aşağıdakı hazır suallardan birini seçin.</p>
+                    </div>
+
+                    <div class="chat-body">
+                        <div id="chatAuthBox" class="chat-auth-box" style="display:none;">
+                            <h2>Chat üçün daxil olun</h2>
+                            <p class="form-subtext">
+                                Adminə mesaj yazmaq üçün əvvəlcə pasiyent hesabınıza daxil olmalısınız.
+                            </p>
+                            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                                <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                                <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                            </div>
+                        </div>
+
+                        <div id="chatContent" style="display:none;">
+                            <div class="chat-user-info" id="chatUserInfo">İstifadəçi</div>
+
+                            <div class="chat-faq-box">
+                                <div class="chat-faq-title">
+                                    <div>
+                                        <strong>Ən çox verilən suallar</strong>
+                                        <p>Birini seçin, mətn avtomatik mesaja əlavə olunsun.</p>
+                                    </div>
+                                    <span>FAQ</span>
+                                </div>
+
+                                <div class="chat-faq-chips">
+                                    <button type="button" data-text="Dişim saralıb. Diş ağartma üçün hansı üsulu məsləhət görürsünüz?">Dişim saralıb</button>
+                                    <button type="button" data-text="Dişim ağrıyır. Təcili olaraq nə etməliyəm və qəbul mümkündür?">Dişim ağrıyır</button>
+                                    <button type="button" data-text="Dişim qırılıb. Onu bərpa etmək mümkündür? Qiymət təxminən nə qədərdir?">Dişim qırılıb</button>
+                                    <button type="button" data-text="Diş ətim qanayır. Bu nə ilə bağlı ola bilər və müalicə lazımdır?">Diş ətim qanayır</button>
+                                    <button type="button" data-text="İmplant etdirmək istəyirəm. Proses, müddət və qiymət barədə məlumat verə bilərsiniz?">İmplant</button>
+                                    <button type="button" data-text="Breket taxdırmaq istəyirəm. Müayinə və qiymət haqqında məlumat istəyirəm.">Breket</button>
+                                    <button type="button" data-text="Diş daşlarının təmizlənməsi üçün qəbul və qiymət barədə məlumat istəyirəm.">Diş daşı</button>
+                                    <button type="button" data-text="Plomb üçün qəbul yazılmaq istəyirəm. Qiymət və boş saatlar barədə məlumat verə bilərsiniz?">Plomb</button>
+                                    <button type="button" data-text="Uşaq stomatoloqu üçün qəbul mümkündür?">Uşaq stomatoloqu</button>
+                                    <button type="button" data-text="Diş çəkimi üçün qiymət və qəbul saatları barədə məlumat istəyirəm.">Diş çəkimi</button>
+                                </div>
+                            </div>
+
+                            <div class="chat-actions">
+                                <button type="button" class="chat-small-btn" id="selectMessagesBtn">
+                                    Mesaj sil
+                                </button>
+
+                                <button type="button" class="chat-small-btn danger" id="deleteSelectedBtn" style="display:none;">
+                                    Seçilənləri sil
+                                </button>
+
+                                <button type="button" class="chat-small-btn cancel" id="cancelSelectBtn" style="display:none;">
+                                    Ləğv et
+                                </button>
+                            </div>
+
+                            <div id="chatWindow" class="chat-window"></div>
+
+                            <div class="chat-input-area">
+                                <input type="text" id="chatInput" placeholder="Mesajınızı yazın..." />
+                                <button type="button" class="btn btn-primary" id="sendChatBtn">Göndər</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -134,53 +207,6 @@
             </div>
         </section>
 
-        <section class="section">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <span class="section-chip">Niyə əlaqə bölməsi vacibdir</span>
-                    <h2>Pasiyent üçün rahat və etibarlı ünsiyyət</h2>
-                    <p>
-                        Klinikayla rahat əlaqə saxlamaq pasiyentin qərar verməsini asanlaşdırır və
-                        ümumi xidmət təəssüratını daha peşəkar edir.
-                    </p>
-                </div>
-
-                <div class="info-grid">
-                    <article class="info-card reveal">
-                        <div class="info-icon">📞</div>
-                        <h3>Birbaşa əlaqə</h3>
-                        <p>
-                            Pasiyent istədiyi zaman telefon vasitəsilə sual verə və ilkin məlumat ala bilər.
-                        </p>
-                    </article>
-
-                    <article class="info-card reveal delay-1">
-                        <div class="info-icon">✉️</div>
-                        <h3>Onlayn müraciət</h3>
-                        <p>
-                            Sayt üzərindən rahat şəkildə yazaraq klinikayla əlaqə qurmaq mümkündür.
-                        </p>
-                    </article>
-
-                    <article class="info-card reveal delay-2">
-                        <div class="info-icon">🕒</div>
-                        <h3>İş saatları aydın görünür</h3>
-                        <p>
-                            Qəbul və müraciət üçün uyğun vaxtı seçmək pasiyent üçün daha rahat olur.
-                        </p>
-                    </article>
-
-                    <article class="info-card reveal delay-3">
-                        <div class="info-icon">📍</div>
-                        <h3>Ünvan məlumatı</h3>
-                        <p>
-                            Filial və klinika yerləşməsi barədə məlumat pasiyent üçün etibarlılığı artırır.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section class="section cta-section">
             <div class="container">
                 <div class="cta-box reveal">
@@ -210,7 +236,8 @@
                     </div>
                 </div>
                 <p>
-                    Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər, təcrübəli həkim heyəti və müasir yanaşma.
+                    Sağlam və estetik gülüş üçün peşəkar stomatoloji xidmətlər,
+                    təcrübəli həkim heyəti və müasir yanaşma.
                 </p>
             </div>
 
@@ -235,6 +262,15 @@
         </div>
     </footer>
 
+    <div id="toastBox" class="toast-box"></div>
+
+    <div class="new-message-notification" id="newMessageNotification">
+        <strong>Yeni mesaj var</strong>
+        <p>Admin sizə cavab yazdı. Baxmaq üçün klik edin.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         const menuToggle = document.getElementById("menuToggle");
         const navMenu = document.getElementById("navMenu");
@@ -246,11 +282,71 @@
         const navMyReservations = document.getElementById("navMyReservations");
         const navLogout = document.getElementById("navLogout");
 
-        if (menuToggle) {
+        const chatAuthBox = document.getElementById("chatAuthBox");
+        const chatContent = document.getElementById("chatContent");
+        const chatWindow = document.getElementById("chatWindow");
+        const chatInput = document.getElementById("chatInput");
+        const chatUserInfo = document.getElementById("chatUserInfo");
+        const sendChatBtn = document.getElementById("sendChatBtn");
+        const chatCard = document.getElementById("chatCard");
+
+        const selectMessagesBtn = document.getElementById("selectMessagesBtn");
+        const deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+        const cancelSelectBtn = document.getElementById("cancelSelectBtn");
+        const newMessageNotification = document.getElementById("newMessageNotification");
+
+        let currentUser = null;
+        let chatTimer = null;
+        let unreadTimer = null;
+        let selectMode = false;
+        let selectedMessageIds = [];
+        let lastUnreadCount = 0;
+        let isChatFocused = false;
+        let cachedMessages = [];
+
+        try {
+            currentUser = JSON.parse(localStorage.getItem("user") || "null");
+        } catch {
+            currentUser = null;
+        }
+
+        function showToast(message, type = "info") {
+            const toastBox = document.getElementById("toastBox");
+            if (!toastBox) return;
+
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.textContent = message;
+
+            toastBox.appendChild(toast);
+
+            setTimeout(() => toast.classList.add("show"), 10);
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        function formatChatTime(dateValue) {
+            if (!dateValue) return "";
+            return new Date(dateValue).toLocaleString("az-AZ");
+        }
+
+        function escapeHtml(value) {
+            return String(value || "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        if (menuToggle && navMenu) {
             menuToggle.addEventListener("click", () => {
                 navMenu.classList.toggle("active");
                 menuToggle.classList.toggle("active");
-                mobileOverlay.classList.toggle("active");
+                if (mobileOverlay) mobileOverlay.classList.toggle("active");
             });
         }
 
@@ -263,30 +359,9 @@
         }
 
         window.addEventListener("load", () => {
-            if (pageLoader) {
-                pageLoader.classList.add("hide");
-            }
+            if (pageLoader) pageLoader.classList.add("hide");
         });
-        function showToast(message, type = "info") {
-            const toastBox = document.getElementById("toastBox");
 
-            const toast = document.createElement("div");
-            toast.className = `toast-message ${type}`;
-            toast.textContent = message;
-
-            toastBox.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.add("show");
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.remove("show");
-                setTimeout(() => {
-                    toast.remove();
-                }, 300);
-            }, 2500);
-        }
         const revealElements = document.querySelectorAll(".reveal");
 
         function revealOnScroll() {
@@ -294,46 +369,83 @@
 
             revealElements.forEach((el) => {
                 const rectTop = el.getBoundingClientRect().top;
-                if (rectTop < triggerBottom) {
-                    el.classList.add("show");
-                }
+                if (rectTop < triggerBottom) el.classList.add("show");
             });
         }
 
         window.addEventListener("scroll", revealOnScroll);
         window.addEventListener("load", revealOnScroll);
 
-        const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+        function setupNavbarAndChat() {
+            if (currentUser) {
+                navLogin.style.display = "none";
+                navRegister.style.display = "none";
+                navMyReservations.style.display = currentUser.username === "admin" ? "none" : "inline-flex";
+                navLogout.style.display = "inline-flex";
 
-        if (currentUser) {
-            navLogin.style.display = "none";
-            navRegister.style.display = "none";
-            navMyReservations.style.display = "inline-flex";
-            navLogout.style.display = "inline-flex";
-        } else {
-            navLogin.style.display = "inline-flex";
-            navRegister.style.display = "inline-flex";
-            navMyReservations.style.display = "none";
-            navLogout.style.display = "none";
+                if (currentUser.username === "admin") {
+                    chatAuthBox.style.display = "block";
+                    chatContent.style.display = "none";
+                    chatAuthBox.innerHTML = `
+                            <h2>Bu chat pasiyentlər üçündür</h2>
+                            <p class="form-subtext">
+                                Siz admin hesabı ilə daxil olmusunuz. Admin cavabları yalnız admin paneldə yazılır.
+                                Pasiyent kimi mesaj yazmaq üçün admin hesabından çıxıb istifadəçi hesabı ilə daxil olun.
+                            </p>
+                            <button type="button" class="btn btn-primary" id="adminContactLogoutBtn">Admin hesabından çıx</button>
+                        `;
+
+                    const adminContactLogoutBtn = document.getElementById("adminContactLogoutBtn");
+                    if (adminContactLogoutBtn) {
+                        adminContactLogoutBtn.addEventListener("click", function () {
+                            localStorage.removeItem("user");
+                            window.location.href = "login.html";
+                        });
+                    }
+
+                    return;
+                }
+
+                chatAuthBox.style.display = "none";
+                chatContent.style.display = "block";
+                chatUserInfo.textContent = `${currentUser.fullName || currentUser.username} • ${currentUser.email || ""}`;
+
+                loadUserChatMessages(true);
+                checkUnreadMessages();
+
+                chatTimer = setInterval(() => loadUserChatMessages(false), 3000);
+                unreadTimer = setInterval(checkUnreadMessages, 3000);
+            } else {
+                navLogin.style.display = "inline-flex";
+                navRegister.style.display = "inline-flex";
+                navMyReservations.style.display = "none";
+                navLogout.style.display = "none";
+
+                chatAuthBox.style.display = "block";
+                chatContent.style.display = "none";
+            }
         }
 
-        navLogout.addEventListener("click", function (e) {
-            e.preventDefault();
-            localStorage.removeItem("user");
-            window.location.href = "login.html";
-        });
+        if (navLogout) {
+            navLogout.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem("user");
+                window.location.href = "login.html";
+            });
+        }
+
         const contactReserveBtn = document.getElementById("contactReserveBtn");
 
         if (contactReserveBtn) {
             contactReserveBtn.addEventListener("click", function (e) {
                 e.preventDefault();
 
-                const currentUser = JSON.parse(localStorage.getItem("user") || "null");
+                const user = JSON.parse(localStorage.getItem("user") || "null");
 
-                if (currentUser) {
+                if (user && user.username !== "admin") {
                     window.location.href = "reservation.html";
                 } else {
-                    showToast("Rezervasiya üçün əvvəlcə daxil olun.", "info");
+                    showToast("Rezervasiya üçün pasiyent hesabı ilə daxil olun.", "info");
 
                     setTimeout(() => {
                         window.location.href = "login.html";
@@ -341,7 +453,340 @@
                 }
             });
         }
+
+        document.querySelectorAll(".chat-faq-chips button").forEach(button => {
+            button.addEventListener("click", function () {
+                const text = this.getAttribute("data-text") || this.textContent.trim();
+                chatInput.value = text;
+                chatInput.focus();
+                showToast("Hazır sual mesaja əlavə olundu.", "info");
+            });
+        });
+
+        function updateSelectButtons() {
+            if (!selectMode) {
+                selectMessagesBtn.textContent = "Mesaj sil";
+                deleteSelectedBtn.style.display = "none";
+                cancelSelectBtn.style.display = "none";
+                selectedMessageIds = [];
+                return;
+            }
+
+            selectMessagesBtn.textContent = "Seçim rejimi aktivdir";
+            cancelSelectBtn.style.display = "inline-flex";
+
+            deleteSelectedBtn.style.display = selectedMessageIds.length > 0 ? "inline-flex" : "none";
+            deleteSelectedBtn.textContent = selectedMessageIds.length > 0
+                ? `Seçilənləri sil (${selectedMessageIds.length})`
+                : "Seçilənləri sil";
+        }
+
+        function toggleSelectMode() {
+            selectMode = !selectMode;
+            selectedMessageIds = [];
+            updateSelectButtons();
+            renderMessages(cachedMessages, false);
+        }
+
+        function cancelSelectMode() {
+            selectMode = false;
+            selectedMessageIds = [];
+            updateSelectButtons();
+            renderMessages(cachedMessages, false);
+        }
+
+        function toggleMessageSelection(id) {
+            if (!id) return;
+
+            if (selectedMessageIds.includes(id)) {
+                selectedMessageIds = selectedMessageIds.filter(x => x !== id);
+            } else {
+                selectedMessageIds.push(id);
+            }
+
+            updateSelectButtons();
+            renderMessages(cachedMessages, false);
+        }
+
+        function renderMessages(data, scrollBottom = false) {
+            chatWindow.innerHTML = "";
+
+            if (!data.length) {
+                addChatMessage({
+                    id: 0,
+                    message: "Salam! Mesajınızı yazın və ya yuxarıdakı hazır suallardan birini seçin.",
+                    sender: "Admin",
+                    createdAt: new Date()
+                });
+                return;
+            }
+
+            data.forEach(item => addChatMessage(item));
+
+            if (scrollBottom) {
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        }
+
+        function addChatMessage(item) {
+            const type = item.sender === "Admin" ? "admin" : "user";
+            const isSelected = selectedMessageIds.includes(item.id);
+
+            const wrap = document.createElement("div");
+            wrap.className = `chat-row-wrap ${type} ${isSelected ? "selected-chat" : ""}`;
+
+            const row = document.createElement("div");
+            row.className = `chat-row ${type}`;
+
+            const bubble = document.createElement("div");
+            bubble.className = "chat-bubble";
+            bubble.innerHTML = escapeHtml(item.message || "-");
+
+            const meta = document.createElement("div");
+            meta.className = "chat-meta";
+            meta.textContent = formatChatTime(item.createdAt);
+
+            row.appendChild(bubble);
+            row.appendChild(meta);
+
+            if (selectMode && type === "user" && item.id > 0) {
+                const check = document.createElement("input");
+                check.type = "checkbox";
+                check.className = "chat-check";
+                check.checked = isSelected;
+                check.addEventListener("change", () => toggleMessageSelection(item.id));
+                wrap.appendChild(check);
+            }
+
+            wrap.appendChild(row);
+            chatWindow.appendChild(wrap);
+        }
+
+        async function loadUserChatMessages(scrollBottom = false) {
+            if (!currentUser || !currentUser.id || currentUser.username === "admin") return;
+
+            try {
+                const response = await fetch(`/api/chat/user/${currentUser.id}`);
+                const data = await response.json();
+
+                if (!response.ok || !Array.isArray(data)) return;
+
+                cachedMessages = data;
+                renderMessages(data, scrollBottom);
+            } catch (error) {
+                console.error("CHAT LOAD ERROR:", error);
+            }
+        }
+
+        async function sendChatMessage() {
+            if (!currentUser || !currentUser.id || currentUser.username === "admin") {
+                showToast("Chat üçün əvvəlcə pasiyent hesabı ilə daxil olun.", "info");
+                return;
+            }
+
+            const text = chatInput.value.trim();
+
+            if (!text) {
+                showToast("Mesaj yazın.", "info");
+                return;
+            }
+
+            const originalText = sendChatBtn.textContent;
+
+            try {
+                sendChatBtn.disabled = true;
+                sendChatBtn.textContent = "Göndərilir.";
+
+                const response = await fetch("/api/chat/send", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userId: currentUser.id,
+                        fullName: currentUser.fullName || currentUser.username || "",
+                        email: currentUser.email || "",
+                        message: text,
+                        sender: "User"
+                    })
+                });
+
+                const resultText = await response.text();
+
+                let data = {};
+                try {
+                    data = resultText ? JSON.parse(resultText) : {};
+                } catch {
+                    data = { message: resultText };
+                }
+
+                if (response.ok) {
+                    chatInput.value = "";
+                    showToast(data.message || "Mesaj göndərildi.", "success");
+                    loadUserChatMessages(true);
+                } else {
+                    showToast(data.message || "Mesaj göndərilmədi.", "error");
+                }
+            } catch (error) {
+                console.error("CHAT SEND ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            } finally {
+                sendChatBtn.disabled = false;
+                sendChatBtn.textContent = originalText;
+            }
+        }
+
+        async function deleteSelectedMessages() {
+            if (selectedMessageIds.length === 0) {
+                showToast("Əvvəlcə mesaj seçin.", "info");
+                return;
+            }
+
+            const result = await Swal.fire({
+                title: "Seçilən mesajlar silinsin?",
+                text: `${selectedMessageIds.length} mesaj silinəcək.`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#f97316",
+                cancelButtonColor: "#6b7280",
+                confirmButtonText: "Bəli, sil",
+                cancelButtonText: "Ləğv et"
+            });
+
+            if (!result.isConfirmed) return;
+
+            try {
+                const response = await fetch("/api/chat/delete-selected", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        ids: selectedMessageIds
+                    })
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        title: "Silindi",
+                        text: "Seçilən mesajlar uğurla silindi.",
+                        icon: "success",
+                        timer: 1300,
+                        showConfirmButton: false
+                    });
+
+                    selectMode = false;
+                    selectedMessageIds = [];
+                    updateSelectButtons();
+                    loadUserChatMessages(true);
+                } else {
+                    showToast("Mesajları silmək mümkün olmadı.", "error");
+                }
+            } catch (error) {
+                console.error("DELETE SELECTED CHAT ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            }
+        }
+
+        async function checkUnreadMessages() {
+            if (!currentUser || !currentUser.id || currentUser.username === "admin") return;
+
+            try {
+                const response = await fetch(`/api/chat/user/${currentUser.id}/unread-count`);
+                const data = await response.json();
+
+                if (!response.ok) return;
+
+                const unreadCount = data.unreadCount || 0;
+
+                if (unreadCount > lastUnreadCount && !isChatFocused) {
+                    showNewMessageNotification();
+                }
+
+                lastUnreadCount = unreadCount;
+            } catch (error) {
+                console.error("UNREAD CHECK ERROR:", error);
+            }
+        }
+
+        function showNewMessageNotification() {
+            if (!newMessageNotification) return;
+
+            newMessageNotification.classList.add("show");
+
+            setTimeout(() => {
+                newMessageNotification.classList.remove("show");
+            }, 5000);
+        }
+
+        async function markMessagesAsRead() {
+            if (!currentUser || !currentUser.id || currentUser.username === "admin") return;
+
+            try {
+                await fetch(`/api/chat/user/${currentUser.id}/mark-read`, {
+                    method: "PUT"
+                });
+
+                lastUnreadCount = 0;
+                if (newMessageNotification) {
+                    newMessageNotification.classList.remove("show");
+                }
+            } catch (error) {
+                console.error("MARK READ ERROR:", error);
+            }
+        }
+
+        if (chatCard) {
+            chatCard.addEventListener("mouseenter", function () {
+                isChatFocused = true;
+                markMessagesAsRead();
+            });
+
+            chatCard.addEventListener("click", function () {
+                isChatFocused = true;
+                markMessagesAsRead();
+            });
+        }
+
+        if (newMessageNotification) {
+            newMessageNotification.addEventListener("click", function () {
+                newMessageNotification.classList.remove("show");
+                document.getElementById("chatCard").scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+                isChatFocused = true;
+                markMessagesAsRead();
+                loadUserChatMessages(true);
+            });
+        }
+
+        if (selectMessagesBtn) {
+            selectMessagesBtn.addEventListener("click", toggleSelectMode);
+        }
+
+        if (cancelSelectBtn) {
+            cancelSelectBtn.addEventListener("click", cancelSelectMode);
+        }
+
+        if (deleteSelectedBtn) {
+            deleteSelectedBtn.addEventListener("click", deleteSelectedMessages);
+        }
+
+        if (sendChatBtn) {
+            sendChatBtn.addEventListener("click", sendChatMessage);
+        }
+
+        if (chatInput) {
+            chatInput.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    sendChatMessage();
+                }
+            });
+        }
+
+        setupNavbarAndChat();
     </script>
-    <div id="toastBox" class="toast-box"></div>
 </body>
 </html>

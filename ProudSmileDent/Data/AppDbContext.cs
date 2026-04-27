@@ -14,6 +14,8 @@ namespace ProudSmileDent.Data
 
         public DbSet<Appointment> Appointments { get; set; }
 
+        public DbSet<ChatMessage> ChatMessages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -28,6 +30,14 @@ namespace ProudSmileDent.Data
 
             modelBuilder.Entity<User>()
                 .Property(x => x.PasswordHash)
+                .IsRequired();
+
+            modelBuilder.Entity<ChatMessage>()
+                .Property(x => x.Message)
+                .IsRequired();
+
+            modelBuilder.Entity<ChatMessage>()
+                .Property(x => x.Sender)
                 .IsRequired();
         }
     }

@@ -22,63 +22,69 @@ namespace ProudSmileDent.Controllers
 
         private IActionResult? ValidateAppointmentDate(DateTime date)
         {
-<<<<<<< HEAD
-=======
             if (date < DateTime.Now.AddHours(1))
-            {
                 return BadRequest(new { message = "Rezervasiya ən azı 1 saat əvvəl yaradılmalıdır." });
-            }
 
->>>>>>> 90e0734 (update)
             if (date.DayOfWeek == DayOfWeek.Sunday)
-            {
                 return BadRequest(new { message = "Bazar günü rezervasiya mümkün deyil." });
-            }
 
             var time = date.TimeOfDay;
             var start = new TimeSpan(9, 0, 0);
             var end = new TimeSpan(20, 0, 0);
 
             if (time < start || time > end)
-            {
                 return BadRequest(new { message = "Rezervasiya saatı yalnız 09:00 - 20:00 aralığında ola bilər." });
-            }
 
             return null;
+        }
+
+        private object MapAppointment(Appointment appointment)
+        {
+            return new
+            {
+                id = appointment.Id,
+                fullName = appointment.FullName,
+                phone = appointment.Phone,
+                email = appointment.Email,
+                service = appointment.Service,
+                date = appointment.Date,
+                message = appointment.Message,
+                status = appointment.Status,
+                userId = appointment.UserId,
+                reminderSent = appointment.ReminderSent,
+                isActive = appointment.IsActive,
+                createdAt = appointment.CreatedAt,
+                adminResponseMessage = appointment.AdminResponseMessage,
+                hasUserEdited = appointment.HasUserEdited
+            };
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AppointmentCreateDto dto)
         {
             if (dto.UserId == null || dto.UserId <= 0)
-            {
                 return Unauthorized(new { message = "Rezervasiya üçün əvvəlcə daxil olun." });
-            }
 
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId.Value);
 
             if (user == null)
-            {
                 return Unauthorized(new { message = "İstifadəçi tapılmadı." });
-            }
 
             var dateValidation = ValidateAppointmentDate(dto.Date);
             if (dateValidation != null)
-            {
                 return dateValidation;
-            }
 
             var existingAppointment = await _context.Appointments
                 .FirstOrDefaultAsync(x =>
                     x.UserId == dto.UserId.Value &&
-                    x.Status == "Pending" &&
+                    (x.Status == "Pending" || x.Status == "Approved") &&
                     x.Date > DateTime.Now);
 
             if (existingAppointment != null)
             {
                 return BadRequest(new
                 {
-                    message = "Sizin artıq aktiv və gözləmədə olan rezervasiyanız var."
+                    message = "Sizin artıq aktiv və ya gözləmədə olan rezervasiyanız var."
                 });
             }
 
@@ -109,12 +115,8 @@ namespace ProudSmileDent.Controllers
                 ReminderSent = false,
                 IsActive = true,
                 CreatedAt = DateTime.Now,
-<<<<<<< HEAD
-                AdminResponseMessage = null
-=======
                 AdminResponseMessage = null,
                 HasUserEdited = false
->>>>>>> 90e0734 (update)
             };
 
             _context.Appointments.Add(appointment);
@@ -138,26 +140,7 @@ namespace ProudSmileDent.Controllers
             return Ok(new
             {
                 message = "Rezervasiya uğurla yaradıldı.",
-                appointment = new
-                {
-                    id = appointment.Id,
-                    fullName = appointment.FullName,
-                    phone = appointment.Phone,
-                    email = appointment.Email,
-                    service = appointment.Service,
-                    date = appointment.Date,
-                    message = appointment.Message,
-                    status = appointment.Status,
-                    userId = appointment.UserId,
-                    isActive = appointment.IsActive,
-                    createdAt = appointment.CreatedAt,
-<<<<<<< HEAD
-                    adminResponseMessage = appointment.AdminResponseMessage
-=======
-                    adminResponseMessage = appointment.AdminResponseMessage,
-                    hasUserEdited = appointment.HasUserEdited
->>>>>>> 90e0734 (update)
-                }
+                appointment = MapAppointment(appointment)
             });
         }
 
@@ -167,29 +150,9 @@ namespace ProudSmileDent.Controllers
             var appointments = await _context.Appointments
                 .Where(x => x.UserId == userId)
                 .OrderByDescending(x => x.Id)
-                .Select(x => new
-                {
-                    id = x.Id,
-                    fullName = x.FullName,
-                    phone = x.Phone,
-                    email = x.Email,
-                    service = x.Service,
-                    date = x.Date,
-                    message = x.Message,
-                    status = x.Status,
-                    userId = x.UserId,
-                    isActive = x.IsActive,
-                    createdAt = x.CreatedAt,
-<<<<<<< HEAD
-                    adminResponseMessage = x.AdminResponseMessage
-=======
-                    adminResponseMessage = x.AdminResponseMessage,
-                    hasUserEdited = x.HasUserEdited
->>>>>>> 90e0734 (update)
-                })
                 .ToListAsync();
 
-            return Ok(appointments);
+            return Ok(appointments.Select(MapAppointment));
         }
 
         [HttpPut("{id:int}")]
@@ -198,38 +161,23 @@ namespace ProudSmileDent.Controllers
             var appointment = await _context.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
             if (appointment == null)
-            {
                 return NotFound(new { message = "Rezervasiya tapılmadı." });
-            }
 
             if (dto.UserId <= 0 || appointment.UserId != dto.UserId)
-            {
                 return BadRequest(new { message = "Bu rezervasiyanı dəyişmək icazəniz yoxdur." });
-            }
 
             if (appointment.Status != "Pending")
-            {
                 return BadRequest(new { message = "Admin tərəfindən baxılmış rezervasiya dəyişdirilə bilməz." });
-            }
 
             if (appointment.Date <= DateTime.Now)
-            {
                 return BadRequest(new { message = "Vaxtı bitmiş rezervasiya dəyişdirilə bilməz." });
-            }
 
-<<<<<<< HEAD
-=======
             if (appointment.HasUserEdited)
-            {
                 return BadRequest(new { message = "Bu rezervasiyada artıq bir dəfə düzəliş etmisiniz." });
-            }
 
->>>>>>> 90e0734 (update)
             var dateValidation = ValidateAppointmentDate(dto.Date);
             if (dateValidation != null)
-            {
                 return dateValidation;
-            }
 
             var conflictAppointment = await _context.Appointments
                 .FirstOrDefaultAsync(x =>
@@ -250,19 +198,10 @@ namespace ProudSmileDent.Controllers
             appointment.Service = dto.Service;
             appointment.Date = dto.Date;
             appointment.Message = dto.Message;
-
             appointment.Status = "Pending";
             appointment.ReminderSent = false;
             appointment.IsActive = true;
             appointment.AdminResponseMessage = null;
-<<<<<<< HEAD
-
-            await _context.SaveChangesAsync();
-
-            return Ok(new
-            {
-                message = "Rezervasiya yeniləndi.",
-=======
             appointment.HasUserEdited = true;
 
             await _context.SaveChangesAsync();
@@ -285,27 +224,7 @@ namespace ProudSmileDent.Controllers
             return Ok(new
             {
                 message = "Rezervasiya yeniləndi. Artıq ikinci dəfə düzəliş etmək mümkün deyil.",
->>>>>>> 90e0734 (update)
-                appointment = new
-                {
-                    id = appointment.Id,
-                    fullName = appointment.FullName,
-                    phone = appointment.Phone,
-                    email = appointment.Email,
-                    service = appointment.Service,
-                    date = appointment.Date,
-                    message = appointment.Message,
-                    status = appointment.Status,
-                    userId = appointment.UserId,
-                    isActive = appointment.IsActive,
-                    createdAt = appointment.CreatedAt,
-<<<<<<< HEAD
-                    adminResponseMessage = appointment.AdminResponseMessage
-=======
-                    adminResponseMessage = appointment.AdminResponseMessage,
-                    hasUserEdited = appointment.HasUserEdited
->>>>>>> 90e0734 (update)
-                }
+                appointment = MapAppointment(appointment)
             });
         }
 
@@ -315,39 +234,16 @@ namespace ProudSmileDent.Controllers
             var appointment = await _context.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
             if (appointment == null)
-            {
                 return NotFound(new { message = "Rezervasiya tapılmadı." });
-            }
 
-<<<<<<< HEAD
-            var isExpired = appointment.Date <= DateTime.Now;
-            var isRejected = appointment.Status == "Rejected";
-
-            if (!isRejected && !isExpired && appointment.Status != "Pending")
-            {
-                return BadRequest(new { message = "Bu rezervasiyanı silmək mümkün deyil." });
-=======
             if (appointment.Date <= DateTime.Now)
-            {
                 return BadRequest(new { message = "Vaxtı bitmiş rezervasiyaya müdaxilə etmək olmaz." });
->>>>>>> 90e0734 (update)
-            }
 
             if (appointment.Status == "Approved")
-            {
                 return BadRequest(new { message = "Təsdiqlənmiş rezervasiya silinə bilməz." });
-            }
 
-<<<<<<< HEAD
-            if (isExpired)
-            {
-                return BadRequest(new { message = "Vaxtı bitmiş rezervasiyaya müdaxilə etmək olmaz." });
-=======
             if (appointment.Status != "Pending" && appointment.Status != "Rejected")
-            {
                 return BadRequest(new { message = "Bu rezervasiyanı silmək mümkün deyil." });
->>>>>>> 90e0734 (update)
-            }
 
             _context.Appointments.Remove(appointment);
             await _context.SaveChangesAsync();
@@ -360,29 +256,19 @@ namespace ProudSmileDent.Controllers
         {
             var appointments = await _context.Appointments
                 .OrderByDescending(x => x.Id)
-                .Select(x => new
-                {
-                    id = x.Id,
-                    fullName = x.FullName,
-                    phone = x.Phone,
-                    email = x.Email,
-                    service = x.Service,
-                    date = x.Date,
-                    message = x.Message,
-                    status = x.Status,
-                    userId = x.UserId,
-                    isActive = x.IsActive,
-                    createdAt = x.CreatedAt,
-<<<<<<< HEAD
-                    adminResponseMessage = x.AdminResponseMessage
-=======
-                    adminResponseMessage = x.AdminResponseMessage,
-                    hasUserEdited = x.HasUserEdited
->>>>>>> 90e0734 (update)
-                })
                 .ToListAsync();
 
-            return Ok(appointments);
+            return Ok(appointments.Select(MapAppointment));
+        }
+
+        [HttpGet("admin/all")]
+        public async Task<IActionResult> GetAllForAdmin()
+        {
+            var appointments = await _context.Appointments
+                .OrderByDescending(x => x.Id)
+                .ToListAsync();
+
+            return Ok(appointments.Select(MapAppointment));
         }
 
         [HttpPut("{id:int}/status")]
@@ -391,34 +277,21 @@ namespace ProudSmileDent.Controllers
             var appointment = await _context.Appointments.FirstOrDefaultAsync(x => x.Id == id);
 
             if (appointment == null)
-            {
                 return NotFound(new { message = "Rezervasiya tapılmadı." });
-            }
 
             if (string.IsNullOrWhiteSpace(dto.Status))
-            {
                 return BadRequest(new { message = "Status boş ola bilməz." });
-            }
 
             var allowedStatuses = new[] { "Approved", "Rejected" };
 
             if (!allowedStatuses.Contains(dto.Status))
-            {
                 return BadRequest(new { message = "Admin yalnız Approved və ya Rejected seçə bilər." });
-            }
 
             if (appointment.Status != "Pending")
-            {
                 return BadRequest(new { message = "Bu rezervasiyaya artıq admin tərəfindən baxılıb." });
-<<<<<<< HEAD
-=======
-            }
 
             if (appointment.Date <= DateTime.Now)
-            {
                 return BadRequest(new { message = "Vaxtı bitmiş rezervasiyaya status vermək mümkün deyil." });
->>>>>>> 90e0734 (update)
-            }
 
             appointment.Status = dto.Status;
             appointment.AdminResponseMessage = dto.AdminResponseMessage;
@@ -428,7 +301,8 @@ namespace ProudSmileDent.Controllers
                 appointment.IsActive = false;
                 appointment.ReminderSent = false;
             }
-            else if (dto.Status == "Approved")
+
+            if (dto.Status == "Approved")
             {
                 appointment.IsActive = true;
             }
@@ -446,7 +320,8 @@ namespace ProudSmileDent.Controllers
                         appointment.Date
                     );
                 }
-                else if (dto.Status == "Rejected")
+
+                if (dto.Status == "Rejected")
                 {
                     await _emailService.SendRejectedEmail(
                         appointment.FullName,
@@ -461,37 +336,11 @@ namespace ProudSmileDent.Controllers
             {
             }
 
-            return Ok(new { message = "Rezervasiya statusu yeniləndi." });
-        }
-
-        [HttpGet("admin/all")]
-        public async Task<IActionResult> GetAllForAdmin()
-        {
-            var appointments = await _context.Appointments
-                .OrderByDescending(x => x.Id)
-                .Select(x => new
-                {
-                    id = x.Id,
-                    fullName = x.FullName,
-                    phone = x.Phone,
-                    email = x.Email,
-                    service = x.Service,
-                    date = x.Date,
-                    message = x.Message,
-                    status = x.Status,
-                    userId = x.UserId,
-                    isActive = x.IsActive,
-                    createdAt = x.CreatedAt,
-<<<<<<< HEAD
-                    adminResponseMessage = x.AdminResponseMessage
-=======
-                    adminResponseMessage = x.AdminResponseMessage,
-                    hasUserEdited = x.HasUserEdited
->>>>>>> 90e0734 (update)
-                })
-                .ToListAsync();
-
-            return Ok(appointments);
+            return Ok(new
+            {
+                message = "Rezervasiya statusu yeniləndi.",
+                appointment = MapAppointment(appointment)
+            });
         }
     }
 }

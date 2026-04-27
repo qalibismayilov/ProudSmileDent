@@ -26,12 +26,9 @@
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-<<<<<<< HEAD
-      
-        public string? AdminResponseMessage { get; set; }
-=======
-        public string? AdminResponseMessage { get; set; }
         public bool HasUserEdited { get; set; } = false;
->>>>>>> 90e0734 (update)
+
+        public string? AdminResponseMessage { get; set; }
+     
     }
 }
