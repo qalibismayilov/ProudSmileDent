@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DentClinicApi.Models;
+using Microsoft.EntityFrameworkCore;
 using ProudSmileDent.Models;
 
 namespace ProudSmileDent.Data
@@ -15,7 +16,7 @@ namespace ProudSmileDent.Data
         public DbSet<Appointment> Appointments { get; set; }
 
         public DbSet<ChatMessage> ChatMessages { get; set; }
-
+        public DbSet<Service> Services { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

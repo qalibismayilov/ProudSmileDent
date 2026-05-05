@@ -16,7 +16,11 @@ builder.Services.Configure<EmailSettings>(
 
 builder.Services.AddHostedService<AppointmentReminderService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 35))
+    )
+);
 
 builder.Services.AddCors(options =>
 {

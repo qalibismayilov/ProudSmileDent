@@ -5,7 +5,7 @@
 namespace ProudSmileDent.Migrations
 {
     /// <inheritdoc />
-    public partial class AddChatMessages : Migration
+    public partial class AddDiscountFieldsToServicesV2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
