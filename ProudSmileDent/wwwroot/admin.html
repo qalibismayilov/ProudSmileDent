@@ -19,9 +19,12 @@
             </a>
 
             <nav class="nav-menu" id="navMenu">
-                <a href="admin.html" class="active" id="navAdmin">Admin panel</a>
+                <a href="admin.html" class="active">Admin panel</a>
                 <a href="#usersSection">İstifadəçilər</a>
-                <a href="#appointmentsSection">Rezervasiyalar</a>
+                <a href="#newAppointmentsSection">Yeni</a>
+                <a href="#activeAppointmentsSection">Aktiv</a>
+                <a href="#rejectedAppointmentsSection">Rədd</a>
+                <a href="#expiredAppointmentsSection">Bitmiş</a>
                 <a href="#" id="navLogout">Çıxış</a>
             </nav>
 
@@ -39,9 +42,7 @@
                 <div class="reveal show">
                     <span class="section-chip">İdarəetmə paneli</span>
                     <h1>Admin panel</h1>
-                    <p>
-                        İstifadəçiləri, rezervasiyaları və sistem məlumatlarını bir yerdən rahat şəkildə idarə edin.
-                    </p>
+                    <p>Rezervasiyaları və istifadəçiləri qruplar üzrə rahat idarə edin.</p>
                 </div>
             </div>
         </section>
@@ -50,12 +51,10 @@
             <div class="container">
                 <div id="adminDeniedBox" class="form-card" style="display:none;">
                     <h2>Giriş məhduddur</h2>
-                    <p class="form-subtext">
-                        Bu səhifə yalnız admin istifadəçi üçün nəzərdə tutulub.
-                    </p>
+                    <p class="form-subtext">Bu səhifə yalnız admin üçün nəzərdə tutulub.</p>
                     <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                        <a href="index.html" class="btn btn-secondary">Ana səhifəyə qayıt</a>
-                        <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                        <a href="index.html" class="btn btn-secondary">Ana səhifə</a>
+                        <a href="register.html" class="btn btn-primary">Qeydiyyata keç</a>
                     </div>
                 </div>
 
@@ -72,41 +71,51 @@
                                 </div>
 
                                 <div class="contact-item">
-                                    <h4>Rezervasiyalar</h4>
-                                    <p id="appointmentsCount">0</p>
+                                    <h4>Yeni rezervasiyalar</h4>
+                                    <p id="newCount">0</p>
                                 </div>
 
                                 <div class="contact-item">
-                                    <h4>Gözləmədə</h4>
-                                    <p id="pendingCount">0</p>
+                                    <h4>Aktiv rezervasiyalar</h4>
+                                    <p id="activeCount">0</p>
+                                </div>
+
+                                <div class="contact-item">
+                                    <h4>Rədd edilmiş</h4>
+                                    <p id="rejectedCount">0</p>
+                                </div>
+
+                                <div class="contact-item">
+                                    <h4>Vaxtı bitmiş</h4>
+                                    <p id="expiredCount">0</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-card">
-                            <h2>İdarəetmə imkanları</h2>
-                            <p class="form-subtext">Admin paneldə əsas əməliyyatlar.</p>
+                            <h2>İdarəetmə qaydası</h2>
+                            <p class="form-subtext">Sistemdə hazırkı iş prinsipi.</p>
 
                             <div class="contact-list">
                                 <div class="contact-item">
-                                    <h4>İstifadəçilərə baxış</h4>
-                                    <p>Qeydiyyatdan keçmiş bütün istifadəçiləri görüntüləmək və silmək mümkündür.</p>
+                                    <h4>Yeni rezervasiya</h4>
+                                    <p>Admin bir dəfə Approved və ya Rejected seçir.</p>
                                 </div>
 
                                 <div class="contact-item">
-                                    <h4>Rezervasiyalara baxış</h4>
-                                    <p>Sistemə daxil olan bütün rezervasiyaları görmək, status dəyişmək və silmək mümkündür.</p>
+                                    <h4>Rədd etmə</h4>
+                                    <p>İstəyə görə əlavə mesaj yazıla bilər. Yazılmasa standart mesaj gedir.</p>
                                 </div>
 
                                 <div class="contact-item">
-                                    <h4>Sadə idarəetmə</h4>
-                                    <p>Bu panel yalnız sistemə nəzarət və məlumatların idarə olunması üçün nəzərdə tutulub.</p>
+                                    <h4>Aktiv rezervasiya</h4>
+                                    <p>Təsdiqlənmiş rezervasiyalar ayrıca bölmədə görünür.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="section" id="usersSection" style="padding-top: 30px;">
+                    <div class="section" id="usersSection" style="padding-top:30px;">
                         <div class="form-card">
                             <h2>İstifadəçilər</h2>
                             <p class="form-subtext">Qeydiyyatdan keçmiş istifadəçilərin siyahısı.</p>
@@ -114,11 +123,35 @@
                         </div>
                     </div>
 
-                    <div class="section" id="appointmentsSection" style="padding-top: 10px;">
+                    <div class="section" id="newAppointmentsSection" style="padding-top:10px;">
                         <div class="form-card">
-                            <h2>Rezervasiyalar</h2>
-                            <p class="form-subtext">Sistemə daxil olan bütün rezervasiyalar.</p>
-                            <div id="appointmentsList" class="page-grid-2"></div>
+                            <h2>Yeni rezervasiyalar</h2>
+                            <p class="form-subtext">Admin tərəfindən hələ baxılmamış rezervasiyalar.</p>
+                            <div id="newAppointmentsList" class="page-grid-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="activeAppointmentsSection" style="padding-top:10px;">
+                        <div class="form-card">
+                            <h2>Aktiv rezervasiyalar</h2>
+                            <p class="form-subtext">Təsdiqlənmiş və vaxtı keçməyən rezervasiyalar.</p>
+                            <div id="activeAppointmentsList" class="page-grid-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="rejectedAppointmentsSection" style="padding-top:10px;">
+                        <div class="form-card">
+                            <h2>Rədd edilmiş rezervasiyalar</h2>
+                            <p class="form-subtext">Admin tərəfindən rədd edilən rezervasiyalar.</p>
+                            <div id="rejectedAppointmentsList" class="page-grid-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="expiredAppointmentsSection" style="padding-top:10px;">
+                        <div class="form-card">
+                            <h2>Vaxtı bitmiş rezervasiyalar</h2>
+                            <p class="form-subtext">Qəbul vaxtı keçmiş rezervasiyalar.</p>
+                            <div id="expiredAppointmentsList" class="page-grid-2"></div>
                         </div>
                     </div>
                 </div>
@@ -145,6 +178,52 @@
         </div>
     </footer>
 
+    <div id="toastBox" class="toast-box"></div>
+
+    <div id="deleteAppointmentModal" class="confirm-modal">
+        <div class="confirm-modal-content" style="max-width:460px;">
+            <h3>Rezervasiyanı sil</h3>
+            <p style="margin-bottom:16px; color:#6b7280;">
+                Bu rezervasiyanı silmək istədiyinizə əminsiniz?
+            </p>
+            <div class="confirm-modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteAppointmentBtn">Ləğv et</button>
+                <button type="button" class="btn btn-primary" id="confirmDeleteAppointmentBtn" style="background:#dc2626;">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteUserModal" class="confirm-modal">
+        <div class="confirm-modal-content" style="max-width:460px;">
+            <h3>İstifadəçini sil</h3>
+            <p style="margin-bottom:16px; color:#6b7280;">
+                Bu istifadəçini silmək istədiyinizə əminsiniz?
+            </p>
+            <div class="confirm-modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteUserBtn">Ləğv et</button>
+                <button type="button" class="btn btn-primary" id="confirmDeleteUserBtn" style="background:#dc2626;">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="statusModal" class="confirm-modal">
+        <div class="confirm-modal-content" style="max-width:560px;">
+            <h3 id="statusModalTitle">Status seçimi</h3>
+            <p id="statusModalText" style="margin-bottom:16px; color:#6b7280;">
+                Rezervasiyanı təsdiqləyə və ya rədd edə bilərsiniz.
+            </p>
+
+            <div id="rejectMessageBox" style="display:none; margin-top:12px;">
+                <textarea id="rejectMessageInput" rows="5" placeholder="İstəyə görə rədd səbəbini yazın"></textarea>
+            </div>
+
+            <div class="confirm-modal-actions" style="margin-top:18px;">
+                <button type="button" class="btn btn-secondary" id="cancelStatusBtn">Ləğv et</button>
+                <button type="button" class="btn btn-primary" id="confirmStatusBtn">Təsdiqlə</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const menuToggle = document.getElementById("menuToggle");
         const navMenu = document.getElementById("navMenu");
@@ -154,14 +233,43 @@
         const adminContent = document.getElementById("adminContent");
 
         const usersCount = document.getElementById("usersCount");
-        const appointmentsCount = document.getElementById("appointmentsCount");
-        const pendingCount = document.getElementById("pendingCount");
+        const newCount = document.getElementById("newCount");
+        const activeCount = document.getElementById("activeCount");
+        const rejectedCount = document.getElementById("rejectedCount");
+        const expiredCount = document.getElementById("expiredCount");
 
         const usersList = document.getElementById("usersList");
-        const appointmentsList = document.getElementById("appointmentsList");
+        const newAppointmentsList = document.getElementById("newAppointmentsList");
+        const activeAppointmentsList = document.getElementById("activeAppointmentsList");
+        const rejectedAppointmentsList = document.getElementById("rejectedAppointmentsList");
+        const expiredAppointmentsList = document.getElementById("expiredAppointmentsList");
+
+        const deleteAppointmentModal = document.getElementById("deleteAppointmentModal");
+        const cancelDeleteAppointmentBtn = document.getElementById("cancelDeleteAppointmentBtn");
+        const confirmDeleteAppointmentBtn = document.getElementById("confirmDeleteAppointmentBtn");
+
+        const deleteUserModal = document.getElementById("deleteUserModal");
+        const cancelDeleteUserBtn = document.getElementById("cancelDeleteUserBtn");
+        const confirmDeleteUserBtn = document.getElementById("confirmDeleteUserBtn");
+
+        const statusModal = document.getElementById("statusModal");
+        const statusModalTitle = document.getElementById("statusModalTitle");
+        const statusModalText = document.getElementById("statusModalText");
+        const rejectMessageBox = document.getElementById("rejectMessageBox");
+        const rejectMessageInput = document.getElementById("rejectMessageInput");
+        const cancelStatusBtn = document.getElementById("cancelStatusBtn");
+        const confirmStatusBtn = document.getElementById("confirmStatusBtn");
+
+        let pendingDeleteAppointmentId = null;
+        let pendingDeleteUserId = null;
+        let pendingStatusAppointmentId = null;
+        let pendingStatusValue = null;
 
         function showToast(message, type = "error") {
             const toastBox = document.getElementById("toastBox");
+            if (!toastBox) return;
+
+            toastBox.innerHTML = "";
 
             const toast = document.createElement("div");
             toast.className = `toast-message ${type}`;
@@ -179,6 +287,26 @@
                     toast.remove();
                 }, 300);
             }, 2500);
+        }
+
+        function getStatusColor(status) {
+            const s = (status || "").toLowerCase();
+            if (s === "approved") return "#16a34a";
+            if (s === "rejected") return "#dc2626";
+            if (s === "deactivated") return "#6b7280";
+            return "#f97316";
+        }
+
+        function getStatusText(status) {
+            if (status === "Approved") return "Təsdiqlənib";
+            if (status === "Rejected") return "Rədd edilib";
+            if (status === "Deactivated") return "Deaktiv";
+            return "Gözləmədə";
+        }
+
+        function formatDateTime(dateValue) {
+            if (!dateValue) return "-";
+            return new Date(dateValue).toLocaleString("az-AZ");
         }
 
         if (menuToggle) {
@@ -202,7 +330,7 @@
         navLogout.addEventListener("click", function (e) {
             e.preventDefault();
             localStorage.removeItem("user");
-            window.location.href = "admin-login.html";
+            window.location.href = "register.html";
         });
 
         async function loadAdminData() {
@@ -229,7 +357,7 @@
 
                 renderStats(users, appointments);
                 renderUsers(users);
-                renderAppointments(appointments);
+                renderGroupedAppointments(appointments);
             } catch (error) {
                 console.error("Admin data load error:", error);
                 showToast("Admin məlumatlarını yükləmək mümkün olmadı.", "error");
@@ -238,13 +366,18 @@
 
         function renderStats(users, appointments) {
             usersCount.textContent = Array.isArray(users) ? users.length : 0;
-            appointmentsCount.textContent = Array.isArray(appointments) ? appointments.length : 0;
 
-            const pending = Array.isArray(appointments)
-                ? appointments.filter(x => (x.status || "").toLowerCase() === "pending").length
-                : 0;
+            const now = new Date();
 
-            pendingCount.textContent = pending;
+            const newAppointments = appointments.filter(x => x.status === "Pending" && new Date(x.date) > now);
+            const activeAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) > now);
+            const rejectedAppointments = appointments.filter(x => x.status === "Rejected");
+            const expiredAppointments = appointments.filter(x => new Date(x.date) <= now);
+
+            newCount.textContent = newAppointments.length;
+            activeCount.textContent = activeAppointments.length;
+            rejectedCount.textContent = rejectedAppointments.length;
+            expiredCount.textContent = expiredAppointments.length;
         }
 
         function renderUsers(users) {
@@ -252,11 +385,11 @@
 
             if (!Array.isArray(users) || users.length === 0) {
                 usersList.innerHTML = `
-                    <div class="contact-item">
-                        <h4>İstifadəçi yoxdur</h4>
-                        <p>Sistemdə hələ istifadəçi görünmür.</p>
-                    </div>
-                `;
+                        <div class="contact-item">
+                            <h4>İstifadəçi yoxdur</h4>
+                            <p>Sistemdə hələ istifadəçi görünmür.</p>
+                        </div>
+                    `;
                 return;
             }
 
@@ -265,190 +398,321 @@
                 card.className = "form-card";
 
                 card.innerHTML = `
-                    <h2 style="margin-bottom:12px;">${user.fullName || "-"}</h2>
-                    <p class="form-subtext"><strong>İstifadəçi adı:</strong> ${user.username || "-"}</p>
-                    <p class="form-subtext"><strong>E-poçt:</strong> ${user.email || "-"}</p>
-                    <p class="form-subtext"><strong>Rol:</strong> ${user.role || "User"}</p>
-                    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-                        <button class="btn btn-primary" style="background:#dc2626;" onclick="deleteUser(${user.id}, this)">Sil</button>
-                    </div>
-                `;
+                        <h2 style="margin-bottom:12px;">${user.fullName || "-"}</h2>
+                        <p class="form-subtext"><strong>İstifadəçi adı:</strong> ${user.username || "-"}</p>
+                        <p class="form-subtext"><strong>E-poçt:</strong> ${user.email || "-"}</p>
+                        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+                            <button class="btn btn-primary" style="background:#dc2626;" onclick="openDeleteUserModal(${user.id})">Sil</button>
+                        </div>
+                    `;
 
                 usersList.appendChild(card);
             });
         }
 
-        function renderAppointments(appointments) {
-            appointmentsList.innerHTML = "";
+        function renderAppointmentCard(item, type) {
+            const card = document.createElement("div");
+            card.className = "form-card";
 
-            if (!Array.isArray(appointments) || appointments.length === 0) {
-                appointmentsList.innerHTML = `
-                    <div class="contact-item">
-                        <h4>Rezervasiya yoxdur</h4>
-                        <p>Sistemdə hələ rezervasiya görünmür.</p>
-                    </div>
-                `;
-                return;
+            const createdAt = item.createdAt ? formatDateTime(item.createdAt) : "-";
+            const adminResponseMessage = item.adminResponseMessage || "-";
+
+            let actionButtons = "";
+
+            if (type === "new") {
+                actionButtons = `
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+                            <button class="btn btn-primary" onclick="openStatusModal(${item.id}, 'Approved')">Qəbul et</button>
+                            <button class="btn btn-secondary" onclick="openStatusModal(${item.id}, 'Rejected')">Rədd et</button>
+                        </div>
+                    `;
+            } else {
+                actionButtons = `
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+                            <button class="btn btn-primary" style="background:#dc2626;" onclick="openDeleteAppointmentModal(${item.id})">Sil</button>
+                        </div>
+                    `;
             }
 
-            appointments.forEach(item => {
-                const card = document.createElement("div");
-                card.className = "form-card";
-
-                const formattedDate = item.date
-                    ? new Date(item.date).toLocaleString()
-                    : "-";
-
-                card.innerHTML = `
+            card.innerHTML = `
                     <h2 style="margin-bottom:12px;">${item.service || "-"}</h2>
                     <p class="form-subtext"><strong>Ad:</strong> ${item.fullName || "-"}</p>
                     <p class="form-subtext"><strong>Telefon:</strong> ${item.phone || "-"}</p>
                     <p class="form-subtext"><strong>E-poçt:</strong> ${item.email || "-"}</p>
-                    <p class="form-subtext"><strong>Tarix:</strong> ${formattedDate}</p>
-                    <p class="form-subtext"><strong>Qeyd:</strong> ${item.message || "-"}</p>
+                    <p class="form-subtext"><strong>Qəbul tarixi:</strong> ${formatDateTime(item.date)}</p>
+                    <p class="form-subtext"><strong>Rezervasiya olunma tarixi:</strong> ${createdAt}</p>
+                    <p class="form-subtext"><strong>İstifadəçi qeydi:</strong> ${item.message || "-"}</p>
+                    <p class="form-subtext"><strong>Admin qeydi:</strong> ${adminResponseMessage}</p>
                     <p class="form-subtext">
-                      <strong>Status:</strong>
-                       <span id="status-${item.id}" style="color:${getStatusColor(item.status)}; font-weight:700;">
-                                        ${item.status === "Approved" ? "Təsdiqlənib" :
-                                        item.status === "Rejected" ? "Rədd edilib" :
-                                        item.status === "Deactivated" ? "Deaktiv" :
-                                        "Gözləmədə"
-                                         }
-                          </span>
-                         </p>
-
-                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
-                        <button class="btn btn-secondary" onclick="updateStatus(${item.id}, 'Pending')">Pending</button>
-                        <button class="btn btn-primary" onclick="updateStatus(${item.id}, 'Approved')">Approved</button>
-                        <button class="btn btn-secondary" onclick="updateStatus(${item.id}, 'Rejected')">Rejected</button>
-                        <button class="btn btn-primary" style="background:#dc2626;" onclick="deleteAppointment(${item.id}, this)">Sil</button>
-                    </div>
+                        <strong>Status:</strong>
+                        <span style="color:${getStatusColor(item.status)}; font-weight:700;">
+                            ${getStatusText(item.status)}
+                        </span>
+                    </p>
+                    ${actionButtons}
                 `;
 
-                appointmentsList.appendChild(card);
+            return card;
+        }
+
+        function renderGroupedAppointments(appointments) {
+            newAppointmentsList.innerHTML = "";
+            activeAppointmentsList.innerHTML = "";
+            rejectedAppointmentsList.innerHTML = "";
+            expiredAppointmentsList.innerHTML = "";
+
+            const now = new Date();
+
+            const newAppointments = appointments.filter(x => x.status === "Pending" && new Date(x.date) > now);
+            const activeAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) > now);
+            const rejectedAppointments = appointments.filter(x => x.status === "Rejected");
+            const expiredAppointments = appointments.filter(x => new Date(x.date) <= now);
+
+            if (newAppointments.length === 0) {
+                newAppointmentsList.innerHTML = `<div class="contact-item"><h4>Yeni rezervasiya yoxdur</h4><p>Hazırda yeni rezervasiya görünmür.</p></div>`;
+            } else {
+                newAppointments.forEach(item => newAppointmentsList.appendChild(renderAppointmentCard(item, "new")));
+            }
+
+            if (activeAppointments.length === 0) {
+                activeAppointmentsList.innerHTML = `<div class="contact-item"><h4>Aktiv rezervasiya yoxdur</h4><p>Hazırda aktiv rezervasiya görünmür.</p></div>`;
+            } else {
+                activeAppointments.forEach(item => activeAppointmentsList.appendChild(renderAppointmentCard(item, "active")));
+            }
+
+            if (rejectedAppointments.length === 0) {
+                rejectedAppointmentsList.innerHTML = `<div class="contact-item"><h4>Rədd edilmiş rezervasiya yoxdur</h4><p>Hazırda rədd edilmiş rezervasiya görünmür.</p></div>`;
+            } else {
+                rejectedAppointments.forEach(item => rejectedAppointmentsList.appendChild(renderAppointmentCard(item, "rejected")));
+            }
+
+            if (expiredAppointments.length === 0) {
+                expiredAppointmentsList.innerHTML = `<div class="contact-item"><h4>Vaxtı bitmiş rezervasiya yoxdur</h4><p>Hazırda vaxtı bitmiş rezervasiya görünmür.</p></div>`;
+            } else {
+                expiredAppointments.forEach(item => expiredAppointmentsList.appendChild(renderAppointmentCard(item, "expired")));
+            }
+        }
+
+        function openDeleteAppointmentModal(id) {
+            pendingDeleteAppointmentId = id;
+            deleteAppointmentModal.classList.add("show");
+        }
+
+        function openDeleteUserModal(id) {
+            pendingDeleteUserId = id;
+            deleteUserModal.classList.add("show");
+        }
+
+        function openStatusModal(id, status) {
+            pendingStatusAppointmentId = id;
+            pendingStatusValue = status;
+
+            if (status === "Approved") {
+                statusModalTitle.textContent = "Rezervasiyanı qəbul et";
+                statusModalText.textContent = "Bu rezervasiyanı təsdiqləmək istəyirsiniz?";
+                rejectMessageBox.style.display = "none";
+                rejectMessageInput.value = "";
+                confirmStatusBtn.textContent = "Qəbul et";
+            } else {
+                statusModalTitle.textContent = "Rezervasiyanı rədd et";
+                statusModalText.textContent = "Bu rezervasiyanı rədd etmək istəyirsiniz?";
+                rejectMessageBox.style.display = "block";
+                rejectMessageInput.value = "";
+                confirmStatusBtn.textContent = "Rədd et";
+            }
+
+            statusModal.classList.add("show");
+        }
+
+        if (cancelStatusBtn) {
+            cancelStatusBtn.addEventListener("click", function () {
+                pendingStatusAppointmentId = null;
+                pendingStatusValue = null;
+                rejectMessageInput.value = "";
+                statusModal.classList.remove("show");
             });
         }
 
-        async function updateStatus(id, status) {
-            try {
-                const response = await fetch(`/api/appointments/${id}/status`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ status })
-                });
+        if (statusModal) {
+            statusModal.addEventListener("click", function (e) {
+                if (e.target === statusModal) {
+                    pendingStatusAppointmentId = null;
+                    pendingStatusValue = null;
+                    rejectMessageInput.value = "";
+                    statusModal.classList.remove("show");
+                }
+            });
+        }
 
-                const text = await response.text();
+        if (confirmStatusBtn) {
+            confirmStatusBtn.addEventListener("click", async function () {
+                if (!pendingStatusAppointmentId || !pendingStatusValue) return;
 
-                let data = {};
+                const originalText = confirmStatusBtn.textContent;
+
                 try {
-                    data = text ? JSON.parse(text) : {};
-                } catch {
-                    data = { message: text };
-                }
+                    confirmStatusBtn.disabled = true;
+                    confirmStatusBtn.textContent = "Göndərilir...";
 
-                if (response.ok) {
-                    showToast(data.message || "Status yeniləndi.", "success");
-                    loadAdminData();
-                } else {
-                    showToast(data.message || "Status yenilənmədi.", "error");
+                    const response = await fetch(`/api/appointments/${pendingStatusAppointmentId}/status`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            status: pendingStatusValue,
+                            adminResponseMessage: pendingStatusValue === "Rejected"
+                                ? rejectMessageInput.value.trim()
+                                : null
+                        })
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        showToast(data.message || "Status yeniləndi.", "success");
+                        statusModal.classList.remove("show");
+                        pendingStatusAppointmentId = null;
+                        pendingStatusValue = null;
+                        rejectMessageInput.value = "";
+                        loadAdminData();
+                    } else {
+                        showToast(data.message || "Status yenilənmədi.", "error");
+                    }
+                } catch (error) {
+                    console.error("STATUS UPDATE ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmStatusBtn.disabled = false;
+                    confirmStatusBtn.textContent = originalText;
                 }
-            } catch (error) {
-                console.error("Status update error:", error);
-                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
-            }
+            });
         }
 
-        async function deleteAppointment(id, button) {
-            const ok = confirm("Bu rezervasiyanı silmək istəyirsiniz?");
-            if (!ok) return;
+        if (cancelDeleteAppointmentBtn) {
+            cancelDeleteAppointmentBtn.addEventListener("click", function () {
+                pendingDeleteAppointmentId = null;
+                deleteAppointmentModal.classList.remove("show");
+            });
+        }
 
-            const originalText = button.textContent;
+        if (deleteAppointmentModal) {
+            deleteAppointmentModal.addEventListener("click", function (e) {
+                if (e.target === deleteAppointmentModal) {
+                    pendingDeleteAppointmentId = null;
+                    deleteAppointmentModal.classList.remove("show");
+                }
+            });
+        }
 
-            try {
-                button.disabled = true;
-                button.textContent = "Silinir...";
+        if (confirmDeleteAppointmentBtn) {
+            confirmDeleteAppointmentBtn.addEventListener("click", async function () {
+                if (!pendingDeleteAppointmentId) return;
 
-                const response = await fetch(`/api/appointments/${id}`, {
-                    method: "DELETE"
-                });
+                const originalText = confirmDeleteAppointmentBtn.textContent;
 
-                const text = await response.text();
-
-                let data = {};
                 try {
-                    data = text ? JSON.parse(text) : {};
-                } catch {
-                    data = { message: text };
-                }
+                    confirmDeleteAppointmentBtn.disabled = true;
+                    confirmDeleteAppointmentBtn.textContent = "Silinir...";
 
-                if (response.ok) {
-                    showToast(data.message || "Rezervasiya silindi.", "success");
-                    loadAdminData();
-                } else {
-                    showToast(data.message || "Silmək mümkün olmadı.", "error");
+                    const response = await fetch(`/api/appointments/${pendingDeleteAppointmentId}`, {
+                        method: "DELETE"
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        showToast(data.message || "Rezervasiya silindi.", "success");
+                        deleteAppointmentModal.classList.remove("show");
+                        pendingDeleteAppointmentId = null;
+                        loadAdminData();
+                    } else {
+                        showToast(data.message || "Silmək mümkün olmadı.", "error");
+                    }
+                } catch (error) {
+                    console.error("DELETE APPOINTMENT ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmDeleteAppointmentBtn.disabled = false;
+                    confirmDeleteAppointmentBtn.textContent = originalText;
                 }
-            } catch (error) {
-                console.error("Delete appointment error:", error);
-                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
-            } finally {
-                button.disabled = false;
-                button.textContent = originalText;
-            }
+            });
         }
 
-        async function deleteUser(id, button) {
-            const ok = confirm("Bu istifadəçini silmək istəyirsiniz?");
-            if (!ok) return;
+        if (cancelDeleteUserBtn) {
+            cancelDeleteUserBtn.addEventListener("click", function () {
+                pendingDeleteUserId = null;
+                deleteUserModal.classList.remove("show");
+            });
+        }
 
-            const originalText = button.textContent;
+        if (deleteUserModal) {
+            deleteUserModal.addEventListener("click", function (e) {
+                if (e.target === deleteUserModal) {
+                    pendingDeleteUserId = null;
+                    deleteUserModal.classList.remove("show");
+                }
+            });
+        }
 
-            try {
-                button.disabled = true;
-                button.textContent = "Silinir...";
+        if (confirmDeleteUserBtn) {
+            confirmDeleteUserBtn.addEventListener("click", async function () {
+                if (!pendingDeleteUserId) return;
 
-                const response = await fetch(`/api/users/${id}`, {
-                    method: "DELETE"
-                });
+                const originalText = confirmDeleteUserBtn.textContent;
 
-                const text = await response.text();
-
-                let data = {};
                 try {
-                    data = text ? JSON.parse(text) : {};
-                } catch {
-                    data = { message: text };
+                    confirmDeleteUserBtn.disabled = true;
+                    confirmDeleteUserBtn.textContent = "Silinir...";
+
+                    const response = await fetch(`/api/users/${pendingDeleteUserId}`, {
+                        method: "DELETE"
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        showToast(data.message || "İstifadəçi silindi.", "success");
+                        deleteUserModal.classList.remove("show");
+                        pendingDeleteUserId = null;
+                        loadAdminData();
+                    } else {
+                        showToast(data.message || "İstifadəçini silmək mümkün olmadı.", "error");
+                    }
+                } catch (error) {
+                    console.error("DELETE USER ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmDeleteUserBtn.disabled = false;
+                    confirmDeleteUserBtn.textContent = originalText;
                 }
-
-                if (response.ok) {
-                    showToast(data.message || "İstifadəçi silindi.", "success");
-                    loadAdminData();
-                } else {
-                    showToast(data.message || "İstifadəçini silmək mümkün olmadı.", "error");
-                }
-            } catch (error) {
-                console.error("Delete user error:", error);
-                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
-            } finally {
-                button.disabled = false;
-                button.textContent = originalText;
-            }
-        }
-        function getStatusColor(status) {
-            const s = (status || "").toLowerCase();
-
-            if (s === "approved") return "#16a34a";
-            if (s === "rejected") return "#dc2626";
-            if (s === "deactivated") return "#6b7280";
-
-            return "#f97316";
+            });
         }
 
-        window.updateStatus = updateStatus;
-        window.deleteAppointment = deleteAppointment;
-        window.deleteUser = deleteUser;
+        window.openDeleteAppointmentModal = openDeleteAppointmentModal;
+        window.openDeleteUserModal = openDeleteUserModal;
+        window.openStatusModal = openStatusModal;
     </script>
-    <div id="toastBox" class="toast-box"></div>
 </body>
 </html>

@@ -13,5 +13,22 @@ namespace ProudSmileDent.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<Appointment> Appointments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .Property(x => x.Username)
+                .IsRequired();
+
+            modelBuilder.Entity<User>()
+                .Property(x => x.Email)
+                .IsRequired();
+
+            modelBuilder.Entity<User>()
+                .Property(x => x.PasswordHash)
+                .IsRequired();
+        }
     }
 }

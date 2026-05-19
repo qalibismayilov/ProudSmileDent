@@ -23,5 +23,10 @@
         public bool ReminderSent { get; set; } = false;
 
         public bool IsActive { get; set; } = true;
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        public string? AdminResponseMessage { get; set; }
+        public bool HasUserEdited { get; set; } = false;
     }
 }
