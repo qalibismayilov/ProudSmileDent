@@ -2,16 +2,17 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 
+COPY ProudSmileDent/ProudSmileDent.csproj ProudSmileDent/
+
+RUN dotnet restore ProudSmileDent/ProudSmileDent.csproj
+
 COPY . .
 
-WORKDIR /src/ProudSmileDent
-
-RUN dotnet restore ProudSmileDent.csproj
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish ProudSmileDent/ProudSmileDent.csproj -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-COPY --from=build /app .
+COPY --from=build /app/publish .
 
 ENTRYPOINT ["dotnet", "ProudSmileDent.dll"]
