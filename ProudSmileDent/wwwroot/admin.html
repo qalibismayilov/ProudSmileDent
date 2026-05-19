@@ -7,6 +7,7 @@
     <meta name="description" content="ProudSmileDent admin paneli" />
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <header class="site-header">
         <div class="container navbar">
@@ -20,6 +21,10 @@
 
             <nav class="nav-menu" id="navMenu">
                 <a href="admin.html" class="active">Admin panel</a>
+<<<<<<< HEAD
+=======
+                <a href="#chatSection">Chat</a>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                 <a href="#usersSection">İstifadəçilər</a>
                 <a href="#newAppointmentsSection">Yeni</a>
                 <a href="#activeAppointmentsSection">Aktiv</a>
@@ -37,28 +42,38 @@
     </header>
 
     <main>
-        <section class="page-hero">
+        <section class="page-hero admin-page-hero">
             <div class="container">
                 <div class="reveal show">
                     <span class="section-chip">İdarəetmə paneli</span>
+<<<<<<< HEAD
                     <h1>Admin panel</h1>
                     <p>Rezervasiyaları və istifadəçiləri qruplar üzrə rahat idarə edin.</p>
+=======
+                    <h1>Admin Panel</h1>
+                    <p>Rezervasiyaları, istifadəçiləri və online müraciət mesajlarını professional şəkildə idarə edin.</p>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section admin-main-section">
             <div class="container">
                 <div id="adminDeniedBox" class="form-card" style="display:none;">
                     <h2>Giriş məhduddur</h2>
                     <p class="form-subtext">Bu səhifə yalnız admin üçün nəzərdə tutulub.</p>
                     <div style="display:flex; gap:12px; flex-wrap:wrap;">
                         <a href="index.html" class="btn btn-secondary">Ana səhifə</a>
+<<<<<<< HEAD
                         <a href="register.html" class="btn btn-primary">Qeydiyyata keç</a>
+=======
+                        <a href="login.html" class="btn btn-primary">Daxil ol</a>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                     </div>
                 </div>
 
                 <div id="adminContent" style="display:none;">
+<<<<<<< HEAD
                     <div class="page-grid-2">
                         <div class="form-card">
                             <h2>Statistika</h2>
@@ -116,6 +131,89 @@
                     </div>
 
                     <div class="section" id="usersSection" style="padding-top:30px;">
+=======
+                    <div class="admin-dashboard-grid">
+                        <div class="admin-stat-card">
+                            <span>İstifadəçilər</span>
+                            <strong id="usersCount">0</strong>
+                            <p>Qeydiyyatdan keçmiş istifadəçilər</p>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <span>Chat mesajları</span>
+                            <strong id="chatCount">0</strong>
+                            <p>Ümumi online müraciət mesajları</p>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <span>Yeni rezervasiya</span>
+                            <strong id="newCount">0</strong>
+                            <p>Admin tərəfindən baxılmamış</p>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <span>Aktiv</span>
+                            <strong id="activeCount">0</strong>
+                            <p>Təsdiqlənmiş rezervasiyalar</p>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <span>Rədd edilmiş</span>
+                            <strong id="rejectedCount">0</strong>
+                            <p>Admin tərəfindən rədd olunmuş</p>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <span>Bitmiş</span>
+                            <strong id="expiredCount">0</strong>
+                            <p>Vaxtı keçmiş rezervasiyalar</p>
+                        </div>
+                    </div>
+
+                    <div class="section" id="chatSection" style="padding-top:34px;">
+                        <div class="admin-chat-layout-card">
+                            <div class="admin-chat-main-header">
+                                <div>
+                                    <span>Premium admin chat</span>
+                                    <h2>Online müraciət / Chat</h2>
+                                    <p>Hər istifadəçi üçün ayrıca modul. Mesaj yazanda avtomatik yenilənmə artıq yuxarı atmır.</p>
+                                </div>
+
+                                <div class="admin-chat-tools">
+                                    <button type="button" class="btn btn-light" id="refreshChatBtn">Yenilə</button>
+                                    <button type="button" class="btn btn-primary admin-chat-danger" id="clearChatBtn">Bütün chatı sil</button>
+                                </div>
+                            </div>
+
+                            <div class="admin-chat-info-bar">
+                                <div>
+                                    <strong>Chat idarəsi</strong>
+                                    <p>Mesajlar 3 saniyədən bir yenilənir, amma açıq söhbətdə scroll pozulmur.</p>
+                                </div>
+                                <div id="lastChatUpdate">Son yenilənmə: -</div>
+                            </div>
+
+                            <div id="adminChatWindow" class="admin-chat-window-pro">
+                                <div class="admin-chat-placeholder">
+                                    <div class="admin-chat-placeholder-icon">💬</div>
+                                    <h3>Chat yüklənir</h3>
+                                    <p>İstifadəçi modulları hazırlanır...</p>
+                                </div>
+                            </div>
+
+                            <div class="admin-chat-reply-pro">
+                                <input type="text" id="adminReplyInput" placeholder="Seçilmiş istifadəçiyə cavab yaz..." disabled />
+                                <button type="button" class="btn btn-primary" id="sendAdminReplyBtn" disabled>Cavab göndər</button>
+                            </div>
+
+                            <p class="form-subtext" id="selectedChatUserInfo" style="margin-top:12px;">
+                                Cavab yazmaq üçün istifadəçi modulunda “Chat aç” düyməsinə basın.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section" id="usersSection" style="padding-top:34px;">
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                         <div class="form-card">
                             <h2>İstifadəçilər</h2>
                             <p class="form-subtext">Qeydiyyatdan keçmiş istifadəçilərin siyahısı.</p>
@@ -207,6 +305,7 @@
     </div>
 
     <div id="statusModal" class="confirm-modal">
+<<<<<<< HEAD
         <div class="confirm-modal-content" style="max-width:560px;">
             <h3 id="statusModalTitle">Status seçimi</h3>
             <p id="statusModalText" style="margin-bottom:16px; color:#6b7280;">
@@ -220,10 +319,45 @@
             <div class="confirm-modal-actions" style="margin-top:18px;">
                 <button type="button" class="btn btn-secondary" id="cancelStatusBtn">Ləğv et</button>
                 <button type="button" class="btn btn-primary" id="confirmStatusBtn">Təsdiqlə</button>
+=======
+        <div class="confirm-modal-content admin-status-modal">
+            <div class="admin-status-header">
+                <span id="statusModalChip">Status seçimi</span>
+                <h3 id="statusModalTitle">Status seçimi</h3>
+                <p id="statusModalText">Rezervasiyanı təsdiqləyin və ya rədd edin.</p>
+            </div>
+
+            <div class="admin-status-body">
+                <div class="status-info-box">
+                    <div class="status-info-icon">i</div>
+                    <div>
+                        <strong>Qeyd:</strong>
+                        <p style="margin:4px 0 0;">
+                            Təsdiqlədikdə istifadəçiyə email gedir.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="rejectMessageBox" class="reject-box">
+                    <label class="reject-label" for="rejectMessageInput">Rədd səbəbi / əlavə mesaj</label>
+                    <textarea id="rejectMessageInput" rows="5" placeholder="Məsələn: Seçdiyiniz saat doludur. Zəhmət olmasa başqa tarix və saat seçin."></textarea>
+                    <div class="reject-hint">Boş saxlasanız, istifadəçiyə standart rədd mesajı göndəriləcək.</div>
+                </div>
+
+                <div class="confirm-modal-actions" style="margin-top:22px;">
+                    <button type="button" class="btn btn-secondary" id="cancelStatusBtn">Ləğv et</button>
+                    <button type="button" class="btn btn-primary" id="confirmStatusBtn">Təsdiqlə</button>
+                </div>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
             </div>
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
     <script>
         const menuToggle = document.getElementById("menuToggle");
         const navMenu = document.getElementById("navMenu");
@@ -233,6 +367,10 @@
         const adminContent = document.getElementById("adminContent");
 
         const usersCount = document.getElementById("usersCount");
+<<<<<<< HEAD
+=======
+        const chatCount = document.getElementById("chatCount");
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         const newCount = document.getElementById("newCount");
         const activeCount = document.getElementById("activeCount");
         const rejectedCount = document.getElementById("rejectedCount");
@@ -244,6 +382,17 @@
         const rejectedAppointmentsList = document.getElementById("rejectedAppointmentsList");
         const expiredAppointmentsList = document.getElementById("expiredAppointmentsList");
 
+<<<<<<< HEAD
+=======
+        const adminChatWindow = document.getElementById("adminChatWindow");
+        const refreshChatBtn = document.getElementById("refreshChatBtn");
+        const clearChatBtn = document.getElementById("clearChatBtn");
+        const adminReplyInput = document.getElementById("adminReplyInput");
+        const sendAdminReplyBtn = document.getElementById("sendAdminReplyBtn");
+        const selectedChatUserInfo = document.getElementById("selectedChatUserInfo");
+        const lastChatUpdate = document.getElementById("lastChatUpdate");
+
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         const deleteAppointmentModal = document.getElementById("deleteAppointmentModal");
         const cancelDeleteAppointmentBtn = document.getElementById("cancelDeleteAppointmentBtn");
         const confirmDeleteAppointmentBtn = document.getElementById("confirmDeleteAppointmentBtn");
@@ -253,6 +402,10 @@
         const confirmDeleteUserBtn = document.getElementById("confirmDeleteUserBtn");
 
         const statusModal = document.getElementById("statusModal");
+<<<<<<< HEAD
+=======
+        const statusModalChip = document.getElementById("statusModalChip");
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         const statusModalTitle = document.getElementById("statusModalTitle");
         const statusModalText = document.getElementById("statusModalText");
         const rejectMessageBox = document.getElementById("rejectMessageBox");
@@ -264,12 +417,27 @@
         let pendingDeleteUserId = null;
         let pendingStatusAppointmentId = null;
         let pendingStatusValue = null;
+<<<<<<< HEAD
+=======
+
+        let allChatMessages = [];
+        let chatConversations = [];
+        let selectedChatUser = null;
+        let selectedAdminMessageIds = [];
+        let adminSelectMode = false;
+        let selectedConversationMessages = [];
+        let adminChatTimer = null;
+        let isRenderingChat = false;
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
 
         function showToast(message, type = "error") {
             const toastBox = document.getElementById("toastBox");
             if (!toastBox) return;
+<<<<<<< HEAD
 
             toastBox.innerHTML = "";
+=======
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
 
             const toast = document.createElement("div");
             toast.className = `toast-message ${type}`;
@@ -277,18 +445,26 @@
 
             toastBox.appendChild(toast);
 
-            setTimeout(() => {
-                toast.classList.add("show");
-            }, 10);
+            setTimeout(() => toast.classList.add("show"), 10);
 
             setTimeout(() => {
                 toast.classList.remove("show");
-                setTimeout(() => {
-                    toast.remove();
-                }, 300);
+                setTimeout(() => toast.remove(), 300);
             }, 2500);
         }
 
+<<<<<<< HEAD
+=======
+        function escapeHtml(value) {
+            return String(value || "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         function getStatusColor(status) {
             const s = (status || "").toLowerCase();
             if (s === "approved") return "#16a34a";
@@ -309,7 +485,54 @@
             return new Date(dateValue).toLocaleString("az-AZ");
         }
 
+<<<<<<< HEAD
         if (menuToggle) {
+=======
+        function getInitials(name, email) {
+            const source = (name || email || "U").trim();
+            return source.charAt(0).toUpperCase();
+        }
+
+        function getSelectedChatBox() {
+            return document.getElementById("selectedAdminChatWindow");
+        }
+
+        function captureChatScroll() {
+            const box = getSelectedChatBox();
+
+            if (!box) {
+                return {
+                    exists: false,
+                    top: 0,
+                    height: 0,
+                    nearBottom: true
+                };
+            }
+
+            return {
+                exists: true,
+                top: box.scrollTop,
+                height: box.scrollHeight,
+                nearBottom: box.scrollHeight - box.scrollTop - box.clientHeight < 90
+            };
+        }
+
+        function restoreChatScroll(state, forceBottom = false) {
+            const box = getSelectedChatBox();
+            if (!box) return;
+
+            requestAnimationFrame(() => {
+                if (forceBottom || state.nearBottom) {
+                    box.scrollTop = box.scrollHeight;
+                } else {
+                    const diff = box.scrollHeight - state.height;
+                    box.scrollTop = Math.max(0, state.top + diff);
+                }
+            });
+        }
+
+        if (menuToggle && navMenu) {
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
             menuToggle.addEventListener("click", () => {
                 navMenu.classList.toggle("active");
                 menuToggle.classList.toggle("active");
@@ -325,13 +548,24 @@
             adminDeniedBox.style.display = "none";
             adminContent.style.display = "block";
             loadAdminData();
+            adminChatTimer = setInterval(() => loadChatMessagesOnly(false), 3000);
         }
 
+<<<<<<< HEAD
         navLogout.addEventListener("click", function (e) {
             e.preventDefault();
             localStorage.removeItem("user");
             window.location.href = "register.html";
         });
+=======
+        if (navLogout) {
+            navLogout.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem("user");
+                window.location.href = "login.html";
+            });
+        }
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
 
         async function loadAdminData() {
             try {
@@ -355,7 +589,9 @@
                     appointments = [];
                 }
 
-                renderStats(users, appointments);
+                await loadChatMessagesOnly(false);
+
+                renderStats(users, appointments, allChatMessages);
                 renderUsers(users);
                 renderGroupedAppointments(appointments);
             } catch (error) {
@@ -364,6 +600,7 @@
             }
         }
 
+<<<<<<< HEAD
         function renderStats(users, appointments) {
             usersCount.textContent = Array.isArray(users) ? users.length : 0;
 
@@ -373,6 +610,607 @@
             const activeAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) > now);
             const rejectedAppointments = appointments.filter(x => x.status === "Rejected");
             const expiredAppointments = appointments.filter(x => new Date(x.date) <= now);
+=======
+        async function getChatMessages() {
+            const chatResponse = await fetch("/api/chat/admin/all");
+            const chatText = await chatResponse.text();
+
+            let chatMessages = [];
+            try {
+                chatMessages = chatText ? JSON.parse(chatText) : [];
+            } catch {
+                chatMessages = [];
+            }
+
+            allChatMessages = Array.isArray(chatMessages) ? chatMessages : [];
+            return allChatMessages;
+        }
+
+        async function loadChatMessagesOnly(forceBottom = false) {
+            if (isRenderingChat) return;
+            isRenderingChat = true;
+
+            const scrollState = captureChatScroll();
+            const selectedUserId = selectedChatUser?.userId || null;
+            const replyText = adminReplyInput ? adminReplyInput.value : "";
+
+            try {
+                const allMessages = await getChatMessages();
+
+                const conversationsResponse = await fetch("/api/chat/admin/conversations");
+                const conversationsText = await conversationsResponse.text();
+
+                let conversations = [];
+                try {
+                    conversations = conversationsText ? JSON.parse(conversationsText) : [];
+                } catch {
+                    conversations = [];
+                }
+
+                chatConversations = Array.isArray(conversations) ? conversations : [];
+
+                renderAdminConversations();
+
+                if (selectedUserId) {
+                    const stillExists = chatConversations.some(x => x.userId === selectedUserId);
+
+                    if (stillExists) {
+                        await loadSelectedUserConversation(selectedUserId, forceBottom, scrollState);
+                    } else {
+                        selectedChatUser = null;
+                        selectedConversationMessages = [];
+                        selectedAdminMessageIds = [];
+                        adminSelectMode = false;
+                        adminReplyInput.disabled = true;
+                        sendAdminReplyBtn.disabled = true;
+                        selectedChatUserInfo.textContent = "Cavab yazmaq üçün istifadəçi modulunda “Chat aç” düyməsinə basın.";
+                    }
+                }
+
+                if (adminReplyInput && document.activeElement === adminReplyInput) {
+                    adminReplyInput.value = replyText;
+                    adminReplyInput.focus();
+                } else if (adminReplyInput && replyText && !adminReplyInput.value) {
+                    adminReplyInput.value = replyText;
+                }
+
+                if (lastChatUpdate) {
+                    lastChatUpdate.textContent = "Son yenilənmə: " + new Date().toLocaleTimeString("az-AZ");
+                }
+
+                if (chatCount) {
+                    chatCount.textContent = allMessages.length;
+                }
+            } catch (error) {
+                console.error("ADMIN CHAT LOAD ERROR:", error);
+                showToast("Chat məlumatları yüklənmədi.", "error");
+            } finally {
+                isRenderingChat = false;
+            }
+        }
+
+        function renderAdminConversations() {
+            if (!adminChatWindow) return;
+
+            adminChatWindow.innerHTML = "";
+
+            const layout = document.createElement("div");
+            layout.className = "admin-chat-pro-layout";
+
+            const usersPanel = document.createElement("div");
+            usersPanel.className = "admin-chat-users-panel";
+
+            const messagesPanel = document.createElement("div");
+            messagesPanel.className = "admin-chat-messages-panel";
+
+            usersPanel.innerHTML = `
+                    <div class="admin-chat-panel-title">
+                        <div>
+                            <strong>İstifadəçi modulları</strong>
+                            <p>Hər user üçün ayrıca chat</p>
+                        </div>
+                        <span>${chatConversations.length}</span>
+                    </div>
+                `;
+
+            if (chatConversations.length === 0) {
+                usersPanel.innerHTML += `
+                        <div class="admin-chat-empty">
+                            Hələ istifadəçi mesajı yoxdur.
+                        </div>
+                    `;
+            } else {
+                chatConversations.forEach(item => {
+                    const unread = item.unreadForAdmin || 0;
+                    const isActive = selectedChatUser && selectedChatUser.userId === item.userId;
+
+                    const card = document.createElement("article");
+                    card.className = `admin-user-chat-card ${isActive ? "active" : ""}`;
+
+                    card.innerHTML = `
+                            <div class="admin-user-chat-card-top">
+                                <div class="admin-user-chat-avatar">
+                                    ${getInitials(item.fullName, item.email)}
+                                </div>
+
+                                <div class="admin-user-chat-info">
+                                    <div class="admin-user-chat-name-row">
+                                        <strong>${escapeHtml(item.fullName || "İstifadəçi")}</strong>
+                                        ${unread > 0 ? `<span class="admin-unread-badge">${unread}</span>` : ""}
+                                    </div>
+
+                                    <small>${escapeHtml(item.email || "")}</small>
+                                </div>
+                            </div>
+
+                            <div class="admin-user-chat-preview">
+                                <b>${item.lastSender === "Admin" ? "Admin:" : "User:"}</b>
+                                ${escapeHtml(item.lastMessage || "-")}
+                            </div>
+
+                            <button type="button" class="admin-open-chat-btn">
+                                Chat aç
+                            </button>
+                        `;
+
+                    card.querySelector(".admin-open-chat-btn").addEventListener("click", async () => {
+                        selectedChatUser = {
+                            userId: item.userId,
+                            fullName: item.fullName || "İstifadəçi",
+                            email: item.email || ""
+                        };
+
+                        selectedAdminMessageIds = [];
+                        adminSelectMode = false;
+
+                        await loadSelectedUserConversation(item.userId, true);
+                        highlightSelectedConversationCard();
+                    });
+
+                    usersPanel.appendChild(card);
+                });
+            }
+
+            messagesPanel.innerHTML = `
+                    <div class="admin-chat-placeholder">
+                        <div class="admin-chat-placeholder-icon">💬</div>
+                        <h3>Söhbət seçilməyib</h3>
+                        <p>Soldakı istifadəçi modulunda “Chat aç” düyməsinə basın.</p>
+                    </div>
+                `;
+
+            layout.appendChild(usersPanel);
+            layout.appendChild(messagesPanel);
+            adminChatWindow.appendChild(layout);
+
+            highlightSelectedConversationCard();
+        }
+
+        function highlightSelectedConversationCard() {
+            const cards = document.querySelectorAll(".admin-user-chat-card");
+
+            cards.forEach(card => {
+                card.classList.remove("active");
+            });
+
+            if (!selectedChatUser) return;
+
+            const buttons = document.querySelectorAll(".admin-open-chat-btn");
+            buttons.forEach(btn => {
+                const card = btn.closest(".admin-user-chat-card");
+                if (!card) return;
+
+                const name = card.querySelector(".admin-user-chat-name-row strong")?.textContent?.trim();
+                const email = card.querySelector(".admin-user-chat-info small")?.textContent?.trim();
+
+                if (name === selectedChatUser.fullName || email === selectedChatUser.email) {
+                    card.classList.add("active");
+                }
+            });
+        }
+
+        async function loadSelectedUserConversation(userId, forceBottom = true, previousScrollState = null) {
+            if (!userId) return;
+
+            try {
+                const response = await fetch(`/api/chat/admin/user/${userId}`);
+                const data = await response.json();
+
+                if (!response.ok || !Array.isArray(data)) {
+                    showToast("İstifadəçi söhbəti açılmadı.", "error");
+                    return;
+                }
+
+                selectedConversationMessages = data;
+
+                if (!selectedChatUser) {
+                    const conversation = chatConversations.find(x => x.userId === userId);
+                    selectedChatUser = {
+                        userId: userId,
+                        fullName: conversation?.fullName || "İstifadəçi",
+                        email: conversation?.email || ""
+                    };
+                }
+
+                renderSelectedConversation(data);
+
+                adminReplyInput.disabled = false;
+                sendAdminReplyBtn.disabled = false;
+
+                selectedChatUserInfo.textContent =
+                    `Cavab yazılır: ${selectedChatUser.fullName} • ${selectedChatUser.email || ""}`;
+
+                restoreChatScroll(previousScrollState || { nearBottom: true, top: 0, height: 0 }, forceBottom);
+            } catch (error) {
+                console.error("SELECTED CHAT ERROR:", error);
+                showToast("Söhbəti yükləmək mümkün olmadı.", "error");
+            }
+        }
+
+        function renderSelectedConversation(messages) {
+            const layout = adminChatWindow.querySelector(".admin-chat-pro-layout");
+            if (!layout) return;
+
+            const messagesPanel = layout.querySelector(".admin-chat-messages-panel");
+            if (!messagesPanel) return;
+
+            messagesPanel.innerHTML = `
+                    <div class="admin-selected-chat-top">
+                        <div class="admin-selected-user-head">
+                            <div class="admin-selected-avatar">
+                                ${getInitials(selectedChatUser.fullName, selectedChatUser.email)}
+                            </div>
+
+                            <div>
+                                <strong>${escapeHtml(selectedChatUser.fullName)}</strong>
+                                <span>${escapeHtml(selectedChatUser.email || "")}</span>
+                            </div>
+                        </div>
+
+                        <div class="admin-selected-chat-actions">
+                            <button type="button" class="admin-chat-mini-btn" onclick="toggleAdminSelectMode()">
+                                ${adminSelectMode ? "Seçim aktivdir" : "Mesaj sil"}
+                            </button>
+
+                            <button type="button" class="admin-chat-mini-btn danger"
+                                style="display:${selectedAdminMessageIds.length > 0 ? "inline-flex" : "none"};"
+                                onclick="deleteSelectedAdminMessages()">
+                                Seçilənləri sil (${selectedAdminMessageIds.length})
+                            </button>
+
+                            <button type="button" class="admin-chat-mini-btn cancel"
+                                style="display:${adminSelectMode ? "inline-flex" : "none"};"
+                                onclick="cancelAdminSelectMode()">
+                                Ləğv et
+                            </button>
+
+                            <button type="button" class="admin-chat-mini-btn danger" onclick="clearSelectedUserConversation()">
+                                Bu söhbəti sil
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="admin-selected-chat-window" id="selectedAdminChatWindow"></div>
+                `;
+
+            const box = document.getElementById("selectedAdminChatWindow");
+
+            if (!messages.length) {
+                box.innerHTML = `
+                        <div class="admin-chat-empty">
+                            Bu istifadəçi ilə söhbət boşdur.
+                        </div>
+                    `;
+                return;
+            }
+
+            messages.forEach(item => {
+                const type = item.sender === "Admin" ? "admin" : "user";
+                const selected = selectedAdminMessageIds.includes(item.id);
+
+                const wrap = document.createElement("div");
+                wrap.className = `admin-message-wrap ${type} ${selected ? "selected" : ""}`;
+
+                if (adminSelectMode && item.id > 0) {
+                    const check = document.createElement("input");
+                    check.type = "checkbox";
+                    check.className = "admin-message-check";
+                    check.checked = selected;
+                    check.addEventListener("change", () => toggleAdminMessageSelection(item.id));
+                    wrap.appendChild(check);
+                }
+
+                const row = document.createElement("div");
+                row.className = `admin-chat-row ${type}`;
+
+                row.innerHTML = `
+                        <div class="admin-chat-bubble">${escapeHtml(item.message || "-")}</div>
+                        <div class="admin-chat-meta">
+                            <span>${item.sender === "Admin" ? "Admin" : "İstifadəçi"}</span>
+                            <span>${formatDateTime(item.createdAt)}</span>
+                        </div>
+                    `;
+
+                wrap.appendChild(row);
+                box.appendChild(wrap);
+            });
+        }
+
+        function toggleAdminSelectMode() {
+            const scrollState = captureChatScroll();
+
+            adminSelectMode = !adminSelectMode;
+            selectedAdminMessageIds = [];
+
+            if (selectedConversationMessages.length) {
+                renderSelectedConversation(selectedConversationMessages);
+                restoreChatScroll(scrollState, false);
+            }
+        }
+
+        function cancelAdminSelectMode() {
+            const scrollState = captureChatScroll();
+
+            adminSelectMode = false;
+            selectedAdminMessageIds = [];
+
+            if (selectedConversationMessages.length) {
+                renderSelectedConversation(selectedConversationMessages);
+                restoreChatScroll(scrollState, false);
+            }
+        }
+
+        function toggleAdminMessageSelection(id) {
+            const scrollState = captureChatScroll();
+
+            if (selectedAdminMessageIds.includes(id)) {
+                selectedAdminMessageIds = selectedAdminMessageIds.filter(x => x !== id);
+            } else {
+                selectedAdminMessageIds.push(id);
+            }
+
+            renderSelectedConversation(selectedConversationMessages);
+            restoreChatScroll(scrollState, false);
+        }
+
+        async function sendAdminReply() {
+            if (!selectedChatUser || !selectedChatUser.userId) {
+                showToast("Əvvəlcə istifadəçi seçin.", "info");
+                return;
+            }
+
+            const replyText = adminReplyInput.value.trim();
+
+            if (!replyText) {
+                showToast("Cavab mesajı boş ola bilməz.", "info");
+                return;
+            }
+
+            const originalText = sendAdminReplyBtn.textContent;
+
+            try {
+                sendAdminReplyBtn.disabled = true;
+                sendAdminReplyBtn.textContent = "Göndərilir.";
+
+                const response = await fetch("/api/chat/admin/reply", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userId: selectedChatUser.userId,
+                        fullName: selectedChatUser.fullName,
+                        email: selectedChatUser.email,
+                        message: replyText,
+                        sender: "Admin"
+                    })
+                });
+
+                const text = await response.text();
+
+                let data = {};
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch {
+                    data = { message: text };
+                }
+
+                if (response.ok) {
+                    showToast(data.message || "Cavab göndərildi.", "success");
+                    adminReplyInput.value = "";
+                    await loadChatMessagesOnly(true);
+                } else {
+                    showToast(data.message || "Cavab göndərilmədi.", "error");
+                }
+            } catch (error) {
+                console.error("ADMIN REPLY ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            } finally {
+                sendAdminReplyBtn.disabled = false;
+                sendAdminReplyBtn.textContent = originalText;
+                adminReplyInput.focus();
+            }
+        }
+
+        async function deleteSelectedAdminMessages() {
+            if (selectedAdminMessageIds.length === 0) {
+                showToast("Əvvəlcə mesaj seçin.", "info");
+                return;
+            }
+
+            const result = await Swal.fire({
+                title: "Seçilən mesajlar silinsin?",
+                text: `${selectedAdminMessageIds.length} mesaj database-dən silinəcək.`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#f97316",
+                cancelButtonColor: "#6b7280",
+                confirmButtonText: "Bəli, sil",
+                cancelButtonText: "Ləğv et"
+            });
+
+            if (!result.isConfirmed) return;
+
+            try {
+                const response = await fetch("/api/chat/delete-selected", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        ids: selectedAdminMessageIds
+                    })
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        title: "Silindi",
+                        text: "Seçilən mesajlar uğurla silindi.",
+                        icon: "success",
+                        timer: 1300,
+                        showConfirmButton: false
+                    });
+
+                    selectedAdminMessageIds = [];
+                    adminSelectMode = false;
+
+                    await loadChatMessagesOnly(false);
+                } else {
+                    showToast("Mesajlar silinmədi.", "error");
+                }
+            } catch (error) {
+                console.error("ADMIN DELETE SELECTED ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            }
+        }
+
+        async function clearSelectedUserConversation() {
+            if (!selectedChatUser || !selectedChatUser.userId) {
+                showToast("Əvvəlcə istifadəçi seçin.", "info");
+                return;
+            }
+
+            const result = await Swal.fire({
+                title: "Bu istifadəçinin söhbəti silinsin?",
+                text: `${selectedChatUser.fullName} ilə olan bütün mesajlar silinəcək.`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#dc2626",
+                cancelButtonColor: "#6b7280",
+                confirmButtonText: "Bəli, sil",
+                cancelButtonText: "Ləğv et"
+            });
+
+            if (!result.isConfirmed) return;
+
+            try {
+                const response = await fetch(`/api/chat/admin/user/${selectedChatUser.userId}/clear`, {
+                    method: "DELETE"
+                });
+
+                if (response.ok) {
+                    showToast("Bu istifadəçinin söhbəti silindi.", "success");
+
+                    selectedChatUser = null;
+                    selectedAdminMessageIds = [];
+                    adminSelectMode = false;
+                    selectedConversationMessages = [];
+
+                    adminReplyInput.value = "";
+                    adminReplyInput.disabled = true;
+                    sendAdminReplyBtn.disabled = true;
+                    selectedChatUserInfo.textContent = "Cavab yazmaq üçün istifadəçi modulunda “Chat aç” düyməsinə basın.";
+
+                    await loadChatMessagesOnly(false);
+                } else {
+                    showToast("Söhbət silinmədi.", "error");
+                }
+            } catch (error) {
+                console.error("CLEAR USER CHAT ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            }
+        }
+
+        async function clearAllChatMessages() {
+            const result = await Swal.fire({
+                title: "Bütün chat silinsin?",
+                text: "Bütün istifadəçilərin bütün mesajları database-dən silinəcək.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#dc2626",
+                cancelButtonColor: "#6b7280",
+                confirmButtonText: "Bəli, hamısını sil",
+                cancelButtonText: "Ləğv et"
+            });
+
+            if (!result.isConfirmed) return;
+
+            try {
+                clearChatBtn.disabled = true;
+                clearChatBtn.textContent = "Silinir...";
+
+                const response = await fetch("/api/chat/admin/clear", {
+                    method: "DELETE"
+                });
+
+                if (response.ok) {
+                    showToast("Bütün chat mesajları silindi.", "success");
+
+                    selectedChatUser = null;
+                    selectedAdminMessageIds = [];
+                    adminSelectMode = false;
+                    selectedConversationMessages = [];
+
+                    adminReplyInput.value = "";
+                    adminReplyInput.disabled = true;
+                    sendAdminReplyBtn.disabled = true;
+                    selectedChatUserInfo.textContent = "Cavab yazmaq üçün istifadəçi modulunda “Chat aç” düyməsinə basın.";
+
+                    await loadChatMessagesOnly(false);
+                } else {
+                    showToast("Chat sıfırlanmadı.", "error");
+                }
+            } catch (error) {
+                console.error("CLEAR CHAT ERROR:", error);
+                showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+            } finally {
+                clearChatBtn.disabled = false;
+                clearChatBtn.textContent = "Bütün chatı sil";
+            }
+        }
+
+        if (refreshChatBtn) {
+            refreshChatBtn.addEventListener("click", () => loadChatMessagesOnly(false));
+        }
+
+        if (clearChatBtn) {
+            clearChatBtn.addEventListener("click", clearAllChatMessages);
+        }
+
+        if (sendAdminReplyBtn) {
+            sendAdminReplyBtn.addEventListener("click", sendAdminReply);
+        }
+
+        if (adminReplyInput) {
+            adminReplyInput.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    sendAdminReply();
+                }
+            });
+        }
+
+        function renderStats(users, appointments, chatMessages) {
+            usersCount.textContent = users.length;
+            chatCount.textContent = chatMessages.length;
+
+            const now = new Date();
+
+            const newAppointments = appointments.filter(x => x.status === "Pending" || !x.status);
+            const activeAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) >= now);
+            const rejectedAppointments = appointments.filter(x => x.status === "Rejected");
+            const expiredAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) < now);
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
 
             newCount.textContent = newAppointments.length;
             activeCount.textContent = activeAppointments.length;
@@ -383,6 +1221,7 @@
         function renderUsers(users) {
             usersList.innerHTML = "";
 
+<<<<<<< HEAD
             if (!Array.isArray(users) || users.length === 0) {
                 usersList.innerHTML = `
                         <div class="contact-item">
@@ -390,6 +1229,10 @@
                             <p>Sistemdə hələ istifadəçi görünmür.</p>
                         </div>
                     `;
+=======
+            if (!users.length) {
+                usersList.innerHTML = `<p class="form-subtext">İstifadəçi yoxdur.</p>`;
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                 return;
             }
 
@@ -398,10 +1241,23 @@
                 card.className = "form-card";
 
                 card.innerHTML = `
+<<<<<<< HEAD
                         <h2 style="margin-bottom:12px;">${user.fullName || "-"}</h2>
                         <p class="form-subtext"><strong>İstifadəçi adı:</strong> ${user.username || "-"}</p>
                         <p class="form-subtext"><strong>E-poçt:</strong> ${user.email || "-"}</p>
                         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+=======
+                        <h2 style="margin-bottom:12px;">${escapeHtml(user.fullName || user.username || "-")}</h2>
+                        <p class="form-subtext"><strong>Username:</strong> ${escapeHtml(user.username || "-")}</p>
+                        <p class="form-subtext"><strong>Email:</strong> ${escapeHtml(user.email || "-")}</p>
+                        <p class="form-subtext"><strong>Status:</strong>
+                            <span style="color:${getStatusColor(user.status)}; font-weight:800;">
+                                ${escapeHtml(getStatusText(user.status))}
+                            </span>
+                        </p>
+
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                             <button class="btn btn-primary" style="background:#dc2626;" onclick="openDeleteUserModal(${user.id})">Sil</button>
                         </div>
                     `;
@@ -410,6 +1266,7 @@
             });
         }
 
+<<<<<<< HEAD
         function renderAppointmentCard(item, type) {
             const card = document.createElement("div");
             card.className = "form-card";
@@ -665,6 +1522,285 @@
                 if (e.target === deleteUserModal) {
                     pendingDeleteUserId = null;
                     deleteUserModal.classList.remove("show");
+=======
+        function renderGroupedAppointments(appointments) {
+            const now = new Date();
+
+            const newAppointments = appointments.filter(x => x.status === "Pending" || !x.status);
+            const activeAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) >= now);
+            const rejectedAppointments = appointments.filter(x => x.status === "Rejected");
+            const expiredAppointments = appointments.filter(x => x.status === "Approved" && new Date(x.date) < now);
+
+            renderAppointmentList(newAppointmentsList, newAppointments, "new");
+            renderAppointmentList(activeAppointmentsList, activeAppointments, "active");
+            renderAppointmentList(rejectedAppointmentsList, rejectedAppointments, "rejected");
+            renderAppointmentList(expiredAppointmentsList, expiredAppointments, "expired");
+        }
+
+        function renderAppointmentList(container, items, type) {
+            container.innerHTML = "";
+
+            if (!items.length) {
+                container.innerHTML = `<p class="form-subtext">Məlumat yoxdur.</p>`;
+                return;
+            }
+
+            items.forEach(item => {
+                container.appendChild(renderAppointmentCard(item, type));
+            });
+        }
+
+        function renderAppointmentCard(item, type) {
+            const card = document.createElement("div");
+            card.className = "form-card";
+
+            const createdAt = item.createdAt ? formatDateTime(item.createdAt) : "-";
+            const adminResponseMessage = item.adminResponseMessage || "-";
+
+            let actionButtons = "";
+
+            if (type === "new") {
+                actionButtons = `
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+                            <button class="btn btn-primary" onclick="openStatusModal(${item.id}, 'Approved')">Qəbul et</button>
+                            <button class="btn btn-secondary" onclick="openStatusModal(${item.id}, 'Rejected')">Rədd et</button>
+                        </div>
+                    `;
+            } else {
+                actionButtons = `
+                        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+                            <button class="btn btn-primary" style="background:#dc2626;" onclick="openDeleteAppointmentModal(${item.id})">Sil</button>
+                        </div>
+                    `;
+            }
+
+            card.innerHTML = `
+                    <h2 style="margin-bottom:12px;">${escapeHtml(item.service || "-")}</h2>
+                    <p class="form-subtext"><strong>Ad:</strong> ${escapeHtml(item.fullName || "-")}</p>
+                    <p class="form-subtext"><strong>Telefon:</strong> ${escapeHtml(item.phone || "-")}</p>
+                    <p class="form-subtext"><strong>E-poçt:</strong> ${escapeHtml(item.email || "-")}</p>
+                    <p class="form-subtext"><strong>Qəbul tarixi:</strong> ${formatDateTime(item.date)}</p>
+                    <p class="form-subtext"><strong>Rezervasiya olunma tarixi:</strong> ${createdAt}</p>
+                    <p class="form-subtext"><strong>İstifadəçi qeydi:</strong> ${escapeHtml(item.message || "-")}</p>
+                    <p class="form-subtext"><strong>Status:</strong>
+                        <span style="color:${getStatusColor(item.status)}; font-weight:800;">
+                            ${escapeHtml(getStatusText(item.status))}
+                        </span>
+                    </p>
+                    <p class="form-subtext"><strong>Admin cavabı:</strong> ${escapeHtml(adminResponseMessage)}</p>
+                    ${actionButtons}
+                `;
+
+            return card;
+        }
+
+        function openStatusModal(id, status) {
+            pendingStatusAppointmentId = id;
+            pendingStatusValue = status;
+            rejectMessageInput.value = "";
+
+            if (status === "Approved") {
+                statusModalChip.textContent = "Təsdiq";
+                statusModalTitle.textContent = "Rezervasiya təsdiqlənsin?";
+                statusModalText.textContent = "Bu rezervasiya təsdiqlənəcək.";
+                rejectMessageBox.style.display = "none";
+                confirmStatusBtn.textContent = "Təsdiqlə";
+                confirmStatusBtn.style.background = "#16a34a";
+            } else {
+                statusModalChip.textContent = "Rədd";
+                statusModalTitle.textContent = "Rezervasiya rədd edilsin?";
+                statusModalText.textContent = "İstəsəniz istifadəçiyə səbəb mesajı yaza bilərsiniz.";
+                rejectMessageBox.style.display = "block";
+                confirmStatusBtn.textContent = "Rədd et";
+                confirmStatusBtn.style.background = "#dc2626";
+            }
+
+            statusModal.classList.add("show");
+        }
+
+        if (cancelStatusBtn) {
+            cancelStatusBtn.addEventListener("click", function () {
+                pendingStatusAppointmentId = null;
+                pendingStatusValue = null;
+                statusModal.classList.remove("show");
+            });
+        }
+
+        if (statusModal) {
+            statusModal.addEventListener("click", function (e) {
+                if (e.target === statusModal) {
+                    pendingStatusAppointmentId = null;
+                    pendingStatusValue = null;
+                    statusModal.classList.remove("show");
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
+                }
+            });
+        }
+
+<<<<<<< HEAD
+        if (confirmDeleteUserBtn) {
+            confirmDeleteUserBtn.addEventListener("click", async function () {
+                if (!pendingDeleteUserId) return;
+
+                const originalText = confirmDeleteUserBtn.textContent;
+
+                try {
+                    confirmDeleteUserBtn.disabled = true;
+                    confirmDeleteUserBtn.textContent = "Silinir...";
+
+                    const response = await fetch(`/api/users/${pendingDeleteUserId}`, {
+                        method: "DELETE"
+=======
+        if (confirmStatusBtn) {
+            confirmStatusBtn.addEventListener("click", async function () {
+                if (!pendingStatusAppointmentId || !pendingStatusValue) return;
+
+                const originalText = confirmStatusBtn.textContent;
+
+                try {
+                    confirmStatusBtn.disabled = true;
+                    confirmStatusBtn.textContent = "Göndərilir.";
+
+                    const response = await fetch(`/api/appointments/${pendingStatusAppointmentId}/status`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            status: pendingStatusValue,
+                            adminResponseMessage: rejectMessageInput.value || ""
+                        })
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+<<<<<<< HEAD
+                        showToast(data.message || "İstifadəçi silindi.", "success");
+                        deleteUserModal.classList.remove("show");
+                        pendingDeleteUserId = null;
+                        loadAdminData();
+                    } else {
+                        showToast(data.message || "İstifadəçini silmək mümkün olmadı.", "error");
+                    }
+                } catch (error) {
+                    console.error("DELETE USER ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmDeleteUserBtn.disabled = false;
+                    confirmDeleteUserBtn.textContent = originalText;
+=======
+                        showToast(data.message || "Status yeniləndi.", "success");
+                        statusModal.classList.remove("show");
+                        pendingStatusAppointmentId = null;
+                        pendingStatusValue = null;
+                        loadAdminData();
+                    } else {
+                        showToast(data.message || "Status yenilənmədi.", "error");
+                    }
+                } catch (error) {
+                    console.error("STATUS UPDATE ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmStatusBtn.disabled = false;
+                    confirmStatusBtn.textContent = originalText;
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
+                }
+            });
+        }
+
+<<<<<<< HEAD
+        window.openDeleteAppointmentModal = openDeleteAppointmentModal;
+        window.openDeleteUserModal = openDeleteUserModal;
+        window.openStatusModal = openStatusModal;
+=======
+        function openDeleteAppointmentModal(id) {
+            pendingDeleteAppointmentId = id;
+            deleteAppointmentModal.classList.add("show");
+        }
+
+        function openDeleteUserModal(id) {
+            pendingDeleteUserId = id;
+            deleteUserModal.classList.add("show");
+        }
+
+        if (cancelDeleteAppointmentBtn) {
+            cancelDeleteAppointmentBtn.addEventListener("click", function () {
+                pendingDeleteAppointmentId = null;
+                deleteAppointmentModal.classList.remove("show");
+            });
+        }
+
+        if (deleteAppointmentModal) {
+            deleteAppointmentModal.addEventListener("click", function (e) {
+                if (e.target === deleteAppointmentModal) {
+                    pendingDeleteAppointmentId = null;
+                    deleteAppointmentModal.classList.remove("show");
+                }
+            });
+        }
+
+        if (confirmDeleteAppointmentBtn) {
+            confirmDeleteAppointmentBtn.addEventListener("click", async function () {
+                if (!pendingDeleteAppointmentId) return;
+
+                const originalText = confirmDeleteAppointmentBtn.textContent;
+
+                try {
+                    confirmDeleteAppointmentBtn.disabled = true;
+                    confirmDeleteAppointmentBtn.textContent = "Silinir.";
+
+                    const response = await fetch(`/api/appointments/${pendingDeleteAppointmentId}`, {
+                        method: "DELETE"
+                    });
+
+                    const text = await response.text();
+
+                    let data = {};
+                    try {
+                        data = text ? JSON.parse(text) : {};
+                    } catch {
+                        data = { message: text };
+                    }
+
+                    if (response.ok) {
+                        showToast(data.message || "Rezervasiya silindi.", "success");
+                        deleteAppointmentModal.classList.remove("show");
+                        pendingDeleteAppointmentId = null;
+                        loadAdminData();
+                    } else {
+                        showToast(data.message || "Silmək mümkün olmadı.", "error");
+                    }
+                } catch (error) {
+                    console.error("DELETE APPOINTMENT ERROR:", error);
+                    showToast("Serverə qoşulmaq mümkün olmadı.", "error");
+                } finally {
+                    confirmDeleteAppointmentBtn.disabled = false;
+                    confirmDeleteAppointmentBtn.textContent = originalText;
+                }
+            });
+        }
+
+        if (cancelDeleteUserBtn) {
+            cancelDeleteUserBtn.addEventListener("click", function () {
+                pendingDeleteUserId = null;
+                deleteUserModal.classList.remove("show");
+            });
+        }
+
+        if (deleteUserModal) {
+            deleteUserModal.addEventListener("click", function (e) {
+                if (e.target === deleteUserModal) {
+                    pendingDeleteUserId = null;
+                    deleteUserModal.classList.remove("show");
                 }
             });
         }
@@ -677,7 +1813,7 @@
 
                 try {
                     confirmDeleteUserBtn.disabled = true;
-                    confirmDeleteUserBtn.textContent = "Silinir...";
+                    confirmDeleteUserBtn.textContent = "Silinir.";
 
                     const response = await fetch(`/api/users/${pendingDeleteUserId}`, {
                         method: "DELETE"
@@ -713,6 +1849,12 @@
         window.openDeleteAppointmentModal = openDeleteAppointmentModal;
         window.openDeleteUserModal = openDeleteUserModal;
         window.openStatusModal = openStatusModal;
+
+        window.toggleAdminSelectMode = toggleAdminSelectMode;
+        window.cancelAdminSelectMode = cancelAdminSelectMode;
+        window.deleteSelectedAdminMessages = deleteSelectedAdminMessages;
+        window.clearSelectedUserConversation = clearSelectedUserConversation;
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
     </script>
 </body>
 </html>

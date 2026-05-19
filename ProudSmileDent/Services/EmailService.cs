@@ -44,6 +44,10 @@ Mesaj: {message}"
             await SendAsync(mail);
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         public async Task SendReservationUpdatedEmail(string fullName, string phone, string email, string service, DateTime date, string? message)
         {
             var mail = new MimeMessage();
@@ -76,6 +80,10 @@ Mesaj: {message}
             await SendAsync(mail);
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         public async Task SendReminderEmail(string fullName, string email, string service, DateTime date)
         {
             if (string.IsNullOrWhiteSpace(email))

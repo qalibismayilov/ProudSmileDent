@@ -26,7 +26,14 @@
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+<<<<<<< HEAD
         public string? AdminResponseMessage { get; set; }
         public bool HasUserEdited { get; set; } = false;
+=======
+        public bool HasUserEdited { get; set; } = false;
+
+        public string? AdminResponseMessage { get; set; }
+     
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
     }
 }

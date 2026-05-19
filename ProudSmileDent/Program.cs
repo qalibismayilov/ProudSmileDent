@@ -16,7 +16,11 @@ builder.Services.Configure<EmailSettings>(
 
 builder.Services.AddHostedService<AppointmentReminderService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=clinic.db"));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 35))
+    )
+);
 
 builder.Services.AddCors(options =>
 {
@@ -46,10 +50,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.EnsureCreated();
-}
+
 
 app.Run();

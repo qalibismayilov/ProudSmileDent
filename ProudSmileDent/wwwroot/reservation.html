@@ -5,6 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rezervasiya | ProudSmileDent</title>
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .reservation-form-pro {
+            border-radius: 30px;
+            overflow: hidden;
+            padding: 0 !important;
+        }
+
+        .reservation-form-top {
+            background: linear-gradient(135deg, #ff7a1a, #f97316, #ea580c);
+            color: #fff;
+            padding: 28px;
+        }
+
+        .reservation-form-chip {
+            display: inline-flex;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.18);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .reservation-form-top h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 29px;
+            line-height: 1.2;
+        }
+
+        .reservation-form-top p {
+            margin: 10px 0 0;
+            color: rgba(255,255,255,.92);
+            line-height: 1.6;
+        }
+
+        .reservation-top-rules {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .reservation-mini-rule {
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 16px;
+            padding: 11px;
+        }
+
+            .reservation-mini-rule strong {
+                display: block;
+                color: #fff;
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+
+            .reservation-mini-rule small {
+                color: rgba(255,255,255,.9);
+                font-size: 12px;
+            }
+
+        .reservation-form-body {
+            padding: 26px 28px 28px;
+            background: #fff;
+        }
+
+        .reservation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .reservation-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+            .reservation-field.full {
+                grid-column: 1 / -1;
+            }
+
+            .reservation-field label {
+                font-weight: 800;
+                color: #111827;
+                font-size: 14px;
+            }
+
+            .reservation-field small {
+                color: #6b7280;
+                font-size: 12px;
+                line-height: 1.4;
+            }
+
+            .reservation-field input,
+            .reservation-field select,
+            .reservation-field textarea {
+                width: 100%;
+                border: 1px solid #e5e7eb;
+                border-radius: 16px;
+                padding: 14px 15px;
+                outline: none;
+                font-size: 15px;
+                background: #fff;
+                transition: .25s ease;
+            }
+
+                .reservation-field input:focus,
+                .reservation-field select:focus,
+                .reservation-field textarea:focus {
+                    border-color: #f97316;
+                    box-shadow: 0 0 0 4px rgba(249,115,22,.14);
+                }
+
+                .reservation-field input[readonly] {
+                    background: #f9fafb;
+                    color: #6b7280;
+                    cursor: not-allowed;
+                }
+
+        .date-select-box {
+            grid-column: 1 / -1;
+            background: linear-gradient(180deg, #fff7ed, #fff);
+            border: 1px solid #fed7aa;
+            border-radius: 22px;
+            padding: 17px;
+        }
+
+        .date-select-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .date-help-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 13px;
+        }
+
+        .date-help {
+            background: #fff;
+            border: 1px solid #ffedd5;
+            color: #9a3412;
+            border-radius: 14px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .reservation-submit-area {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+            .reservation-submit-area .btn {
+                min-width: 190px;
+            }
+
+        @media (max-width: 850px) {
+            .reservation-top-rules,
+            .reservation-grid,
+            .date-select-grid,
+            .date-help-row {
+                grid-template-columns: 1fr;
+            }
+
+            .reservation-form-top,
+            .reservation-form-body {
+                padding: 22px;
+            }
+
+            .reservation-submit-area .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -55,7 +240,14 @@
                 <div class="contact-info reveal show">
                     <span class="section-chip">Vacib məlumat</span>
                     <h2>Qəbul qaydaları</h2>
+<<<<<<< HEAD
                     <p>Rezervasiya yalnız qeydiyyatdan keçmiş istifadəçilər üçün mümkündür.</p>
+=======
+                    <p>
+                        Rezervasiya yalnız qeydiyyatdan keçmiş istifadəçilər üçündür.
+                        Qəbul vaxtını seçərkən klinikanın iş qrafikinə diqqət edin.
+                    </p>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
 
                     <div class="contact-list">
                         <div class="contact-item">
@@ -75,11 +267,16 @@
 
                         <div class="contact-item">
                             <h4>Bir aktiv rezervasiya</h4>
+<<<<<<< HEAD
                             <p>Eyni anda yalnız bir aktiv və gözləmədə olan rezervasiyanız ola bilər.</p>
+=======
+                            <p>Eyni anda yalnız bir aktiv və ya gözləmədə olan rezervasiyanız ola bilər.</p>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                         </div>
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-card reveal show">
                     <h2>Rezervasiya formu</h2>
                     <p class="form-subtext">
@@ -97,32 +294,49 @@
                                required />
 
                         <input type="email" id="email" placeholder="E-poçt" readonly />
+=======
+                <div class="form-card reveal show reservation-form-pro">
+                    <div class="reservation-form-top">
+                        <div class="reservation-form-chip">Rezervasiya formu</div>
+                        <h2>Qəbul üçün müraciət</h2>
+                        <p>
+                            Məlumatları yoxlayın, xidməti seçin və sizə uyğun qəbul tarixini qeyd edin.
+                            Təsdiq və ya rədd cavabı email vasitəsilə göndəriləcək.
+                        </p>
 
-                        <select id="service" required>
-                            <option value="">Xidmət seçin</option>
-                            <option>Diş çəkimi</option>
-                            <option>Kanal</option>
-                            <option>Ştif</option>
-                            <option>Plomb</option>
-                            <option>Güdül</option>
-                            <option>Diş ətinin müalicəsi</option>
-                            <option>Keramika</option>
-                            <option>Zirkon</option>
-                            <option>Protez</option>
-                            <option>Titan</option>
-                            <option>Qızıl</option>
-                            <option>Breket</option>
-                            <option>İmplant</option>
-                            <option>İmplantüstü</option>
-                            <option>Vinir</option>
-                            <option>Kimyəvi ağartma</option>
-                            <option>AIRFLOW</option>
-                            <option>Polirovka (pasta)</option>
-                            <option>Diş daşları</option>
-                            <option>Diş lakı</option>
-                            <option>Zoom-la ağartma</option>
-                        </select>
+                        <div class="reservation-top-rules">
+                            <div class="reservation-mini-rule">
+                                <strong>24 saat formatı</strong>
+                                <small>Saatlar 09:00 formasındadır</small>
+                            </div>
+                            <div class="reservation-mini-rule">
+                                <strong>09:00 - 20:00</strong>
+                                <small>Klinikanın iş saatları</small>
+                            </div>
+                            <div class="reservation-mini-rule">
+                                <strong>Bazar günü yox</strong>
+                                <small>İstirahət günü bloklanır</small>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="reservation-form-body">
+                        <form id="reservationForm">
+                            <div class="reservation-grid">
+                                <div class="reservation-field">
+                                    <label for="fullName">Ad və soyad</label>
+                                    <input type="text" id="fullName" placeholder="Ad və soyad" readonly />
+                                    <small>Bu məlumat hesabınızdan avtomatik götürülür.</small>
+                                </div>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
+
+                                <div class="reservation-field">
+                                    <label for="phone">Telefon nömrəsi</label>
+                                    <input type="tel" id="phone" placeholder="+994 XX XXX XX XX" autocomplete="tel" inputmode="tel" required />
+                                    <small>Klinika sizinlə bu nömrə ilə əlaqə saxlaya bilər.</small>
+                                </div>
+
+<<<<<<< HEAD
                         <input type="datetime-local" id="date" required />
 
                         <textarea id="message" rows="5" placeholder="Əlavə qeyd"></textarea>
@@ -137,6 +351,87 @@
                         <div style="display:flex; gap:12px; flex-wrap:wrap;">
                             <a href="login.html" class="btn btn-primary">Daxil ol</a>
                             <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+=======
+                                <div class="reservation-field">
+                                    <label for="email">E-poçt</label>
+                                    <input type="email" id="email" placeholder="E-poçt" readonly />
+                                    <small>Bildirişlər bu email ünvanına göndəriləcək.</small>
+                                </div>
+
+                                <div class="reservation-field">
+                                    <label for="service">Xidmət seçimi</label>
+                                    <select id="service" required>
+                                        <option value="">Xidmət seçin</option>
+                                        <option>Diş çəkimi</option>
+                                        <option>Kanal</option>
+                                        <option>Ştif</option>
+                                        <option>Plomb</option>
+                                        <option>Güdül</option>
+                                        <option>Diş ətinin müalicəsi</option>
+                                        <option>Keramika</option>
+                                        <option>Zirkon</option>
+                                        <option>Protez</option>
+                                        <option>Titan</option>
+                                        <option>Qızıl</option>
+                                        <option>Breket</option>
+                                        <option>İmplant</option>
+                                        <option>İmplantüstü</option>
+                                        <option>Vinir</option>
+                                        <option>Kimyəvi ağartma</option>
+                                        <option>AIRFLOW</option>
+                                        <option>Polirovka (pasta)</option>
+                                        <option>Diş daşları</option>
+                                        <option>Diş lakı</option>
+                                        <option>Zoom-la ağartma</option>
+                                    </select>
+                                    <small>Rezervasiya etmək istədiyiniz xidməti seçin.</small>
+                                </div>
+
+                                <div class="date-select-box">
+                                    <div class="reservation-field full">
+                                        <label>Qəbul tarixi və saatı</label>
+
+                                        <div class="date-select-grid">
+                                            <div>
+                                                <input type="date" id="dateOnly" required />
+                                            </div>
+
+                                            <div>
+                                                <select id="timeOnly" required>
+                                                    <option value="">Saat seçin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="date-help-row">
+                                            <div class="date-help">Ən azı 1 saat sonra</div>
+                                            <div class="date-help">09:00 - 20:00</div>
+                                            <div class="date-help">Bazar günü olmaz</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="reservation-field full">
+                                    <label for="message">Əlavə qeyd</label>
+                                    <textarea id="message" rows="5" placeholder="Məsələn: ağrı var, təcili baxış lazımdır və s."></textarea>
+                                    <small>Bu xana istəyə bağlıdır.</small>
+                                </div>
+                            </div>
+
+                            <div class="reservation-submit-area">
+                                <button type="submit" class="btn btn-primary" id="reservationSubmitBtn">
+                                    Rezervasiya et
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="authMessageBox" style="display:none; margin-top:16px;">
+                            <p class="form-subtext">Rezervasiya üçün əvvəlcə hesabınıza daxil olun.</p>
+                            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                                <a href="login.html" class="btn btn-primary">Daxil ol</a>
+                                <a href="register.html" class="btn btn-secondary">Qeydiyyatdan keç</a>
+                            </div>
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                         </div>
                     </div>
                 </div>
@@ -182,7 +477,12 @@
         const phoneInput = document.getElementById("phone");
         const emailInput = document.getElementById("email");
         const serviceInput = document.getElementById("service");
+<<<<<<< HEAD
         const dateInput = document.getElementById("date");
+=======
+        const dateOnlyInput = document.getElementById("dateOnly");
+        const timeOnlyInput = document.getElementById("timeOnly");
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         const messageInput = document.getElementById("message");
 
         let currentUser = null;
@@ -207,6 +507,94 @@
             }, 2500);
         }
 
+<<<<<<< HEAD
+=======
+        function buildTimeOptions() {
+            timeOnlyInput.innerHTML = `<option value="">Saat seçin</option>`;
+
+            for (let hour = 9; hour <= 20; hour++) {
+                for (let minute of [0, 30]) {
+                    if (hour === 20 && minute > 0) continue;
+
+                    const h = String(hour).padStart(2, "0");
+                    const m = String(minute).padStart(2, "0");
+                    const value = `${h}:${m}`;
+
+                    const option = document.createElement("option");
+                    option.value = value;
+                    option.textContent = value;
+
+                    timeOnlyInput.appendChild(option);
+                }
+            }
+        }
+
+        function getCombinedDateTime() {
+            if (!dateOnlyInput.value || !timeOnlyInput.value) return "";
+            return `${dateOnlyInput.value}T${timeOnlyInput.value}`;
+        }
+
+        function setReservationMinDate() {
+            const minDate = new Date();
+            minDate.setHours(minDate.getHours() + 1);
+
+            const pad = (n) => String(n).padStart(2, "0");
+            const year = minDate.getFullYear();
+            const month = pad(minDate.getMonth() + 1);
+            const day = pad(minDate.getDate());
+
+            dateOnlyInput.min = `${year}-${month}-${day}`;
+        }
+
+        function validateReservationDate(dateValue) {
+            if (!dateValue) {
+                return "Tarix və saat seçin.";
+            }
+
+            const selectedDate = new Date(dateValue);
+
+            if (isNaN(selectedDate.getTime())) {
+                return "Tarix düzgün deyil.";
+            }
+
+            const oneHourLater = new Date();
+            oneHourLater.setHours(oneHourLater.getHours() + 1);
+
+            if (selectedDate < oneHourLater) {
+                return "Rezervasiya ən azı 1 saat əvvəl yaradılmalıdır.";
+            }
+
+            if (selectedDate.getDay() === 0) {
+                return "Bazar günü rezervasiya mümkün deyil.";
+            }
+
+            const totalMinutes = selectedDate.getHours() * 60 + selectedDate.getMinutes();
+            const minMinutes = 9 * 60;
+            const maxMinutes = 20 * 60;
+
+            if (totalMinutes < minMinutes || totalMinutes > maxMinutes) {
+                return "Rezervasiya saatı yalnız 09:00 - 20:00 aralığında ola bilər.";
+            }
+
+            return null;
+        }
+
+        function validateDateInputs() {
+            const combined = getCombinedDateTime();
+            if (!combined) return;
+
+            const error = validateReservationDate(combined);
+            if (error) {
+                showToast(error, "error");
+                dateOnlyInput.value = "";
+                timeOnlyInput.value = "";
+            }
+        }
+
+        dateOnlyInput.addEventListener("change", validateDateInputs);
+        timeOnlyInput.addEventListener("change", validateDateInputs);
+
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         if (menuToggle) {
             menuToggle.addEventListener("click", () => {
                 navMenu.classList.toggle("active");
@@ -240,6 +628,7 @@
             }
         }
 
+<<<<<<< HEAD
         function setReservationMinDate() {
             const minDate = new Date();
             minDate.setHours(minDate.getHours() + 1);
@@ -255,6 +644,8 @@
             dateInput.min = `${year}-${month}-${day}T${hours}:${minutes}`;
         }
 
+=======
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         function fillUserData() {
             if (!currentUser || currentUser.username === "admin") {
                 reservationForm.style.display = "none";
@@ -262,7 +653,11 @@
                 return;
             }
 
+<<<<<<< HEAD
             reservationForm.style.display = "grid";
+=======
+            reservationForm.style.display = "block";
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
             authMessageBox.style.display = "none";
 
             fullNameInput.value = currentUser.fullName || "";
@@ -277,6 +672,7 @@
             phoneInput.value = savedPhone || "";
         }
 
+<<<<<<< HEAD
         function validateReservationDate(dateValue) {
             if (!dateValue) {
                 return "Tarix seçin.";
@@ -321,6 +717,8 @@
             }
         });
 
+=======
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         if (navLogout) {
             navLogout.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -341,7 +739,11 @@
             const phone = phoneInput.value.trim();
             const email = emailInput.value.trim();
             const service = serviceInput.value;
+<<<<<<< HEAD
             const date = dateInput.value;
+=======
+            const date = getCombinedDateTime();
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
             const message = messageInput.value.trim();
 
             if (!fullName || !phone || !email || !service || !date) {
@@ -367,12 +769,21 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
+<<<<<<< HEAD
                         fullName,
                         phone,
                         email,
                         service,
                         date,
                         message,
+=======
+                        fullName: fullName,
+                        phone: phone,
+                        email: email,
+                        service: service,
+                        date: date,
+                        message: message,
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
                         userId: currentUser.id
                     })
                 });
@@ -409,6 +820,10 @@
             }
         });
 
+<<<<<<< HEAD
+=======
+        buildTimeOptions();
+>>>>>>> 2386656b82fc8776b7038d584c6b493cf03b5b3d
         setupNavbar();
         fillUserData();
         setReservationMinDate();
