@@ -7,6 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include=".github\workflows\docker.yml" />
+  </ItemGroup>
+
 <ItemGroup>
   <PackageReference Include="MailKit" Version="4.16.0" />
   <PackageReference Include="MimeKit" Version="4.16.0" />
@@ -19,9 +23,5 @@
   <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 
   <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
-</ItemGroup>
-
-<ItemGroup>
-  <None Include=".github\workflows\docker.yml" />
 </ItemGroup>
 </Project>
